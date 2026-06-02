@@ -39,8 +39,11 @@ cd aurora-ui && npm install && npm run dev
 Add to your project:
 
 ```bash
-npx aurora-ui-cli add button shimmer-button webgl-globe
+npx --yes github:Rydaguy101/aurora-ui guide shimmer-button
+npx --yes github:Rydaguy101/aurora-ui add button shimmer-button webgl-globe
 ```
+
+See [docs/QUICKSTART.md](docs/QUICKSTART.md).
 
 ## Live docs
 
