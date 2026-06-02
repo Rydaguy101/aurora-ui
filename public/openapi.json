@@ -1,0 +1,145 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Aurora UI API",
+    "version": "1.0.0",
+    "description": "Machine-readable access to Aurora UI copy-paste React components for Next.js. Fetch the registry first, then component metadata or source. See docs/FOR_AI.md for integration steps.",
+    "contact": {
+      "url": "https://github.com/Rydaguy101/aurora-ui"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://aurora-ui-tau.vercel.app",
+      "description": "Production docs site"
+    }
+  ],
+  "paths": {
+    "/api/registry": {
+      "get": {
+        "operationId": "getRegistry",
+        "summary": "Full component catalog",
+        "description": "Returns registry.json with all components, categories, peer dependencies, import examples, and source URLs.",
+        "responses": {
+          "200": {
+            "description": "Registry catalog",
+            "content": {
+              "application/json": {
+                "schema": { "type": "object" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/search": {
+      "get": {
+        "operationId": "searchComponents",
+        "summary": "Search components by keyword or category",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "Search slug, title, description, tags"
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "Filter by category name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Matching components",
+            "content": {
+              "application/json": {
+                "schema": { "type": "object" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/components/{slug}": {
+      "get": {
+        "operationId": "getComponent",
+        "summary": "Component metadata",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" },
+            "example": "shimmer-button"
+          }
+        ],
+        "responses": {
+          "200": { "description": "Component metadata" },
+          "404": { "description": "Not found" }
+        }
+      }
+    },
+    "/api/component-source/{slug}": {
+      "get": {
+        "operationId": "getComponentSource",
+        "summary": "Component TypeScript source",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" },
+            "example": "button"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Source file content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "source": { "type": "string" },
+                    "sourcePath": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "404": { "description": "Not found" }
+        }
+      }
+    },
+    "/docs/FOR_AI.md": {
+      "get": {
+        "operationId": "getAgentDocs",
+        "summary": "AI agent integration guide",
+        "responses": {
+          "200": {
+            "description": "Markdown integration guide",
+            "content": {
+              "text/markdown": { "schema": { "type": "string" } }
+            }
+          }
+        }
+      }
+    },
+    "/llms.txt": {
+      "get": {
+        "operationId": "getLlmsTxt",
+        "summary": "LLM site index",
+        "responses": {
+          "200": {
+            "description": "llms.txt index",
+            "content": {
+              "text/plain": { "schema": { "type": "string" } }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -17,10 +17,19 @@
     "components",
     "cli",
     "shadcn",
-    "framer-motion"
+    "framer-motion",
+    "ai",
+    "llm"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Rydaguy101/aurora-ui"
+    "url": "https://github.com/Rydaguy101/aurora-ui",
+    "directory": "cli"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }

@@ -5,11 +5,13 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const packageRoot = path.resolve(__dirname, "..");
 const repoRoot = path.resolve(__dirname, "../..");
 
+const DEFAULT_SITE = process.env.AURORA_UI_SITE ?? "https://aurora-ui-tau.vercel.app";
 const DEFAULT_REGISTRY =
   process.env.AURORA_UI_REGISTRY ??
-  "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/public/registry.json";
+  `${DEFAULT_SITE}/api/registry`;
 
 const HELP = `
 aurora-ui — copy-paste animated React components for Next.js
@@ -25,10 +27,11 @@ AI / AGENT QUICK START
   1. Fetch the machine-readable catalog:
      curl -sL ${DEFAULT_REGISTRY}
   2. Read integration guide:
-     https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md
+     ${DEFAULT_SITE}/docs/FOR_AI.md
   3. Add a component:
-     npx aurora-ui add button shimmer-button
+     npx aurora-ui-cli add button shimmer-button
   4. Install peer deps printed after add, copy lib/utils.ts if missing.
+  5. MCP (Cursor/Claude): npx -y aurora-ui-mcp
 
 ENV
   AURORA_UI_REGISTRY   Override registry.json URL
@@ -65,8 +68,12 @@ async function loadRegistry(url) {
   }
 
   const local = path.join(repoRoot, "public/registry.json");
+  const packageLocal = path.join(packageRoot, "public/registry.json");
   if (url === DEFAULT_REGISTRY && fs.existsSync(local)) {
     return JSON.parse(fs.readFileSync(local, "utf8"));
+  }
+  if (url === DEFAULT_REGISTRY && fs.existsSync(packageLocal)) {
+    return JSON.parse(fs.readFileSync(packageLocal, "utf8"));
   }
 
   const response = await fetch(url);
@@ -177,8 +184,10 @@ AI agents: fetch ${DEFAULT_REGISTRY} and read docs/FOR_AI.md from the repository
 }
 
 function cmdDocs() {
-  console.log("https://github.com/Rydaguy101/aurora-ui/blob/main/docs/FOR_AI.md");
+  console.log(`${DEFAULT_SITE}/docs/FOR_AI.md`);
+  console.log(`${DEFAULT_SITE}/.well-known/agents.json`);
   console.log(DEFAULT_REGISTRY);
+  console.log("MCP: npx -y aurora-ui-mcp");
 }
 
 async function main() {

@@ -1,0 +1,36 @@
+{
+  "name": "aurora-ui-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for Aurora UI — list, search, and fetch copy-paste React components",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "aurora-ui-mcp": "./src/index.js"
+  },
+  "files": [
+    "src"
+  ],
+  "keywords": [
+    "mcp",
+    "aurora-ui",
+    "react",
+    "nextjs",
+    "components",
+    "model-context-protocol"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Rydaguy101/aurora-ui",
+    "directory": "mcp"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "zod": "^3.24.2"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

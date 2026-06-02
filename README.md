@@ -2,6 +2,8 @@
 
 > Copy-paste animated React components for Next.js — built with Tailwind, Radix UI, and Framer Motion.
 
+**Live docs:** [aurora-ui-tau.vercel.app/components](https://aurora-ui-tau.vercel.app/components)
+
 Aurora UI is a **component source library** (like shadcn/ui), not a traditional npm UI kit. Copy components into your app or use the CLI.
 
 ## Quick start (humans)
@@ -17,27 +19,49 @@ npm run dev
 ### Add components to your project
 
 ```bash
-npx --yes github:Rydaguy101/aurora-ui/cli/bin/aurora-ui.mjs add button shimmer-button card
+npx aurora-ui-cli add button shimmer-button card
 ```
-
-See [docs/FOR_AI.md](docs/FOR_AI.md) for full agent-oriented instructions (also useful for humans).
 
 ## For AI assistants
 
-**Start here** — Aurora UI is unlikely to be in your training data:
+Aurora UI is unlikely to be in your training data. **Fetch discovery URLs at runtime:**
 
-1. **Catalog (JSON):** https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/public/registry.json  
-2. **Integration guide:** [docs/FOR_AI.md](docs/FOR_AI.md)  
-3. **LLM index:** [llms.txt](llms.txt)  
-4. **CLI help:** `npx --yes github:Rydaguy101/aurora-ui/cli/bin/aurora-ui.mjs help`
+| Resource | URL |
+|----------|-----|
+| Registry | https://aurora-ui-tau.vercel.app/api/registry |
+| Integration guide | https://aurora-ui-tau.vercel.app/docs/FOR_AI.md |
+| Agent manifest | https://aurora-ui-tau.vercel.app/.well-known/agents.json |
+| OpenAPI | https://aurora-ui-tau.vercel.app/openapi.json |
+| llms.txt | https://aurora-ui-tau.vercel.app/llms.txt |
+
+```bash
+npx aurora-ui-cli help
+npx aurora-ui-cli list
+npx aurora-ui-cli add webgl-globe
+```
+
+### MCP (Cursor / Claude Desktop)
+
+```json
+{
+  "mcpServers": {
+    "aurora-ui": {
+      "command": "npx",
+      "args": ["-y", "aurora-ui-mcp"]
+    }
+  }
+}
+```
+
+See [docs/FOR_AI.md](docs/FOR_AI.md) and [mcp/README.md](mcp/README.md).
 
 ## Features
 
 - 84+ animated components with live previews
 - React Bits–style docs at `/components`
 - Hero backgrounds + WebGL (globe, particle field)
-- Lazy-loaded catalog for performance
-- Machine-readable `registry.json` for tooling and agents
+- REST API + OpenAPI + MCP for AI agents
+- Machine-readable `registry.json` for tooling
 
 ## Project structure
 
@@ -46,7 +70,8 @@ components/ui/          # Component source files (copy these)
 lib/components/         # Docs registry + loaders
 app/components/         # Live catalog site
 public/registry.json    # AI/tooling catalog (generated)
-cli/                    # aurora-ui CLI
+cli/                    # aurora-ui-cli (npm)
+mcp/                    # aurora-ui-mcp (npm)
 docs/FOR_AI.md          # Agent integration guide
 ```
 
@@ -58,9 +83,12 @@ docs/FOR_AI.md          # Agent integration guide
 | `npm run build` | Production build |
 | `npm run generate:registry` | Regenerate `public/registry.json` |
 
-## Stack
+## npm packages
 
-Next.js 15 · React 19 · Tailwind CSS · Radix UI · Framer Motion · Three.js (WebGL)
+| Package | Purpose |
+|---------|---------|
+| `aurora-ui-cli` | `npx aurora-ui-cli list \| info \| add` |
+| `aurora-ui-mcp` | MCP server for Cursor / Claude |
 
 ## License
 

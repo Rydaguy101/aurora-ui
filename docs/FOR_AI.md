@@ -7,15 +7,25 @@ This document is the **primary integration guide** for LLMs and autonomous agent
 - **Aurora UI** — copy-paste React components for **Next.js App Router** + **Tailwind CSS**
 - **84+ components**: actions, forms, cards, overlays, layout, typography, hero backgrounds, WebGL (globe, particles)
 - **Pattern**: similar to [shadcn/ui](https://ui.shadcn.com) — you copy source into the user's project, not install a heavy runtime package
-- **Live catalog**: clone repo → `npm install` → `npm run dev` → `/components`
+- **Live catalog**: https://aurora-ui-tau.vercel.app/components
 
-## Machine-readable catalog (fetch this first)
+## Discovery layer (fetch these first)
+
+| Resource | URL |
+|----------|-----|
+| **Registry JSON** | https://aurora-ui-tau.vercel.app/api/registry |
+| **This guide** | https://aurora-ui-tau.vercel.app/docs/FOR_AI.md |
+| **Agent manifest** | https://aurora-ui-tau.vercel.app/.well-known/agents.json |
+| **OpenAPI spec** | https://aurora-ui-tau.vercel.app/openapi.json |
+| **llms.txt** | https://aurora-ui-tau.vercel.app/llms.txt |
+
+GitHub raw fallback (if site unavailable):
 
 ```
 https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/public/registry.json
 ```
 
-Each entry includes:
+Each registry entry includes:
 
 | Field | Use |
 |-------|-----|
@@ -28,15 +38,22 @@ Each entry includes:
 | `peerDependencies` | npm packages to install |
 | `importExample` | Suggested import line |
 
+## REST API
+
+```
+GET /api/registry              → full catalog
+GET /api/search?q=button       → search components
+GET /api/components/{slug}     → metadata + peer deps
+GET /api/component-source/{slug} → { source, sourcePath }
+```
+
 ## CLI (recommended for agents with shell access)
 
-Install/run from the published repo (no prior knowledge required — `--help` is self-documenting):
-
 ```bash
-npx --yes github:Rydaguy101/aurora-ui/cli/bin/aurora-ui.mjs help
-npx --yes github:Rydaguy101/aurora-ui/cli/bin/aurora-ui.mjs list
-npx --yes github:Rydaguy101/aurora-ui/cli/bin/aurora-ui.mjs info button
-npx --yes github:Rydaguy101/aurora-ui/cli/bin/aurora-ui.mjs add button card animated-tabs
+npx aurora-ui-cli help
+npx aurora-ui-cli list
+npx aurora-ui-cli info button
+npx aurora-ui-cli add button card animated-tabs
 ```
 
 After `add`, run the printed `npm install …` for peer dependencies.
@@ -47,13 +64,37 @@ From a cloned repo (offline):
 node cli/bin/aurora-ui.mjs add button --dir components/ui
 ```
 
+## MCP server (recommended for Cursor / Claude)
+
+Add to MCP config:
+
+```json
+{
+  "mcpServers": {
+    "aurora-ui": {
+      "command": "npx",
+      "args": ["-y", "aurora-ui-mcp"]
+    }
+  }
+}
+```
+
+| Tool | Purpose |
+|------|---------|
+| `get_integration_guide` | Read this doc first |
+| `list_components` | Browse catalog |
+| `search_components` | Find by keyword |
+| `get_component` | Metadata for one slug |
+| `get_component_source` | Full TypeScript source |
+
 ## Manual copy (no CLI)
 
-1. Fetch `sourceUrl` from registry.json for the component slug
-2. Save to `components/ui/<slug>.tsx` in the user's project
-3. Copy `lib/utils.ts` (`cn` helper) if missing
-4. Install `peerDependencies` from registry entry
-5. Import using `importExample` from registry
+1. Fetch registry → find slug
+2. `GET /api/component-source/{slug}` or fetch `sourceUrl`
+3. Save to `components/ui/<slug>.tsx`
+4. Copy `lib/utils.ts` (`cn` helper) if missing
+5. Install `peerDependencies`
+6. Import using `importExample`
 
 ## Required project setup
 
@@ -62,13 +103,13 @@ node cli/bin/aurora-ui.mjs add button --dir components/ui
 3. **Path alias** in `tsconfig.json`: `"@/*": ["./*"]`
 4. **tailwind.config** must scan `./components/**/*.{ts,tsx}`
 
-### Common dependencies (install as needed)
+### Common dependencies
 
 ```
 clsx tailwind-merge class-variance-authority framer-motion lucide-react
 ```
 
-Radix packages vary per component — use `peerDependencies` from registry.json.
+Radix packages vary per component — use `peerDependencies` from registry.
 
 WebGL components also need:
 
@@ -78,36 +119,23 @@ three @react-three/fiber @react-three/drei
 
 ## Adding a component — agent checklist
 
-1. `GET registry.json` → find slug
-2. `aurora-ui info <slug>` or read `sourceUrl`
-3. `aurora-ui add <slug>` OR fetch raw source
+1. `GET /api/registry` or run `get_integration_guide` (MCP)
+2. `npx aurora-ui-cli info <slug>` or `get_component`
+3. `npx aurora-ui-cli add <slug>` OR `get_component_source`
 4. Install peer deps
 5. Verify `@/lib/utils` exists
 6. Add import to user's page/component
 7. For WebGL: wrap in client component; use `"use client"` in parent
 
-## Registry source of truth (human-maintained)
-
-`lib/components/registry.ts` — used by the docs site at `/components`.
-
-## Other docs
-
-| File | Purpose |
-|------|---------|
-| [README.md](../README.md) | Human quick start |
-| [AGENTS.md](../AGENTS.md) | Cursor / workspace memory |
-| [llms.txt](../llms.txt) | LLM site index |
-| [public/registry.json](../public/registry.json) | Full component index |
-
-## Example agent workflow (prompt snippet)
+## Example agent workflow
 
 ```
 You are adding an Aurora UI component. Do NOT invent APIs.
-1. Fetch https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/public/registry.json
-2. Find the slug and read peerDependencies + importExample
-3. Run: npx --yes github:Rydaguy101/aurora-ui/cli/bin/aurora-ui.mjs add <slug>
+1. Fetch https://aurora-ui-tau.vercel.app/api/registry
+2. Find slug; read peerDependencies + importExample
+3. Run: npx aurora-ui-cli add <slug>
 4. Install printed peer dependencies
-5. Use the importExample in the user's file
+5. Use importExample in the user's file
 ```
 
 ## License

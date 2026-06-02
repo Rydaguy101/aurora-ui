@@ -1,5 +1,6 @@
 # dependencies
 /node_modules
+/mcp/node_modules
 /.pnp
 .pnp.js
 
@@ -28,3 +29,4 @@ next-env.d.ts
 
 # cursor local state
 .cursor/
+.vercel

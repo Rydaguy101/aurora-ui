@@ -4,31 +4,48 @@
 
 Aurora UI is a source-first component library. Components are copied into your project — there is no opaque npm UI package.
 
+## Live site
+
+**https://aurora-ui-tau.vercel.app/components** — previews, customization, source tabs
+
 ## Primary resources for AI agents
 
-- [Agent integration guide](docs/FOR_AI.md): step-by-step for LLMs — **read this first**
-- [Component registry JSON](public/registry.json): machine-readable catalog with slugs, descriptions, raw source URLs, peer deps, import examples
-- [CLI](cli/bin/aurora-ui.mjs): `list`, `info`, `add`, `init` — run with `--help`
+| Resource | URL |
+|----------|-----|
+| Agent guide | https://aurora-ui-tau.vercel.app/docs/FOR_AI.md |
+| Agent manifest | https://aurora-ui-tau.vercel.app/.well-known/agents.json |
+| OpenAI plugin | https://aurora-ui-tau.vercel.app/.well-known/ai-plugin.json |
+| Registry (JSON) | https://aurora-ui-tau.vercel.app/api/registry |
+| OpenAPI spec | https://aurora-ui-tau.vercel.app/openapi.json |
+| LLM index | https://aurora-ui-tau.vercel.app/llms.txt |
 
-## Quick commands
+## CLI
 
 ```bash
-# List all components
-npx --yes github:Rydaguy101/aurora-ui/cli/bin/aurora-ui.mjs list
-
-# Add components to your app
-npx --yes github:Rydaguy101/aurora-ui/cli/bin/aurora-ui.mjs add button card webgl-globe
+npx aurora-ui-cli list
+npx aurora-ui-cli info webgl-globe
+npx aurora-ui-cli add button card shimmer-button
 ```
 
-## Live documentation
+## MCP (Cursor / Claude Desktop)
 
-Clone the repo and run `npm run dev`, then open `/components` for previews, customization controls, and source tabs.
+```json
+{
+  "mcpServers": {
+    "aurora-ui": {
+      "command": "npx",
+      "args": ["-y", "aurora-ui-mcp"]
+    }
+  }
+}
+```
+
+Tools: `list_components`, `search_components`, `get_component`, `get_component_source`, `get_integration_guide`
 
 ## Categories
 
 Actions · Forms & Feedback · Cards & Surfaces · Overlays & Menus · Layout & Navigation · Typography & Counters · Backgrounds & Ambient Effects · 3D & WebGL
 
-## Optional
+## Repository
 
-- [README.md](README.md): human-oriented overview
-- [AGENTS.md](AGENTS.md): Cursor workspace preferences
+https://github.com/Rydaguy101/aurora-ui

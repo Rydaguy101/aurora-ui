@@ -8,6 +8,10 @@ const registrySource = fs.readFileSync(registryPath, "utf8");
 const githubRepo = process.env.AURORA_UI_GITHUB_REPO ?? "Rydaguy101/aurora-ui";
 const githubBranch = process.env.AURORA_UI_GITHUB_BRANCH ?? "main";
 const rawBase = `https://raw.githubusercontent.com/${githubRepo}/${githubBranch}`;
+const siteUrl =
+  process.env.AURORA_UI_SITE_URL ??
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  "https://aurora-ui-tau.vercel.app";
 
 const categoryOrder = [
   "Actions",
@@ -73,10 +77,18 @@ const catalog = {
   version: JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8")).version,
   description: "High-end animated React component library for Next.js (copy-paste + CLI).",
   repository: `https://github.com/${githubRepo}`,
-  homepage: `https://github.com/${githubRepo}#readme`,
+  homepage: siteUrl,
+  docsSiteUrl: siteUrl,
+  openapiUrl: `${siteUrl}/openapi.json`,
+  aiPluginUrl: `${siteUrl}/.well-known/ai-plugin.json`,
+  agentsManifestUrl: `${siteUrl}/.well-known/agents.json`,
+  cliPackage: "aurora-ui-cli",
+  mcpPackage: "aurora-ui-mcp",
   registryUrl: `${rawBase}/public/registry.json`,
-  aiDocsUrl: `${rawBase}/docs/FOR_AI.md`,
-  llmsTxtUrl: `${rawBase}/llms.txt`,
+  liveRegistryUrl: `${siteUrl}/api/registry`,
+  aiDocsUrl: `${siteUrl}/docs/FOR_AI.md`,
+  aiDocsRawUrl: `${rawBase}/docs/FOR_AI.md`,
+  llmsTxtUrl: `${siteUrl}/llms.txt`,
   categoryOrder,
   componentCount: components.length,
   components: components.sort((a, b) => a.slug.localeCompare(b.slug)),
