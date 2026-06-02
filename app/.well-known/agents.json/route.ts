@@ -1,10 +1,6 @@
 import { NextResponse } from "next/server";
 
-function getSiteBaseUrl() {
-  if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "");
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
-  return "https://aurora-ui-tau.vercel.app";
-}
+import { getSiteBaseUrl } from "@/lib/site-config";
 
 export async function GET() {
   const baseUrl = getSiteBaseUrl();
@@ -28,26 +24,29 @@ export async function GET() {
       ai_plugin: `${baseUrl}/.well-known/ai-plugin.json`,
     },
     cli: {
-      init: "npx --yes github:Rydaguy101/aurora-ui init",
-      info: "npx --yes github:Rydaguy101/aurora-ui info --json",
-      docs: "npx --yes github:Rydaguy101/aurora-ui docs <slug> --json",
-      search: "npx --yes github:Rydaguy101/aurora-ui search -q <query>",
-      add: "npx --yes github:Rydaguy101/aurora-ui add <slug>",
+      package: "aurora-ui-cli",
+      init: "npx aurora-ui-cli init",
+      info: "npx aurora-ui-cli info --json",
+      docs: "npx aurora-ui-cli docs <slug> --json",
+      search: "npx aurora-ui-cli search -q <query>",
+      add: "npx aurora-ui-cli add <slug>",
       shadcnAdd: "npx shadcn@latest add @aurora/<slug>",
     },
     mcp: {
-      install: "npx --yes github:Rydaguy101/aurora-ui aurora-ui-mcp",
+      package: "aurora-ui-mcp",
+      install: "npx aurora-ui-mcp",
       shadcnCompatibleTools: [
         "list_items_in_registries",
         "search_items_in_registries",
         "get_add_command_for_items",
         "get_item_examples_from_registries",
+        "get_component_guide",
       ],
       config_example: {
         mcpServers: {
           "aurora-ui": {
             command: "npx",
-            args: ["-y", "github:Rydaguy101/aurora-ui", "aurora-ui-mcp"],
+            args: ["-y", "aurora-ui-mcp"],
           },
         },
       },

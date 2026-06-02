@@ -1,11 +1,13 @@
 # Aurora UI — AI integration (shadcn-compatible)
 
-Aurora UI works like **shadcn/ui**: copy-paste source, `components.json`, registry JSON files, and CLI commands AIs already understand.
+Aurora UI works like **shadcn/ui**: copy-paste source, `components.json`, registry JSON files, CLI commands, and MCP tools AIs already understand.
+
+**Packages on npm:** `aurora-ui-cli` · `aurora-ui-mcp`
 
 ## Setup in your Next.js project
 
 ```bash
-npx --yes github:Rydaguy101/aurora-ui init
+npx aurora-ui-cli init
 npx shadcn@latest add @aurora/theme @aurora/utils
 npx shadcn@latest add @aurora/shimmer-button
 ```
@@ -13,17 +15,17 @@ npx shadcn@latest add @aurora/shimmer-button
 Or without shadcn CLI:
 
 ```bash
-npx --yes github:Rydaguy101/aurora-ui add shimmer-button
+npx aurora-ui-cli add shimmer-button
 npm install clsx tailwind-merge
 ```
 
 ## Agent workflow (mirrors shadcn)
 
 ```
-1. npx --yes github:Rydaguy101/aurora-ui info --json     → project context
-2. npx --yes github:Rydaguy101/aurora-ui search -q "hero" → find slugs
-3. npx --yes github:Rydaguy101/aurora-ui docs <slug> --json → usage + props
-4. npx shadcn@latest add @aurora/<slug>  OR  aurora-ui add <slug>
+1. npx aurora-ui-cli info --json              → project context
+2. npx aurora-ui-cli search -q "hero"         → find slugs
+3. npx aurora-ui-cli docs <slug> --json        → usage + props
+4. npx shadcn@latest add @aurora/<slug>  OR  npx aurora-ui-cli add <slug>
 5. npm install <peerDependencies from step 3>
 6. Paste usageExample exactly into user's file
 ```
@@ -55,7 +57,7 @@ Add to `components.json`:
   "mcpServers": {
     "aurora-ui": {
       "command": "npx",
-      "args": ["--yes", "github:Rydaguy101/aurora-ui", "aurora-ui-mcp"]
+      "args": ["-y", "aurora-ui-mcp"]
     }
   }
 }
@@ -90,13 +92,22 @@ Or install skill from [skills/aurora-ui/SKILL.md](../skills/aurora-ui/SKILL.md).
 | `GET /api/components/{slug}` | Metadata + usageExample |
 | `GET /r/{slug}.json` | Full shadcn registry item |
 | `GET /shadcn-registry.json` | Registry index |
+| `GET /.well-known/agents.json` | Machine-readable discovery manifest |
 
 ## Copy-paste system prompt
 
 ```
 You integrate Aurora UI like shadcn/ui. Before writing code:
-1. Run: npx --yes github:Rydaguy101/aurora-ui docs <slug> --json
-2. Run: npx shadcn@latest add @aurora/<slug>  (or aurora-ui add <slug>)
+1. Run: npx aurora-ui-cli docs <slug> --json
+2. Run: npx shadcn@latest add @aurora/<slug>  (or npx aurora-ui-cli add <slug>)
 3. Use usageExample and importExample exactly — do not guess APIs.
-4. Run info --json to check installed components and aliases.
+4. Run npx aurora-ui-cli info --json to check installed components and aliases.
+```
+
+## Fallback (no npm)
+
+If npm is unavailable, use the GitHub runner:
+
+```bash
+npx --yes github:Rydaguy101/aurora-ui add <slug>
 ```

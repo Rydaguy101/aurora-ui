@@ -1,25 +1,30 @@
 # How to run Aurora UI CLI commands
 
-## The command that works right now
+## npm (recommended)
 
-`aurora-ui-cli` is **not on npm yet**. Use the GitHub repo directly:
+Both packages are published on npm:
+
+| Package | Command |
+|---------|---------|
+| `aurora-ui-cli` | `npx aurora-ui-cli` |
+| `aurora-ui-mcp` | `npx aurora-ui-mcp` |
 
 ```bash
-npx --yes github:Rydaguy101/aurora-ui list
-npx --yes github:Rydaguy101/aurora-ui info shimmer-button
-npx --yes github:Rydaguy101/aurora-ui guide shimmer-button
-npx --yes github:Rydaguy101/aurora-ui add shimmer-button button
-npx --yes github:Rydaguy101/aurora-ui init
+npx aurora-ui-cli init
+npx aurora-ui-cli list
+npx aurora-ui-cli search -q "button"
+npx aurora-ui-cli docs shimmer-button --json
+npx aurora-ui-cli guide shimmer-button
+npx aurora-ui-cli add shimmer-button button
 ```
-
-First run downloads the repo (~5–15 seconds). After that it's cached.
 
 ## Add components to your Next.js project
 
 ```bash
 cd your-nextjs-app
 
-npx --yes github:Rydaguy101/aurora-ui add shimmer-button
+npx aurora-ui-cli init
+npx aurora-ui-cli add shimmer-button
 npm install clsx tailwind-merge class-variance-authority
 ```
 
@@ -28,6 +33,15 @@ The CLI will:
 2. Create `lib/utils.ts` if missing
 3. Print which npm packages to install
 4. Print a copy-paste usage example
+
+## shadcn CLI (alternative)
+
+After `npx aurora-ui-cli init`:
+
+```bash
+npx shadcn@latest add @aurora/theme @aurora/utils
+npx shadcn@latest add @aurora/shimmer-button
+```
 
 ## Required project setup
 
@@ -54,31 +68,28 @@ Settings → MCP → add:
   "mcpServers": {
     "aurora-ui": {
       "command": "npx",
-      "args": ["--yes", "github:Rydaguy101/aurora-ui", "aurora-ui-mcp"]
+      "args": ["-y", "aurora-ui-mcp"]
     }
   }
 }
 ```
 
-Restart Cursor. The agent can call `get_component_guide` before writing code.
-
-## When npm publish is live
-
-After packages are published to npm, you'll be able to use:
-
-```bash
-npx aurora-ui-cli add button
-npx aurora-ui-mcp
-```
-
-Until then, always use `npx --yes github:Rydaguy101/aurora-ui`.
+Restart Cursor. The agent can call `get_component_guide`, `search_items_in_registries`, and other shadcn-compatible tools before writing code.
 
 ## Troubleshooting
 
 | Problem | Solution |
 |---------|----------|
-| `aurora-ui-cli not found` | Use `npx --yes github:Rydaguy101/aurora-ui` instead |
+| `aurora-ui-cli not found` | Use `npx aurora-ui-cli` (not `npx aurora-ui`) |
 | Component looks unstyled | Copy `globals.css` theme variables |
 | `Cannot find module '@/lib/utils'` | Run `add` for any component — creates utils |
 | WebGL blank | Add `"use client"`, install `three`, give parent `min-h-[480px]` |
-| AI used wrong props | Run `guide <slug>` and paste `usageExample` exactly |
+| AI used wrong props | Run `docs <slug> --json` and paste `usageExample` exactly |
+
+## GitHub fallback
+
+If npm is blocked:
+
+```bash
+npx --yes github:Rydaguy101/aurora-ui add shimmer-button
+```

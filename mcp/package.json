@@ -1,6 +1,6 @@
 {
   "name": "aurora-ui-mcp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "MCP server for Aurora UI — list, search, and fetch copy-paste React components",
   "license": "MIT",
   "type": "module",

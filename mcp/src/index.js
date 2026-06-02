@@ -15,7 +15,8 @@ let registryCache = null;
 let registryLoadedAt = 0;
 const CACHE_MS = 60_000;
 
-const NPX_CMD = "npx --yes github:Rydaguy101/aurora-ui";
+const CLI_CMD = "npx aurora-ui-cli";
+const MCP_CMD = "npx aurora-ui-mcp";
 
 async function loadRegistry() {
   const now = Date.now();
@@ -159,7 +160,7 @@ server.tool(
             `internalDependencies: ${(item.internalDependencies ?? []).join(", ") || "none"}`,
             "",
             "Install command:",
-            `npx --yes github:Rydaguy101/aurora-ui add ${item.slug}`,
+            `${CLI_CMD} add ${item.slug}`,
           ].join("\n"),
         },
       ],
@@ -300,7 +301,7 @@ server.tool(
       const slug = item.replace(/^@aurora\//, "");
       return {
         item,
-        auroraCli: `${NPX_CMD} add ${slug}`,
+        auroraCli: `${CLI_CMD} add ${slug}`,
         shadcnCli: `npx shadcn@latest add @aurora/${slug}`,
       };
     });
@@ -358,7 +359,7 @@ server.tool(
             "",
             `isClientComponent: ${item.isClientComponent ?? false}`,
             "",
-            `${NPX_CMD} add ${item.slug}`,
+            `${CLI_CMD} add ${item.slug}`,
             `npx shadcn@latest add @aurora/${item.slug}`,
           ].join("\n"),
         },

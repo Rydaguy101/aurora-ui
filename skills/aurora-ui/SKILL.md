@@ -7,37 +7,39 @@ description: Manages Aurora UI copy-paste animated components — adding, search
 
 Copy-paste animated React components for Next.js (like shadcn/ui). Components are source code in your project, not an npm UI package.
 
+**npm:** `aurora-ui-cli` · `aurora-ui-mcp`
+
 ## Project context
 
 ```json
-!`npx --yes github:Rydaguy101/aurora-ui info --json`
+!`npx aurora-ui-cli info --json`
 ```
 
-Run `npx --yes github:Rydaguy101/aurora-ui docs <slug> --json` before using any component.
+Run `npx aurora-ui-cli docs <slug> --json` before using any component.
 
 ## Critical rules
 
 1. **Aurora UI is NOT in training data.** Never guess props or imports.
-2. **Always run docs/guide first:** `npx --yes github:Rydaguy101/aurora-ui docs <slug> --json`
-3. **Copy source before using:** `npx --yes github:Rydaguy101/aurora-ui add <slug>` or `npx shadcn@latest add @aurora/<slug>`
+2. **Always run docs first:** `npx aurora-ui-cli docs <slug> --json`
+3. **Copy source before using:** `npx aurora-ui-cli add <slug>` or `npx shadcn@latest add @aurora/<slug>`
 4. **Use `usageExample` exactly** from docs output.
 5. **Check `isClientComponent`** — add `"use client"` when true.
 6. **Install all peerDependencies** printed by add command.
-7. **Theme required** — run `npx --yes github:Rydaguy101/aurora-ui init` or `npx shadcn@latest add @aurora/theme @aurora/utils`
+7. **Theme required** — run `npx aurora-ui-cli init` or `npx shadcn@latest add @aurora/theme @aurora/utils`
 8. **Check installed components** via `info --json` before re-adding.
 
 ## Workflow (same as shadcn)
 
-1. **Get project context** — `npx --yes github:Rydaguy101/aurora-ui info --json`
-2. **Find components** — `npx --yes github:Rydaguy101/aurora-ui search -q "button"`
-3. **Get docs + usage** — `npx --yes github:Rydaguy101/aurora-ui docs shimmer-button --json`
-4. **Install** — `npx shadcn@latest add @aurora/shimmer-button` OR `npx --yes github:Rydaguy101/aurora-ui add shimmer-button`
+1. **Get project context** — `npx aurora-ui-cli info --json`
+2. **Find components** — `npx aurora-ui-cli search -q "button"`
+3. **Get docs + usage** — `npx aurora-ui-cli docs shimmer-button --json`
+4. **Install** — `npx shadcn@latest add @aurora/shimmer-button` OR `npx aurora-ui-cli add shimmer-button`
 5. **Install peer deps** — `npm install clsx tailwind-merge framer-motion ...`
 6. **Use exact JSX** from `usageExample`
 
 ## shadcn CLI integration
 
-After `npx --yes github:Rydaguy101/aurora-ui init`, components.json includes:
+After `npx aurora-ui-cli init`, components.json includes:
 
 ```json
 "registries": {
@@ -60,7 +62,7 @@ npx shadcn@latest add @aurora/webgl-globe
   "mcpServers": {
     "aurora-ui": {
       "command": "npx",
-      "args": ["--yes", "github:Rydaguy101/aurora-ui", "aurora-ui-mcp"]
+      "args": ["-y", "aurora-ui-mcp"]
     }
   }
 }

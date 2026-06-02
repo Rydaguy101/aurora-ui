@@ -12,6 +12,9 @@
 ## Learned Workspace Facts
 
 - Workspace is **Aurora UI** (`aurora-ui`): a Next.js animated component library in this folder.
+- **npm packages (published):** `aurora-ui-cli` (`npx aurora-ui-cli`) and `aurora-ui-mcp` (`npx aurora-ui-mcp`).
+- AI integration guide: `docs/FOR_AI.md` — agents must run `docs <slug> --json` before using components.
+- shadcn-compatible registry items live at `public/r/{slug}.json`; regenerate via `npm run generate:registry`.
 - `/components` catalog shell lives in `app/components/_components/catalog-shell.tsx` with registry at `lib/components/registry.ts`.
 - WebGL globe and particle field previews are in `app/components/_components/previews/webgl.tsx` (`components/ui/webgl-globe.tsx`, `webgl-particle-field.tsx`).
 - Catalog uses `next/dynamic` to load preview chunks by category when a component is selected.

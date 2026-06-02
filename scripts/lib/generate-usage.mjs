@@ -185,7 +185,7 @@ export function buildUsageExample({ slug, exportName, controls, initialState, bl
 
 export function buildAgentInstructions({ slug, exportName, isClientComponent, internalDeps, peerDependencies, usageExample }) {
   const lines = [
-    `1. Run: npx --yes github:Rydaguy101/aurora-ui add ${slug}`,
+    `1. Run: npx aurora-ui-cli add ${slug}`,
     "2. Install printed peer dependencies with npm install",
     "3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured",
     "4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css",
@@ -197,7 +197,7 @@ export function buildAgentInstructions({ slug, exportName, isClientComponent, in
   }
 
   if (internalDeps.length) {
-    lines.push(`7. Also add internal deps: npx --yes github:Rydaguy101/aurora-ui add ${internalDeps.join(" ")}`);
+    lines.push(`7. Also add internal deps: npx aurora-ui-cli add ${internalDeps.join(" ")}`);
   }
 
   if (peerDependencies.length) {

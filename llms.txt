@@ -1,15 +1,20 @@
 # Aurora UI
 
-> Copy-paste animated React components for Next.js — **shadcn-compatible** registry + CLI.
+> Copy-paste animated React components for Next.js — **shadcn-compatible** registry + CLI + MCP.
 
 ## Live site
 
 **https://aurora-ui-tau.vercel.app/components**
 
+## npm packages
+
+- CLI: `npx aurora-ui-cli`
+- MCP: `npx aurora-ui-mcp`
+
 ## shadcn-style workflow
 
 ```bash
-npx --yes github:Rydaguy101/aurora-ui init
+npx aurora-ui-cli init
 npx shadcn@latest add @aurora/theme @aurora/utils
 npx shadcn@latest add @aurora/shimmer-button
 ```
@@ -17,8 +22,8 @@ npx shadcn@latest add @aurora/shimmer-button
 Or Aurora CLI only:
 
 ```bash
-npx --yes github:Rydaguy101/aurora-ui docs shimmer-button --json
-npx --yes github:Rydaguy101/aurora-ui add shimmer-button
+npx aurora-ui-cli docs shimmer-button --json
+npx aurora-ui-cli add shimmer-button
 ```
 
 ## AI resources
@@ -26,6 +31,7 @@ npx --yes github:Rydaguy101/aurora-ui add shimmer-button
 | Resource | URL |
 |----------|-----|
 | Agent guide | https://aurora-ui-tau.vercel.app/docs/FOR_AI.md |
+| Agent manifest | https://aurora-ui-tau.vercel.app/.well-known/agents.json |
 | Registry item | https://aurora-ui-tau.vercel.app/r/{slug}.json |
 | shadcn index | https://aurora-ui-tau.vercel.app/shadcn-registry.json |
 | Component API | https://aurora-ui-tau.vercel.app/api/components/{slug} |
@@ -37,13 +43,13 @@ npx --yes github:Rydaguy101/aurora-ui add shimmer-button
   "mcpServers": {
     "aurora-ui": {
       "command": "npx",
-      "args": ["-y", "github:Rydaguy101/aurora-ui", "aurora-ui-mcp"]
+      "args": ["-y", "aurora-ui-mcp"]
     }
   }
 }
 ```
 
-Tools: `list_items_in_registries`, `search_items_in_registries`, `get_add_command_for_items`, `get_item_examples_from_registries`
+Tools: `list_items_in_registries`, `search_items_in_registries`, `get_add_command_for_items`, `get_item_examples_from_registries`, `get_component_guide`
 
 ## Skill
 

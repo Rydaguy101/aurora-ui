@@ -10,16 +10,17 @@ When the user asks for Aurora UI components:
 
 2. Before writing code, run:
    ```
-   npx --yes github:Rydaguy101/aurora-ui guide <slug>
+   npx aurora-ui-cli docs <slug> --json
    ```
    Or fetch: `https://aurora-ui-tau.vercel.app/api/components/<slug>`
 
 3. Copy source files:
    ```
-   npx --yes github:Rydaguy101/aurora-ui add <slug>
+   npx aurora-ui-cli add <slug>
    ```
+   Or: `npx shadcn@latest add @aurora/<slug>` (after `npx aurora-ui-cli init`)
 
-4. Use `usageExample` and `importExample` from the guide output exactly. Do not invent props.
+4. Use `usageExample` and `importExample` from the docs output exactly. Do not invent props.
 
 5. Install all `peerDependencies`. Ensure `lib/utils.ts` exists and `@/*` path alias is configured.
 
@@ -28,5 +29,7 @@ When the user asks for Aurora UI components:
 7. Add `"use client"` when `isClientComponent` is true.
 
 8. Read full guide: https://aurora-ui-tau.vercel.app/docs/FOR_AI.md
+
+9. Optional MCP — add `aurora-ui-mcp` via npx for shadcn-compatible registry tools.
 
 ---

@@ -4,6 +4,7 @@ import path from "path";
 import { NextResponse } from "next/server";
 
 import { componentRegistry } from "@/lib/components/registry";
+import { getSiteBaseUrl } from "@/lib/site-config";
 
 interface RegistryComponent {
   slug: string;
@@ -83,14 +84,8 @@ export async function GET(
     usageExample: entry.usageExample,
     props: entry.props ?? [],
     agentInstructions: entry.agentInstructions,
-    cliGuideCommand: `npx --yes github:Rydaguy101/aurora-ui guide ${entry.slug}`,
-    cliAddCommand: `npx --yes github:Rydaguy101/aurora-ui add ${entry.slug}`,
+    cliGuideCommand: `npx aurora-ui-cli docs ${entry.slug} --json`,
+    cliAddCommand: `npx aurora-ui-cli add ${entry.slug}`,
     previewUrl: `${baseUrl}/components#${entry.slug}`,
   });
-}
-
-function getSiteBaseUrl() {
-  if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "");
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
-  return "http://localhost:3000";
 }

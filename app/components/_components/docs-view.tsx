@@ -103,10 +103,10 @@ export default function Page() {
         <h2 className="text-base font-medium text-foreground">CLI quick start</h2>
         <div className="overflow-x-auto rounded-lg border border-border/60 bg-[#111111]">
           <pre className="p-5 font-mono text-[13px] leading-7 text-foreground/90">
-            <code>{`# Works today (no npm publish needed)
-npx --yes github:Rydaguy101/aurora-ui list
-npx --yes github:Rydaguy101/aurora-ui guide shimmer-button
-npx --yes github:Rydaguy101/aurora-ui add button card webgl-globe`}</code>
+            <code>{`npx aurora-ui-cli init
+npx aurora-ui-cli list
+npx aurora-ui-cli docs shimmer-button --json
+npx aurora-ui-cli add button card webgl-globe`}</code>
           </pre>
         </div>
         <p className="text-sm leading-7 text-muted-foreground">
@@ -127,7 +127,7 @@ npx --yes github:Rydaguy101/aurora-ui add button card webgl-globe`}</code>
               FOR_AI.md
             </a>
             . MCP server:{" "}
-            <code className="rounded bg-[#0a0a0a] px-1.5 py-0.5 font-mono text-[13px] text-foreground">npx --yes github:Rydaguy101/aurora-ui aurora-ui-mcp</code>
+            <code className="rounded bg-[#0a0a0a] px-1.5 py-0.5 font-mono text-[13px] text-foreground">npx aurora-ui-mcp</code>
           </p>
         </div>
       </section>

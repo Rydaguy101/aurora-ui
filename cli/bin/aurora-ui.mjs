@@ -13,7 +13,9 @@ const DEFAULT_REGISTRY =
   process.env.AURORA_UI_REGISTRY ??
   `${DEFAULT_SITE}/api/registry`;
 const GITHUB_RAW = "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main";
-const NPX_CMD = "npx --yes github:Rydaguy101/aurora-ui";
+const CLI_CMD = "npx aurora-ui-cli";
+const MCP_CMD = "npx aurora-ui-mcp";
+const NPX_CMD = CLI_CMD;
 
 const HELP = `
 aurora-ui — copy-paste animated React components for Next.js (shadcn-compatible workflow)
@@ -43,7 +45,7 @@ COMMANDS
 
 AI / MCP
   Read: ${DEFAULT_SITE}/docs/FOR_AI.md
-  MCP:  npx --yes github:Rydaguy101/aurora-ui aurora-ui-mcp
+  MCP:  ${MCP_CMD}
   Registry: ${DEFAULT_SITE}/r/{name}.json
 `.trim();
 
@@ -214,7 +216,7 @@ async function cmdSearch(registry, flags) {
     title: item.title,
     description: item.description,
     registry: "@aurora",
-    addCommand: `${NPX_CMD} add ${item.slug}`,
+    addCommand: `${CLI_CMD} add ${item.slug}`,
     shadcnAddCommand: `npx shadcn@latest add @aurora/${item.slug}`,
   }));
 
@@ -252,7 +254,7 @@ async function cmdDocs(registry, slugs, flags) {
       usageExample: item.usageExample,
       props: item.props ?? [],
       isClientComponent: item.isClientComponent ?? false,
-      addCommand: `${NPX_CMD} add ${item.slug}`,
+      addCommand: `${CLI_CMD} add ${item.slug}`,
       shadcnAddCommand: `npx shadcn@latest add @aurora/${item.slug}`,
     });
   }
@@ -313,9 +315,27 @@ async function fetchSource(component) {
   const local = path.join(repoRoot, component.sourcePath);
   if (fs.existsSync(local)) return fs.readFileSync(local, "utf8");
 
-  const response = await fetch(component.sourceUrl);
-  if (!response.ok) throw new Error(`Failed to fetch ${component.sourceUrl}`);
+  const sourceUrl =
+    component.sourceUrl ??
+    component.liveSourceUrl ??
+    `${GITHUB_RAW}/${component.sourcePath.replace(/\\/g, "/")}`;
+
+  const response = await fetch(sourceUrl);
+  if (!response.ok) throw new Error(`Failed to fetch ${sourceUrl}`);
   return response.text();
+}
+
+function resolveComponent(registry, slug) {
+  const item = registry.components.find((entry) => entry.slug === slug);
+  if (item) return item;
+
+  return {
+    slug,
+    sourcePath: `components/ui/${slug}.tsx`,
+    sourceUrl: `${GITHUB_RAW}/components/ui/${slug}.tsx`,
+    peerDependencies: [],
+    internalDependencies: [],
+  };
 }
 
 async function cmdList(registry, flags) {
@@ -395,14 +415,18 @@ async function cmdAdd(registry, slugs, flags) {
 
   async function addOne(slug) {
     if (copiedSlugs.has(slug)) return;
-    const item = registry.components.find((entry) => entry.slug === slug);
-    if (!item) throw new Error(`Unknown component "${slug}". Run: aurora-ui list`);
+    const item = resolveComponent(registry, slug);
 
     for (const dep of item.internalDependencies ?? []) {
       await addOne(dep);
     }
 
-    const source = await fetchSource(item);
+    let source;
+    try {
+      source = await fetchSource(item);
+    } catch {
+      throw new Error(`Unknown component "${slug}". Run: aurora-ui list`);
+    }
     const filename = path.basename(item.sourcePath);
     const target = path.join(targetDir, filename);
     fs.writeFileSync(target, source);
@@ -438,7 +462,7 @@ function cmdDocsIndex() {
   console.log(`${DEFAULT_SITE}/.well-known/agents.json`);
   console.log(`${DEFAULT_SITE}/shadcn-registry.json`);
   console.log(DEFAULT_REGISTRY);
-  console.log(`MCP: npx --yes github:Rydaguy101/aurora-ui aurora-ui-mcp`);
+  console.log(`MCP: ${MCP_CMD}`);
 }
 
 async function main() {
@@ -480,5 +504,5 @@ async function main() {
 
 main().catch((error) => {
   console.error(`aurora-ui: ${error.message}`);
-  process.exit(1);
+  process.exitCode = 1;
 });

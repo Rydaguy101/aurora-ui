@@ -6,9 +6,25 @@ import { PreviewFrame, asNumber, asString } from "@/app/components/_components/p
 import { Badge } from "@/components/ui/badge";
 import { WebGLGlobe } from "@/components/ui/webgl-globe";
 import { WebGLParticleField } from "@/components/ui/webgl-particle-field";
+import { WebGLStage } from "@/components/ui/webgl-stage";
 
 export function renderCategoryPreview({ slug, config, bare }: ComponentPreviewProps) {
   switch (slug) {
+    case "webgl-stage":
+      return (
+        <PreviewFrame bare={bare}>
+          <div className="absolute inset-0 min-h-[360px]">
+            <WebGLStage className="absolute inset-0">
+              <ambientLight intensity={0.6} />
+              <directionalLight position={[2, 2, 2]} intensity={1.2} />
+              <mesh>
+                <sphereGeometry args={[1, 48, 48]} />
+                <meshStandardMaterial color={asString(config.color, "#a855f7")} />
+              </mesh>
+            </WebGLStage>
+          </div>
+        </PreviewFrame>
+      );
     case "webgl-globe":
       return (
         <PreviewFrame bare={bare}>

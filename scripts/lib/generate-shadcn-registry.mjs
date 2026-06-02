@@ -34,7 +34,7 @@ export function buildItemDocs(component) {
     "",
     "## Install",
     "```bash",
-    `npx --yes github:Rydaguy101/aurora-ui add ${component.slug}`,
+    `npx aurora-ui-cli add ${component.slug}`,
     "# or with shadcn CLI (after aurora-ui init):",
     `npx shadcn@latest add @aurora/${component.slug}`,
     "```",

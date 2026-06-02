@@ -424,6 +424,11 @@
       "registryUrl": "https://aurora-ui-tau.vercel.app/r/webgl-particle-field.json"
     },
     {
+      "name": "webgl-stage",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/webgl-stage.json"
+    },
+    {
       "name": "utils",
       "type": "registry:lib",
       "registryUrl": "https://aurora-ui-tau.vercel.app/r/utils.json"

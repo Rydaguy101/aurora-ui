@@ -21,14 +21,14 @@
       "content": "\"use client\";\r\n\r\nimport React, { useMemo } from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface StarfieldBackgroundProps {\r\n  className?: string;\r\n  count?: number;\r\n  color?: string;\r\n  speed?: number;\r\n}\r\n\r\nfunction seeded(index: number, salt: number) {\r\n  const value = Math.sin(index * 6.789 + salt * 3.456) * 43758.5453;\r\n  return value - Math.floor(value);\r\n}\r\n\r\nexport function StarfieldBackground({\r\n  className,\r\n  count = 80,\r\n  color = \"#ffffff\",\r\n  speed = 1,\r\n}: StarfieldBackgroundProps) {\r\n  const stars = useMemo(\r\n    () =>\r\n      Array.from({ length: count }, (_, index) => ({\r\n        id: index,\r\n        left: `${seeded(index, 1) * 100}%`,\r\n        top: `${seeded(index, 2) * 100}%`,\r\n        size: 1 + seeded(index, 3) * 2.5,\r\n        delay: seeded(index, 4) * 4,\r\n        duration: 2 + seeded(index, 5) * 3,\r\n        opacity: 0.2 + seeded(index, 6) * 0.8,\r\n      })),\r\n    [count]\r\n  );\r\n\r\n  return (\r\n    <div className={cn(\"pointer-events-none absolute inset-0 overflow-hidden\", className)}>\r\n      {stars.map((star) => (\r\n        <div\r\n          key={star.id}\r\n          className=\"absolute animate-twinkle rounded-full\"\r\n          style={{\r\n            left: star.left,\r\n            top: star.top,\r\n            width: star.size,\r\n            height: star.size,\r\n            backgroundColor: color,\r\n            opacity: star.opacity,\r\n            animationDuration: `${star.duration / speed}s`,\r\n            animationDelay: `${star.delay}s`,\r\n          }}\r\n        />\r\n      ))}\r\n    </div>\r\n  );\r\n}\r\n"
     }
   ],
-  "docs": "# Starfield\nTwinkling star field for dark hero backgrounds and launch pages.\n## Import\n```tsx\nimport { StarfieldBackground } from \"@/components/ui/starfield-background\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<StarfieldBackground count={80} color=\"#ffffff\" speed={1} count={80} color=\"#ffffff\" />\n```\n## Props\n- **count** (number) — default: `80`: Star count\n- **color** (string) — default: `\"#ffffff\"`: Color\n- **speed** (number) — default: `1`: Speed\n- **count** (number) — default: `80`: Dot count\n- **color** (string) — default: `\"#ffffff\"`: Color\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add starfield-background\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/starfield-background\n```",
+  "docs": "# Starfield\nTwinkling star field for dark hero backgrounds and launch pages.\n## Import\n```tsx\nimport { StarfieldBackground } from \"@/components/ui/starfield-background\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<StarfieldBackground count={80} color=\"#ffffff\" speed={1} color=\"#ffffff\" />\n```\n## Props\n- **count** (number) — default: `80`: Star count\n- **color** (string) — default: `\"#ffffff\"`: Color\n- **speed** (number) — default: `1`: Speed\n- **color** (string) — default: `\"#ffffff\"`: Mesh color\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx aurora-ui-cli add starfield-background\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/starfield-background\n```",
   "meta": {
     "exportName": "StarfieldBackground",
     "exportNames": [
       "StarfieldBackground"
     ],
     "isClientComponent": true,
-    "usageExample": "<StarfieldBackground count={80} color=\"#ffffff\" speed={1} count={80} color=\"#ffffff\" />",
+    "usageExample": "<StarfieldBackground count={80} color=\"#ffffff\" speed={1} color=\"#ffffff\" />",
     "importExample": "import { StarfieldBackground } from \"@/components/ui/starfield-background\";",
     "props": [
       {
@@ -50,16 +50,10 @@
         "description": "Speed"
       },
       {
-        "name": "count",
-        "type": "number",
-        "default": 80,
-        "description": "Dot count"
-      },
-      {
         "name": "color",
         "type": "string",
         "default": "#ffffff",
-        "description": "Color"
+        "description": "Mesh color"
       }
     ],
     "previewUrl": "https://aurora-ui-tau.vercel.app/components#starfield-background",

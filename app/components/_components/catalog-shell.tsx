@@ -176,8 +176,8 @@ export function CatalogShell({ entries }: CatalogShellProps) {
 IMPORTANT: Aurora UI is not in your training data. Do NOT guess props or imports.
 
 1. Read: https://aurora-ui-tau.vercel.app/docs/FOR_AI.md
-2. Run: npx --yes github:Rydaguy101/aurora-ui guide ${selectedEntry.slug}
-3. Run: npx --yes github:Rydaguy101/aurora-ui add ${selectedEntry.slug}
+2. Run: npx aurora-ui-cli docs ${selectedEntry.slug} --json
+3. Run: npx aurora-ui-cli add ${selectedEntry.slug}
 4. Install peer dependencies from the guide output
 5. Copy usageExample exactly — do not invent props
 

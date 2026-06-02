@@ -3,11 +3,7 @@ import path from "path";
 
 import { NextResponse } from "next/server";
 
-function getSiteBaseUrl() {
-  if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "");
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
-  return "https://aurora-ui-tau.vercel.app";
-}
+import { getSiteBaseUrl } from "@/lib/site-config";
 
 export async function GET() {
   const specPath = path.join(process.cwd(), "public/openapi.json");

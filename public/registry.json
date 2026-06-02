@@ -9,16 +9,16 @@
   "openapiUrl": "https://aurora-ui-tau.vercel.app/openapi.json",
   "aiPluginUrl": "https://aurora-ui-tau.vercel.app/.well-known/ai-plugin.json",
   "agentsManifestUrl": "https://aurora-ui-tau.vercel.app/.well-known/agents.json",
-  "cliCommand": "npx --yes github:Rydaguy101/aurora-ui",
+  "cliCommand": "npx aurora-ui-cli",
+  "mcpCommand": "npx aurora-ui-mcp",
+  "cliPackage": "aurora-ui-cli",
+  "mcpPackage": "aurora-ui-mcp",
   "shadcnRegistryUrl": "https://aurora-ui-tau.vercel.app/shadcn-registry.json",
   "shadcnItemUrlTemplate": "https://aurora-ui-tau.vercel.app/r/{name}.json",
   "shadcnAddCommandTemplate": "npx shadcn@latest add @aurora/{name}",
   "componentsJsonRegistry": {
     "@aurora": "https://aurora-ui-tau.vercel.app/r/{name}.json"
   },
-  "mcpCommand": "npx --yes github:Rydaguy101/aurora-ui aurora-ui-mcp",
-  "cliPackage": "aurora-ui-cli",
-  "mcpPackage": "aurora-ui-mcp",
   "registryUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/public/registry.json",
   "liveRegistryUrl": "https://aurora-ui-tau.vercel.app/api/registry",
   "aiDocsUrl": "https://aurora-ui-tau.vercel.app/docs/FOR_AI.md",
@@ -34,7 +34,7 @@
     "Backgrounds & Ambient Effects",
     "3D & WebGL"
   ],
-  "componentCount": 84,
+  "componentCount": 85,
   "components": [
     {
       "slug": "accordion",
@@ -71,7 +71,7 @@
       ],
       "importExample": "import { Accordion } from \"@/components/ui/accordion\";",
       "usageExample": "<Accordion\n  items={[\n    { id: \"1\", title: \"Question?\", content: \"Answer here.\" },\n    { id: \"2\", title: \"Another?\", content: \"More details.\" },\n  ]}\n/>",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add accordion\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Accordion>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Accordion\n  items={[\n    { id: \"1\", title: \"Question?\", content: \"Answer here.\" },\n    { id: \"2\", title: \"Another?\", content: \"More details.\" },\n  ]}\n/>",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add accordion\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Accordion>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Accordion\n  items={[\n    { id: \"1\", title: \"Question?\", content: \"Answer here.\" },\n    { id: \"2\", title: \"Another?\", content: \"More details.\" },\n  ]}\n/>",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/accordion.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/accordion",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -120,7 +120,7 @@
       ],
       "importExample": "import { Alert, AlertTitle, AlertDescription } from \"@/components/ui/alert\";",
       "usageExample": "<Alert variant=\"info\" title=\"Heads up\" description=\"You can customize this alert with variants and copy.\" />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add alert\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Alert variant=\"info\" title=\"Heads up\" description=\"You can customize this alert with variants and copy.\" />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add alert\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Alert variant=\"info\" title=\"Heads up\" description=\"You can customize this alert with variants and copy.\" />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/alert.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/alert",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -167,7 +167,7 @@
       ],
       "importExample": "import { Modal, ModalTrigger, ModalContent } from \"@/components/ui/animated-modal\";",
       "usageExample": "<Modal>\n  <ModalTrigger><Button>Open modal</Button></ModalTrigger>\n  <ModalContent>\n    <h3 className=\"text-lg font-semibold\">Title</h3>\n    <p className=\"mt-2 text-sm text-muted-foreground\">Your content here.</p>\n  </ModalContent>\n</Modal>",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add animated-modal\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Modal>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Modal>\n  <ModalTrigger><Button>Open modal</Button></ModalTrigger>\n  <ModalContent>\n    <h3 className=\"text-lg font-semibold\">Title</h3>\n    <p className=\"mt-2 text-sm text-muted-foreground\">Your content here.</p>\n  </ModalContent>\n</Modal>",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add animated-modal\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Modal>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Modal>\n  <ModalTrigger><Button>Open modal</Button></ModalTrigger>\n  <ModalContent>\n    <h3 className=\"text-lg font-semibold\">Title</h3>\n    <p className=\"mt-2 text-sm text-muted-foreground\">Your content here.</p>\n  </ModalContent>\n</Modal>",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/animated-modal.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/animated-modal",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -207,7 +207,7 @@
       ],
       "importExample": "import { AnimatedTabs } from \"@/components/ui/animated-tabs\";",
       "usageExample": "<AnimatedTabs\n  defaultTab=\"design\"\n  tabs={[\n    { id: \"design\", label: \"Design\", content: <p>Design content</p> },\n    { id: \"motion\", label: \"Motion\", content: <p>Motion content</p> },\n  ]}\n/>",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add animated-tabs\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <AnimatedTabs>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<AnimatedTabs\n  defaultTab=\"design\"\n  tabs={[\n    { id: \"design\", label: \"Design\", content: <p>Design content</p> },\n    { id: \"motion\", label: \"Motion\", content: <p>Motion content</p> },\n  ]}\n/>",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add animated-tabs\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <AnimatedTabs>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<AnimatedTabs\n  defaultTab=\"design\"\n  tabs={[\n    { id: \"design\", label: \"Design\", content: <p>Design content</p> },\n    { id: \"motion\", label: \"Motion\", content: <p>Motion content</p> },\n  ]}\n/>",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/animated-tabs.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/animated-tabs",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -252,7 +252,7 @@
       ],
       "importExample": "import { AuroraBackground } from \"@/components/ui/aurora-background\";",
       "usageExample": "<AuroraBackground showRadialGradient variant={undefined} fade={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add aurora-background\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <AuroraBackground>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<AuroraBackground showRadialGradient variant={undefined} fade={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add aurora-background\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <AuroraBackground>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<AuroraBackground showRadialGradient variant={undefined} fade={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/aurora-background.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/aurora-background",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -301,7 +301,7 @@
       ],
       "importExample": "import { Avatar, AvatarImage, AvatarFallback } from \"@/components/ui/avatar\";",
       "usageExample": "<Avatar fallback=\"AU\" size=\"md\" intensity={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add avatar\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Avatar>\n8. Required packages: @radix-ui/react-avatar, clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Avatar fallback=\"AU\" size=\"md\" intensity={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add avatar\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Avatar>\n8. Required packages: @radix-ui/react-avatar, clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Avatar fallback=\"AU\" size=\"md\" intensity={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/avatar.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/avatar",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -342,7 +342,7 @@
       ],
       "importExample": "import { Badge } from \"@/components/ui/badge\";",
       "usageExample": "<Badge variant=\"gradient\">New release</Badge>",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add badge\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Badge variant=\"gradient\">New release</Badge>",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add badge\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Badge variant=\"gradient\">New release</Badge>",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/badge.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/badge",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -407,7 +407,7 @@
       ],
       "importExample": "import { BeamsBackground } from \"@/components/ui/beams-background\";",
       "usageExample": "<BeamsBackground count={8} color=\"#a855f7\" speed={1} color=\"#a855f7\" speed={1} layers={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add beams-background\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <BeamsBackground>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<BeamsBackground count={8} color=\"#a855f7\" speed={1} color=\"#a855f7\" speed={1} layers={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add beams-background\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <BeamsBackground>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<BeamsBackground count={8} color=\"#a855f7\" speed={1} color=\"#a855f7\" speed={1} layers={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/beams-background.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/beams-background",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -448,7 +448,7 @@
       ],
       "importExample": "import { BentoGrid, BentoCard } from \"@/components/ui/bento-grid\";",
       "usageExample": "<BentoGrid rowHeight={15} magnification={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add bento-grid\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<BentoGrid rowHeight={15} magnification={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add bento-grid\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<BentoGrid rowHeight={15} magnification={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/bento-grid.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/bento-grid",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -501,7 +501,7 @@
       ],
       "importExample": "import { BlurText } from \"@/components/ui/blur-text\";",
       "usageExample": "<BlurText text=\"Beautiful motion\" delay={50} animateBy=\"chars\" direction=\"top\" />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add blur-text\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <BlurText>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<BlurText text=\"Beautiful motion\" delay={50} animateBy=\"chars\" direction=\"top\" />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add blur-text\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <BlurText>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<BlurText text=\"Beautiful motion\" delay={50} animateBy=\"chars\" direction=\"top\" />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/blur-text.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/blur-text",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -564,7 +564,7 @@
       ],
       "importExample": "import { BorderBeam } from \"@/components/ui/border-beam\";",
       "usageExample": "<BorderBeam size={220} duration=\"8s\" colorFrom=\"#a855f7\" colorTo=\"#22d3ee\" columns={undefined} showAvatar={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add border-beam\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <BorderBeam>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<BorderBeam size={220} duration=\"8s\" colorFrom=\"#a855f7\" colorTo=\"#22d3ee\" columns={undefined} showAvatar={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add border-beam\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <BorderBeam>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<BorderBeam size={220} duration=\"8s\" colorFrom=\"#a855f7\" colorTo=\"#22d3ee\" columns={undefined} showAvatar={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/border-beam.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/border-beam",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -609,7 +609,7 @@
       ],
       "importExample": "import { Breadcrumb } from \"@/components/ui/breadcrumb\";",
       "usageExample": "<Breadcrumb currentPage=\"Typography\" page={undefined} totalPages={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add breadcrumb\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Breadcrumb currentPage=\"Typography\" page={undefined} totalPages={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add breadcrumb\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Breadcrumb currentPage=\"Typography\" page={undefined} totalPages={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/breadcrumb.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/breadcrumb",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -662,7 +662,7 @@
       ],
       "importExample": "import { /* see source */ } from \"@/components/ui/button\";",
       "usageExample": "<Component variant=\"default\" size=\"default\" disabled={false}>Test Me</Component>",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add button\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Button>\n8. Required packages: @radix-ui/react-slot, clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Component variant=\"default\" size=\"default\" disabled={false}>Test Me</Component>",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add button\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Button>\n8. Required packages: @radix-ui/react-slot, clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Component variant=\"default\" size=\"default\" disabled={false}>Test Me</Component>",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/button.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/button",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -724,7 +724,7 @@
       ],
       "importExample": "import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from \"@/components/ui/card\";",
       "usageExample": "<Card title=\"Project overview\" description=\"Track milestones and team progress.\" showFooter fallback={undefined} size={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add card\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Card title=\"Project overview\" description=\"Track milestones and team progress.\" showFooter fallback={undefined} size={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add card\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Card title=\"Project overview\" description=\"Track milestones and team progress.\" showFooter fallback={undefined} size={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/card.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/card",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -765,7 +765,7 @@
       ],
       "importExample": "import { Card3D } from \"@/components/ui/card-3d\";",
       "usageExample": "<Card3D intensity={12} glowColor={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add card-3d\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Card3D>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Card3D intensity={12} glowColor={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add card-3d\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Card3D>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Card3D intensity={12} glowColor={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/card-3d.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/card-3d",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -816,7 +816,7 @@
       ],
       "importExample": "import { CardStack } from \"@/components/ui/card-stack\";",
       "usageExample": "<CardStack interval={4000} offset={12} name={undefined} role={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add card-stack\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <CardStack>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<CardStack interval={4000} offset={12} name={undefined} role={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add card-stack\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <CardStack>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<CardStack interval={4000} offset={12} name={undefined} role={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/card-stack.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/card-stack",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -862,7 +862,7 @@
       ],
       "importExample": "import { Carousel } from \"@/components/ui/carousel\";",
       "usageExample": "<Carousel items={[{ id: \"1\", title: \"Slide 1\" }, { id: \"2\", title: \"Slide 2\" }]} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add carousel\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Carousel>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Carousel items={[{ id: \"1\", title: \"Slide 1\" }, { id: \"2\", title: \"Slide 2\" }]} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add carousel\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Carousel>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Carousel items={[{ id: \"1\", title: \"Slide 1\" }, { id: \"2\", title: \"Slide 2\" }]} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/carousel.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/carousel",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -919,7 +919,7 @@
       ],
       "importExample": "import { Checkbox } from \"@/components/ui/checkbox\";",
       "usageExample": "<Checkbox checked disabled={false} value={undefined} min={undefined} max={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add checkbox\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Checkbox>\n8. Required packages: @radix-ui/react-checkbox, clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Checkbox checked disabled={false} value={undefined} min={undefined} max={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add checkbox\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Checkbox>\n8. Required packages: @radix-ui/react-checkbox, clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Checkbox checked disabled={false} value={undefined} min={undefined} max={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/checkbox.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/checkbox",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -977,7 +977,7 @@
       ],
       "importExample": "import { CircularText } from \"@/components/ui/circular-text\";",
       "usageExample": "<CircularText text=\"AURORA UI • BUILD BEAUTIFUL • \" radius=\"80px\" spinDuration={20} text=\"AURORA UI • BUILD BEAUTIFUL • \" duration={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add circular-text\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <CircularText>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<CircularText text=\"AURORA UI • BUILD BEAUTIFUL • \" radius=\"80px\" spinDuration={20} text=\"AURORA UI • BUILD BEAUTIFUL • \" duration={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add circular-text\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <CircularText>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<CircularText text=\"AURORA UI • BUILD BEAUTIFUL • \" radius=\"80px\" spinDuration={20} text=\"AURORA UI • BUILD BEAUTIFUL • \" duration={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/circular-text.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/circular-text",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -1027,7 +1027,7 @@
       ],
       "importExample": "import { Collapsible, CollapsibleTrigger, CollapsibleContent, CollapsibleSection } from \"@/components/ui/collapsible\";",
       "usageExample": "<Collapsible title=\"Advanced settings\" defaultOpen={false} currentStep={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add collapsible\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Collapsible>\n8. Required packages: @radix-ui/react-collapsible, clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Collapsible title=\"Advanced settings\" defaultOpen={false} currentStep={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add collapsible\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Collapsible>\n8. Required packages: @radix-ui/react-collapsible, clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Collapsible title=\"Advanced settings\" defaultOpen={false} currentStep={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/collapsible.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/collapsible",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -1082,7 +1082,7 @@
       ],
       "importExample": "import { CommandMenu } from \"@/components/ui/command-menu\";",
       "usageExample": "<CommandMenu />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add command-menu\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <CommandMenu>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<CommandMenu />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add command-menu\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <CommandMenu>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<CommandMenu />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/command-menu.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/command-menu",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -1139,7 +1139,7 @@
       ],
       "importExample": "import { ContextMenu, ContextMenuTrigger, ContextMenuContent, ContextMenuItem, ContextMenuSeparator, ContextMenuLabel, ContextMenuCheckboxItem, ContextMenuRadioItem, ContextMenuSub, ContextMenuSubTrigger, ContextMenuSubContent, ContextMenuRadioGroup } from \"@/components/ui/context-menu\";",
       "usageExample": "<ContextMenu hint=\"Right click here\" title={undefined} defaultOpen={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add context-menu\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <ContextMenu>\n8. Required packages: @radix-ui/react-context-menu, clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<ContextMenu hint=\"Right click here\" title={undefined} defaultOpen={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add context-menu\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <ContextMenu>\n8. Required packages: @radix-ui/react-context-menu, clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<ContextMenu hint=\"Right click here\" title={undefined} defaultOpen={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/context-menu.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/context-menu",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -1189,7 +1189,7 @@
       ],
       "importExample": "import { Countdown } from \"@/components/ui/countdown\";",
       "usageExample": "<Countdown showLabels direction={undefined} blur={undefined} delay={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add countdown\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Countdown>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Countdown showLabels direction={undefined} blur={undefined} delay={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add countdown\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Countdown>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Countdown showLabels direction={undefined} blur={undefined} delay={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/countdown.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/countdown",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -1235,7 +1235,7 @@
       ],
       "importExample": "import { Dock, DockIcon } from \"@/components/ui/dock\";",
       "usageExample": "<Dock magnification={76} reverse={undefined} duration={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add dock\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Dock>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Dock magnification={76} reverse={undefined} duration={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add dock\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Dock>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Dock magnification={76} reverse={undefined} duration={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/dock.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/dock",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -1295,7 +1295,7 @@
       ],
       "importExample": "import { DropdownMenu, DropdownMenuTrigger, DropdownMenuGroup, DropdownMenuPortal, DropdownMenuSub, DropdownMenuRadioGroup, DropdownMenuSubTrigger, DropdownMenuSubContent, DropdownMenuContent, DropdownMenuItem, DropdownMenuCheckboxItem, DropdownMenuRadioItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuShortcut } from \"@/components/ui/dropdown-menu\";",
       "usageExample": "<DropdownMenu triggerLabel=\"Open menu\" title={undefined} description={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add dropdown-menu\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <DropdownMenu>\n8. Required packages: @radix-ui/react-dropdown-menu, clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<DropdownMenu triggerLabel=\"Open menu\" title={undefined} description={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add dropdown-menu\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <DropdownMenu>\n8. Required packages: @radix-ui/react-dropdown-menu, clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<DropdownMenu triggerLabel=\"Open menu\" title={undefined} description={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/dropdown-menu.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/dropdown-menu",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -1349,7 +1349,7 @@
       ],
       "importExample": "import { EmptyState } from \"@/components/ui/empty-state\";",
       "usageExample": "<EmptyState title=\"No results yet\" description=\"Try adjusting your filters or create something new.\" actionLabel=\"Create item\" compact={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add empty-state\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n7. Also add internal deps: npx --yes github:Rydaguy101/aurora-ui add button\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<EmptyState title=\"No results yet\" description=\"Try adjusting your filters or create something new.\" actionLabel=\"Create item\" compact={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add empty-state\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n7. Also add internal deps: npx aurora-ui-cli add button\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<EmptyState title=\"No results yet\" description=\"Try adjusting your filters or create something new.\" actionLabel=\"Create item\" compact={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/empty-state.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/empty-state",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -1396,7 +1396,7 @@
       ],
       "importExample": "import { FadeIn } from \"@/components/ui/fade-in\";",
       "usageExample": "<FadeIn direction=\"up\" blur delay={0} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add fade-in\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <FadeIn>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<FadeIn direction=\"up\" blur delay={0} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add fade-in\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <FadeIn>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<FadeIn direction=\"up\" blur delay={0} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/fade-in.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/fade-in",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -1436,7 +1436,7 @@
       ],
       "importExample": "import { FileDropzone } from \"@/components/ui/file-dropzone\";",
       "usageExample": "<FileDropzone maxSizeMb={10} size={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add file-dropzone\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <FileDropzone>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<FileDropzone maxSizeMb={10} size={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add file-dropzone\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <FileDropzone>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<FileDropzone maxSizeMb={10} size={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/file-dropzone.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/file-dropzone",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -1487,7 +1487,7 @@
       ],
       "importExample": "import { FlipWords } from \"@/components/ui/flip-words\";",
       "usageExample": "<FlipWords words=\"fluid\" duration=\"2500s\" value={undefined} direction={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add flip-words\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <FlipWords>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<FlipWords words=\"fluid\" duration=\"2500s\" value={undefined} direction={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add flip-words\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <FlipWords>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<FlipWords words=\"fluid\" duration=\"2500s\" value={undefined} direction={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/flip-words.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/flip-words",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -1539,7 +1539,7 @@
       ],
       "importExample": "import { FloatingInput } from \"@/components/ui/floating-input\";",
       "usageExample": "<FloatingInput type=\"email\" disabled={false} placeholder={undefined}>Email address</FloatingInput>",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add floating-input\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <FloatingInput>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<FloatingInput type=\"email\" disabled={false} placeholder={undefined}>Email address</FloatingInput>",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add floating-input\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <FloatingInput>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<FloatingInput type=\"email\" disabled={false} placeholder={undefined}>Email address</FloatingInput>",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/floating-input.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/floating-input",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -1599,7 +1599,7 @@
       ],
       "importExample": "import { FloatingOrbs } from \"@/components/ui/floating-orbs\";",
       "usageExample": "<FloatingOrbs count={4} color=\"#a855f7\" speed={1} blur={80} color=\"#a855f7\" />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add floating-orbs\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <FloatingOrbs>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<FloatingOrbs count={4} color=\"#a855f7\" speed={1} blur={80} color=\"#a855f7\" />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add floating-orbs\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <FloatingOrbs>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<FloatingOrbs count={4} color=\"#a855f7\" speed={1} blur={80} color=\"#a855f7\" />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/floating-orbs.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/floating-orbs",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -1649,7 +1649,7 @@
       ],
       "importExample": "import { Footer } from \"@/components/ui/footer\";",
       "usageExample": "<Footer brand=\"Aurora UI\" text={undefined} radius={undefined} spinDuration={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add footer\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Footer brand=\"Aurora UI\" text={undefined} radius={undefined} spinDuration={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add footer\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Footer brand=\"Aurora UI\" text={undefined} radius={undefined} spinDuration={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/footer.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/footer",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -1704,7 +1704,7 @@
       ],
       "importExample": "import { GlowCard } from \"@/components/ui/glow-card\";",
       "usageExample": "<GlowCard glowColor=\"#a855f7\" size={undefined} duration={undefined} colorFrom={undefined} colorTo={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add glow-card\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <GlowCard>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<GlowCard glowColor=\"#a855f7\" size={undefined} duration={undefined} colorFrom={undefined} colorTo={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add glow-card\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <GlowCard>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<GlowCard glowColor=\"#a855f7\" size={undefined} duration={undefined} colorFrom={undefined} colorTo={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/glow-card.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/glow-card",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -1768,7 +1768,7 @@
       ],
       "importExample": "import { GradientMesh } from \"@/components/ui/gradient-mesh\";",
       "usageExample": "<GradientMesh colorFrom=\"#a855f7\" colorTo=\"#22d3ee\" speed={1} count={undefined} color={undefined} speed={1} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add gradient-mesh\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <GradientMesh>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<GradientMesh colorFrom=\"#a855f7\" colorTo=\"#22d3ee\" speed={1} count={undefined} color={undefined} speed={1} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add gradient-mesh\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <GradientMesh>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<GradientMesh colorFrom=\"#a855f7\" colorTo=\"#22d3ee\" speed={1} count={undefined} color={undefined} speed={1} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/gradient-mesh.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/gradient-mesh",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -1820,7 +1820,7 @@
       ],
       "importExample": "import { GradientText } from \"@/components/ui/gradient-text\";",
       "usageExample": "<GradientText animate shimmerWidth={undefined}>Aurora gradient</GradientText>",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add gradient-text\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<GradientText animate shimmerWidth={undefined}>Aurora gradient</GradientText>",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add gradient-text\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<GradientText animate shimmerWidth={undefined}>Aurora gradient</GradientText>",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/gradient-text.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/gradient-text",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -1866,7 +1866,7 @@
       ],
       "importExample": "import { GridPattern } from \"@/components/ui/grid-pattern\";",
       "usageExample": "<GridPattern variant=\"grid\" fade fill={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add grid-pattern\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<GridPattern variant=\"grid\" fade fill={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add grid-pattern\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<GridPattern variant=\"grid\" fade fill={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/grid-pattern.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/grid-pattern",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -1931,7 +1931,7 @@
       ],
       "importExample": "import { HeroWaves } from \"@/components/ui/hero-waves\";",
       "usageExample": "<HeroWaves color=\"#a855f7\" speed={1} layers={3} count={undefined} color=\"#a855f7\" speed={1} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add hero-waves\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <HeroWaves>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<HeroWaves color=\"#a855f7\" speed={1} layers={3} count={undefined} color=\"#a855f7\" speed={1} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add hero-waves\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <HeroWaves>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<HeroWaves color=\"#a855f7\" speed={1} layers={3} count={undefined} color=\"#a855f7\" speed={1} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/hero-waves.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/hero-waves",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -1985,7 +1985,7 @@
       ],
       "importExample": "import { HoverCard, HoverCardTrigger, HoverCardContent } from \"@/components/ui/hover-card\";",
       "usageExample": "<HoverCard name=\"Ava Chen\" role=\"Design lead\" autoPlay={undefined} interval={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add hover-card\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <HoverCard>\n8. Required packages: @radix-ui/react-hover-card, clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<HoverCard name=\"Ava Chen\" role=\"Design lead\" autoPlay={undefined} interval={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add hover-card\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <HoverCard>\n8. Required packages: @radix-ui/react-hover-card, clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<HoverCard name=\"Ava Chen\" role=\"Design lead\" autoPlay={undefined} interval={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/hover-card.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/hover-card",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -2031,7 +2031,7 @@
       ],
       "importExample": "import { InfiniteMovingCards } from \"@/components/ui/infinite-moving-cards\";",
       "usageExample": "<InfiniteMovingCards reverse={false} duration=\"40s\" panelHeight={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add infinite-moving-cards\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <InfiniteMovingCards>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<InfiniteMovingCards reverse={false} duration=\"40s\" panelHeight={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add infinite-moving-cards\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <InfiniteMovingCards>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<InfiniteMovingCards reverse={false} duration=\"40s\" panelHeight={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/infinite-moving-cards.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/infinite-moving-cards",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -2083,7 +2083,7 @@
       ],
       "importExample": "import { Input } from \"@/components/ui/input\";",
       "usageExample": "<Input placeholder=\"Enter your email\" disabled={false} placeholder=\"Enter your email\" rows={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add input\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Input placeholder=\"Enter your email\" disabled={false} placeholder=\"Enter your email\" rows={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add input\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Input placeholder=\"Enter your email\" disabled={false} placeholder=\"Enter your email\" rows={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/input.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/input",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -2146,7 +2146,7 @@
       ],
       "importExample": "import { LightRays } from \"@/components/ui/light-rays\";",
       "usageExample": "<LightRays count={8} color=\"#a855f7\" count={8} color=\"#a855f7\" speed={undefined} blur={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add light-rays\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <LightRays>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<LightRays count={8} color=\"#a855f7\" count={8} color=\"#a855f7\" speed={undefined} blur={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add light-rays\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <LightRays>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<LightRays count={8} color=\"#a855f7\" count={8} color=\"#a855f7\" speed={undefined} blur={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/light-rays.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/light-rays",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -2199,7 +2199,7 @@
       ],
       "importExample": "import { MagneticButton } from \"@/components/ui/magnetic-button\";",
       "usageExample": "<MagneticButton strength={0.35}>\n  <Button>Test Me</Button>\n</MagneticButton>",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add magnetic-button\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <MagneticButton>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<MagneticButton strength={0.35}>\n  <Button>Test Me</Button>\n</MagneticButton>",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add magnetic-button\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <MagneticButton>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<MagneticButton strength={0.35}>\n  <Button>Test Me</Button>\n</MagneticButton>",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/magnetic-button.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/magnetic-button",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -2257,7 +2257,7 @@
       ],
       "importExample": "import { Marquee } from \"@/components/ui/marquee\";",
       "usageExample": "<Marquee reverse={false} pauseOnHover repeat={4} duration=\"22s\" rowHeight={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add marquee\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Marquee>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Marquee reverse={false} pauseOnHover repeat={4} duration=\"22s\" rowHeight={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add marquee\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Marquee>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Marquee reverse={false} pauseOnHover repeat={4} duration=\"22s\" rowHeight={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/marquee.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/marquee",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -2297,7 +2297,7 @@
       ],
       "importExample": "import { Meteors } from \"@/components/ui/meteors\";",
       "usageExample": "<Meteors number={16} value={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add meteors\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Meteors>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Meteors number={16} value={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add meteors\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Meteors>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Meteors number={16} value={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/meteors.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/meteors",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -2344,7 +2344,7 @@
       ],
       "importExample": "import { Navbar } from \"@/components/ui/navbar\";",
       "usageExample": "<Navbar brand=\"Aurora UI\" currentPage={undefined} page={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add navbar\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Navbar>\n7. Also add internal deps: npx --yes github:Rydaguy101/aurora-ui add button\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Navbar brand=\"Aurora UI\" currentPage={undefined} page={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add navbar\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Navbar>\n7. Also add internal deps: npx aurora-ui-cli add button\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Navbar brand=\"Aurora UI\" currentPage={undefined} page={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/navbar.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/navbar",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -2397,7 +2397,7 @@
       ],
       "importExample": "import { NumberTicker } from \"@/components/ui/number-ticker\";",
       "usageExample": "<NumberTicker value={12840} direction=\"up\" decimalPlaces={0} delay={0} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add number-ticker\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <NumberTicker>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<NumberTicker value={12840} direction=\"up\" decimalPlaces={0} delay={0} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add number-ticker\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <NumberTicker>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<NumberTicker value={12840} direction=\"up\" decimalPlaces={0} delay={0} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/number-ticker.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/number-ticker",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -2447,7 +2447,7 @@
       ],
       "importExample": "import { OtpInput } from \"@/components/ui/otp-input\";",
       "usageExample": "<OtpInput length={6} value={undefined} readOnly={undefined} size={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add otp-input\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <OtpInput>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<OtpInput length={6} value={undefined} readOnly={undefined} size={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add otp-input\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <OtpInput>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<OtpInput length={6} value={undefined} readOnly={undefined} size={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/otp-input.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/otp-input",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -2500,7 +2500,7 @@
       ],
       "importExample": "import { Pagination } from \"@/components/ui/pagination\";",
       "usageExample": "<Pagination page={1} totalPages={5} animate={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add pagination\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Pagination>\n7. Also add internal deps: npx --yes github:Rydaguy101/aurora-ui add button\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Pagination page={1} totalPages={5} animate={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add pagination\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Pagination>\n7. Also add internal deps: npx aurora-ui-cli add button\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Pagination page={1} totalPages={5} animate={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/pagination.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/pagination",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -2552,7 +2552,7 @@
       ],
       "importExample": "import { Particles } from \"@/components/ui/particles\";",
       "usageExample": "<Particles quantity={60} speed={0.45} color=\"#a855f7\" number={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add particles\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Particles>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Particles quantity={60} speed={0.45} color=\"#a855f7\" number={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add particles\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Particles>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Particles quantity={60} speed={0.45} color=\"#a855f7\" number={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/particles.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/particles",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -2599,7 +2599,7 @@
       ],
       "importExample": "import { PasswordInput } from \"@/components/ui/password-input\";",
       "usageExample": "<PasswordInput placeholder=\"Enter password\" maxSizeMb={undefined} size={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add password-input\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <PasswordInput>\n7. Also add internal deps: npx --yes github:Rydaguy101/aurora-ui add input\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<PasswordInput placeholder=\"Enter password\" maxSizeMb={undefined} size={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add password-input\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <PasswordInput>\n7. Also add internal deps: npx aurora-ui-cli add input\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<PasswordInput placeholder=\"Enter password\" maxSizeMb={undefined} size={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/password-input.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/password-input",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -2663,7 +2663,7 @@
       ],
       "importExample": "import { PerspectiveGrid } from \"@/components/ui/perspective-grid\";",
       "usageExample": "<PerspectiveGrid color=\"#a855f7\" speed={1} fade colorFrom={undefined} colorTo={undefined} speed={1} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add perspective-grid\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <PerspectiveGrid>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<PerspectiveGrid color=\"#a855f7\" speed={1} fade colorFrom={undefined} colorTo={undefined} speed={1} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add perspective-grid\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <PerspectiveGrid>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<PerspectiveGrid color=\"#a855f7\" speed={1} fade colorFrom={undefined} colorTo={undefined} speed={1} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/perspective-grid.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/perspective-grid",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -2719,7 +2719,7 @@
       ],
       "importExample": "import { Popover, PopoverTrigger, PopoverAnchor, PopoverContent } from \"@/components/ui/popover\";",
       "usageExample": "<Popover title=\"Dimensions\" description=\"Set the width and height for the layer.\" side={undefined} title=\"Dimensions\" />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add popover\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Popover>\n8. Required packages: @radix-ui/react-popover, clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Popover title=\"Dimensions\" description=\"Set the width and height for the layer.\" side={undefined} title=\"Dimensions\" />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add popover\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Popover>\n8. Required packages: @radix-ui/react-popover, clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Popover title=\"Dimensions\" description=\"Set the width and height for the layer.\" side={undefined} title=\"Dimensions\" />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/popover.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/popover",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -2773,7 +2773,7 @@
       ],
       "importExample": "import { PricingCard } from \"@/components/ui/pricing-card\";",
       "usageExample": "<PricingCard name=\"Pro\" price=\"$29\" highlighted variant={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add pricing-card\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n7. Also add internal deps: npx --yes github:Rydaguy101/aurora-ui add button\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<PricingCard name=\"Pro\" price=\"$29\" highlighted variant={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add pricing-card\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n7. Also add internal deps: npx aurora-ui-cli add button\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<PricingCard name=\"Pro\" price=\"$29\" highlighted variant={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/pricing-card.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/pricing-card",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -2824,7 +2824,7 @@
       ],
       "importExample": "import { Progress } from \"@/components/ui/progress\";",
       "usageExample": "<Progress value={68} gradient content={undefined} side={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add progress\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Progress>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Progress value={68} gradient content={undefined} side={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add progress\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Progress>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Progress value={68} gradient content={undefined} side={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/progress.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/progress",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -2867,7 +2867,7 @@
       ],
       "importExample": "import { RadioGroup, RadioGroupItem } from \"@/components/ui/radio-group\";",
       "usageExample": "<RadioGroup value=\"starter\" value=\"starter\" />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add radio-group\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <RadioGroup>\n8. Required packages: @radix-ui/react-radio-group, clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<RadioGroup value=\"starter\" value=\"starter\" />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add radio-group\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <RadioGroup>\n8. Required packages: @radix-ui/react-radio-group, clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<RadioGroup value=\"starter\" value=\"starter\" />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/radio-group.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/radio-group",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -2913,7 +2913,7 @@
       ],
       "importExample": "import { RainbowButton } from \"@/components/ui/rainbow-button\";",
       "usageExample": "<RainbowButton variant={undefined}>Test Me</RainbowButton>",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add rainbow-button\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <RainbowButton>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<RainbowButton variant={undefined}>Test Me</RainbowButton>",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add rainbow-button\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <RainbowButton>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<RainbowButton variant={undefined}>Test Me</RainbowButton>",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/rainbow-button.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/rainbow-button",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -2967,7 +2967,7 @@
       ],
       "importExample": "import { Slider } from \"@/components/ui/range-slider\";",
       "usageExample": "<Slider value={50} min={0} max={100} value={50} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add range-slider\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Slider>\n8. Required packages: @radix-ui/react-slider, clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Slider value={50} min={0} max={100} value={50} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add range-slider\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Slider>\n8. Required packages: @radix-ui/react-slider, clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Slider value={50} min={0} max={100} value={50} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/slider.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/range-slider",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -3014,7 +3014,7 @@
       ],
       "importExample": "import { RippleButton } from \"@/components/ui/ripple-button\";",
       "usageExample": "<RippleButton rippleColor=\"#ffffff\">Test Me</RippleButton>",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add ripple-button\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <RippleButton>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<RippleButton rippleColor=\"#ffffff\">Test Me</RippleButton>",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add ripple-button\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <RippleButton>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<RippleButton rippleColor=\"#ffffff\">Test Me</RippleButton>",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/ripple-button.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/ripple-button",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -3054,7 +3054,7 @@
       ],
       "importExample": "import { ScrollProgress } from \"@/components/ui/scroll-progress\";",
       "usageExample": "<ScrollProgress panelHeight={360} brand={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add scroll-progress\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <ScrollProgress>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<ScrollProgress panelHeight={360} brand={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add scroll-progress\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <ScrollProgress>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<ScrollProgress panelHeight={360} brand={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/scroll-progress.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/scroll-progress",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -3104,7 +3104,7 @@
       ],
       "importExample": "import { Select, SelectGroup, SelectValue, SelectTrigger, SelectScrollUpButton, SelectScrollDownButton, SelectContent, SelectLabel, SelectItem, SelectSeparator } from \"@/components/ui/select\";",
       "usageExample": "<Select value=\"design\" length={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add select\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Select>\n8. Required packages: @radix-ui/react-select, clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Select value=\"design\" length={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add select\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Select>\n8. Required packages: @radix-ui/react-select, clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Select value=\"design\" length={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/select.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/select",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -3156,7 +3156,7 @@
       ],
       "importExample": "import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetBody } from \"@/components/ui/sheet\";",
       "usageExample": "<Sheet side=\"right\" title=\"Quick settings\" placeholder={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add sheet\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Sheet>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Sheet side=\"right\" title=\"Quick settings\" placeholder={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add sheet\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Sheet>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Sheet side=\"right\" title=\"Quick settings\" placeholder={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/sheet.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/sheet",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -3216,7 +3216,7 @@
       ],
       "importExample": "import { ShimmerButton } from \"@/components/ui/shimmer-button\";",
       "usageExample": "<ShimmerButton shimmerColor=\"#ffffff\" shimmerDuration=\"3s\" borderRadius=\"24px\">Test Me</ShimmerButton>",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add shimmer-button\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <ShimmerButton>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<ShimmerButton shimmerColor=\"#ffffff\" shimmerDuration=\"3s\" borderRadius=\"24px\">Test Me</ShimmerButton>",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add shimmer-button\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <ShimmerButton>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<ShimmerButton shimmerColor=\"#ffffff\" shimmerDuration=\"3s\" borderRadius=\"24px\">Test Me</ShimmerButton>",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/shimmer-button.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/shimmer-button",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -3267,7 +3267,7 @@
       ],
       "importExample": "import { ShinyText } from \"@/components/ui/shiny-text\";",
       "usageExample": "<ShinyText shimmerWidth={100} words={undefined} typingSpeed={undefined}>Shiny text that catches the light</ShinyText>",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add shiny-text\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<ShinyText shimmerWidth={100} words={undefined} typingSpeed={undefined}>Shiny text that catches the light</ShinyText>",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add shiny-text\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<ShinyText shimmerWidth={100} words={undefined} typingSpeed={undefined}>Shiny text that catches the light</ShinyText>",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/shiny-text.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/shiny-text",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -3318,7 +3318,7 @@
       ],
       "importExample": "import { Skeleton } from \"@/components/ui/skeleton\";",
       "usageExample": "<Skeleton columns={1} showAvatar interval={undefined} offset={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add skeleton\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Skeleton columns={1} showAvatar interval={undefined} offset={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add skeleton\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Skeleton columns={1} showAvatar interval={undefined} offset={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/skeleton.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/skeleton",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -3368,7 +3368,7 @@
       ],
       "importExample": "import { Spinner } from \"@/components/ui/spinner\";",
       "usageExample": "<Spinner size=\"md\" title={undefined} description={undefined} actionLabel={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add spinner\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Spinner size=\"md\" title={undefined} description={undefined} actionLabel={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add spinner\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Spinner size=\"md\" title={undefined} description={undefined} actionLabel={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/spinner.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/spinner",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -3421,7 +3421,7 @@
       ],
       "importExample": "import { SplitText } from \"@/components/ui/split-text\";",
       "usageExample": "<SplitText text=\"Hello\" splitType=\"chars\" delay={50} duration=\"0.8s\" />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add split-text\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <SplitText>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<SplitText text=\"Hello\" splitType=\"chars\" delay={50} duration=\"0.8s\" />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add split-text\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <SplitText>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<SplitText text=\"Hello\" splitType=\"chars\" delay={50} duration=\"0.8s\" />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/split-text.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/split-text",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -3471,7 +3471,7 @@
       ],
       "importExample": "import { Spotlight } from \"@/components/ui/spotlight\";",
       "usageExample": "<Spotlight fill=\"#a855f7\" quantity={undefined} speed={undefined} color={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add spotlight\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Spotlight fill=\"#a855f7\" quantity={undefined} speed={undefined} color={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add spotlight\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Spotlight fill=\"#a855f7\" quantity={undefined} speed={undefined} color={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/spotlight.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/spotlight",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -3527,7 +3527,7 @@
       ],
       "importExample": "import { SpotlightCard } from \"@/components/ui/spotlight-card\";",
       "usageExample": "<SpotlightCard spotlightColor=\"#a855f7\" spotlightOpacity={0.18} title={undefined} description={undefined} showFooter={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add spotlight-card\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <SpotlightCard>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<SpotlightCard spotlightColor=\"#a855f7\" spotlightOpacity={0.18} title={undefined} description={undefined} showFooter={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add spotlight-card\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <SpotlightCard>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<SpotlightCard spotlightColor=\"#a855f7\" spotlightOpacity={0.18} title={undefined} description={undefined} showFooter={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/spotlight-card.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/spotlight-card",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -3574,7 +3574,7 @@
       ],
       "importExample": "import { StarRating } from \"@/components/ui/star-rating\";",
       "usageExample": "<StarRating value={3} readOnly={false} size=\"md\" />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add star-rating\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <StarRating>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<StarRating value={3} readOnly={false} size=\"md\" />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add star-rating\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <StarRating>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<StarRating value={3} readOnly={false} size=\"md\" />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/star-rating.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/star-rating",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -3620,21 +3620,15 @@
           "description": "Speed"
         },
         {
-          "name": "count",
-          "type": "number",
-          "default": 80,
-          "description": "Dot count"
-        },
-        {
           "name": "color",
           "type": "string",
           "default": "#ffffff",
-          "description": "Color"
+          "description": "Mesh color"
         }
       ],
       "importExample": "import { StarfieldBackground } from \"@/components/ui/starfield-background\";",
-      "usageExample": "<StarfieldBackground count={80} color=\"#ffffff\" speed={1} count={80} color=\"#ffffff\" />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add starfield-background\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <StarfieldBackground>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<StarfieldBackground count={80} color=\"#ffffff\" speed={1} count={80} color=\"#ffffff\" />",
+      "usageExample": "<StarfieldBackground count={80} color=\"#ffffff\" speed={1} color=\"#ffffff\" />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add starfield-background\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <StarfieldBackground>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<StarfieldBackground count={80} color=\"#ffffff\" speed={1} color=\"#ffffff\" />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/starfield-background.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/starfield-background",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -3687,7 +3681,7 @@
       ],
       "importExample": "import { StatCard } from \"@/components/ui/stat-card\";",
       "usageExample": "<StatCard value=\"12\" change=\"+12.4%\" trend=\"up\">Active users</StatCard>",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add stat-card\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<StatCard value=\"12\" change=\"+12.4%\" trend=\"up\">Active users</StatCard>",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add stat-card\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<StatCard value=\"12\" change=\"+12.4%\" trend=\"up\">Active users</StatCard>",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/stat-card.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/stat-card",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -3732,7 +3726,7 @@
       ],
       "importExample": "import { Stepper } from \"@/components/ui/stepper\";",
       "usageExample": "<Stepper currentStep={1} itemCount={undefined} brand={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add stepper\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Stepper>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Stepper currentStep={1} itemCount={undefined} brand={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add stepper\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Stepper>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Stepper currentStep={1} itemCount={undefined} brand={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/stepper.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/stepper",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -3783,7 +3777,7 @@
       ],
       "importExample": "import { Switch } from \"@/components/ui/switch\";",
       "usageExample": "<Switch checked disabled={false} type={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add switch\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Switch>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Switch checked disabled={false} type={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add switch\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Switch>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Switch checked disabled={false} type={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/switch.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/switch",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -3843,7 +3837,7 @@
       ],
       "importExample": "import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from \"@/components/ui/table\";",
       "usageExample": "<Table compact={false} value={undefined} change={undefined} trend={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add table\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Table compact={false} value={undefined} change={undefined} trend={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add table\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Table compact={false} value={undefined} change={undefined} trend={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/table.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/table",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -3894,7 +3888,7 @@
       ],
       "importExample": "import { TextReveal } from \"@/components/ui/text-reveal\";",
       "usageExample": "<TextReveal text=\"This reveal animates word by word as it enters the viewport.\" delay={0} words={undefined} duration={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add text-reveal\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <TextReveal>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<TextReveal text=\"This reveal animates word by word as it enters the viewport.\" delay={0} words={undefined} duration={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add text-reveal\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <TextReveal>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<TextReveal text=\"This reveal animates word by word as it enters the viewport.\" delay={0} words={undefined} duration={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/text-reveal.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/text-reveal",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -3945,7 +3939,7 @@
       ],
       "importExample": "import { TextScramble } from \"@/components/ui/text-scramble\";",
       "usageExample": "<TextScramble text=\"ACCESS GRANTED\" duration=\"1200s\" count={undefined} color={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add text-scramble\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <TextScramble>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<TextScramble text=\"ACCESS GRANTED\" duration=\"1200s\" count={undefined} color={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add text-scramble\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <TextScramble>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<TextScramble text=\"ACCESS GRANTED\" duration=\"1200s\" count={undefined} color={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/text-scramble.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/text-scramble",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -3996,7 +3990,7 @@
       ],
       "importExample": "import { Textarea } from \"@/components/ui/textarea\";",
       "usageExample": "<Textarea placeholder=\"Write something...\" rows={4} value={undefined} gradient={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add textarea\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Textarea placeholder=\"Write something...\" rows={4} value={undefined} gradient={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add textarea\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Textarea placeholder=\"Write something...\" rows={4} value={undefined} gradient={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/textarea.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/textarea",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -4036,7 +4030,7 @@
       ],
       "importExample": "import { Timeline } from \"@/components/ui/timeline\";",
       "usageExample": "<Timeline itemCount={3} brand={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add timeline\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Timeline itemCount={3} brand={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add timeline\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Timeline itemCount={3} brand={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/timeline.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/timeline",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -4084,7 +4078,7 @@
       ],
       "importExample": "import { useToast, ToastProvider } from \"@/components/ui/toast\";",
       "usageExample": "<useToast variant=\"success\" title=\"Changes saved\" description=\"Your settings were updated successfully.\" />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add toast\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <useToast>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<useToast variant=\"success\" title=\"Changes saved\" description=\"Your settings were updated successfully.\" />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add toast\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <useToast>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<useToast variant=\"success\" title=\"Changes saved\" description=\"Your settings were updated successfully.\" />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/toast.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/toast",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -4126,7 +4120,7 @@
       ],
       "importExample": "import { ToggleGroup, ToggleGroupItem } from \"@/components/ui/toggle-group\";",
       "usageExample": "<ToggleGroup value=\"week\" placeholder={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add toggle-group\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <ToggleGroup>\n8. Required packages: @radix-ui/react-toggle-group, clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<ToggleGroup value=\"week\" placeholder={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add toggle-group\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <ToggleGroup>\n8. Required packages: @radix-ui/react-toggle-group, clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<ToggleGroup value=\"week\" placeholder={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/toggle-group.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/toggle-group",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -4177,7 +4171,7 @@
       ],
       "importExample": "import { Tooltip } from \"@/components/ui/tooltip\";",
       "usageExample": "<Tooltip content=\"I follow your cursor\" side=\"top\" checked={undefined} disabled={undefined} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add tooltip\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Tooltip>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Tooltip content=\"I follow your cursor\" side=\"top\" checked={undefined} disabled={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add tooltip\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Tooltip>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Tooltip content=\"I follow your cursor\" side=\"top\" checked={undefined} disabled={undefined} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/tooltip.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/tooltip",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -4230,7 +4224,7 @@
       ],
       "importExample": "import { Typewriter } from \"@/components/ui/typewriter\";",
       "usageExample": "<Typewriter words=\"websites\" typingSpeed={90} deletingSpeed={45} pauseTime={1600} />",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add typewriter\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Typewriter>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Typewriter words=\"websites\" typingSpeed={90} deletingSpeed={45} pauseTime={1600} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add typewriter\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <Typewriter>\n8. Required packages: clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<Typewriter words=\"websites\" typingSpeed={90} deletingSpeed={45} pauseTime={1600} />",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/typewriter.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/typewriter",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -4287,7 +4281,7 @@
       ],
       "importExample": "import { WebGLGlobe } from \"@/components/ui/webgl-globe\";",
       "usageExample": "\"use client\";\n\nexport default function Hero() {\n  return (\n    <section className=\"relative min-h-[480px] overflow-hidden\">\n      <WebGLGlobe className=\"absolute inset-0\" count={1500} color=\"#a855f7\" speed={1} size={0.025} />\n      <div className=\"relative z-10 flex min-h-[480px] flex-col items-center justify-center px-8 text-center\">\n        <h1 className=\"text-4xl font-bold\">Your headline</h1>\n      </div>\n    </section>\n  );\n}",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add webgl-globe\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <WebGLGlobe>\n7. Also add internal deps: npx --yes github:Rydaguy101/aurora-ui add webgl-stage\n8. Required packages: @react-three/drei, clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n\"use client\";\n\nexport default function Hero() {\n  return (\n    <section className=\"relative min-h-[480px] overflow-hidden\">\n      <WebGLGlobe className=\"absolute inset-0\" count={1500} color=\"#a855f7\" speed={1} size={0.025} />\n      <div className=\"relative z-10 flex min-h-[480px] flex-col items-center justify-center px-8 text-center\">\n        <h1 className=\"text-4xl font-bold\">Your headline</h1>\n      </div>\n    </section>\n  );\n}",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add webgl-globe\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <WebGLGlobe>\n7. Also add internal deps: npx aurora-ui-cli add webgl-stage\n8. Required packages: @react-three/drei, clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n\"use client\";\n\nexport default function Hero() {\n  return (\n    <section className=\"relative min-h-[480px] overflow-hidden\">\n      <WebGLGlobe className=\"absolute inset-0\" count={1500} color=\"#a855f7\" speed={1} size={0.025} />\n      <div className=\"relative z-10 flex min-h-[480px] flex-col items-center justify-center px-8 text-center\">\n        <h1 className=\"text-4xl font-bold\">Your headline</h1>\n      </div>\n    </section>\n  );\n}",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/webgl-globe.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/webgl-globe",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
@@ -4346,9 +4340,71 @@
       ],
       "importExample": "import { WebGLParticleField } from \"@/components/ui/webgl-particle-field\";",
       "usageExample": "\"use client\";\n\nexport default function Hero() {\n  return (\n    <section className=\"relative min-h-[480px] overflow-hidden\">\n      <WebGLParticleField className=\"absolute inset-0\" count={1200} color=\"#a855f7\" speed={1} spread={6} />\n      <div className=\"relative z-10 flex min-h-[480px] items-center justify-center\">\n        <h1 className=\"text-4xl font-bold\">Your headline</h1>\n      </div>\n    </section>\n  );\n}",
-      "agentInstructions": "1. Run: npx --yes github:Rydaguy101/aurora-ui add webgl-particle-field\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <WebGLParticleField>\n7. Also add internal deps: npx --yes github:Rydaguy101/aurora-ui add webgl-stage\n8. Required packages: @react-three/drei, @react-three/fiber, clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n\"use client\";\n\nexport default function Hero() {\n  return (\n    <section className=\"relative min-h-[480px] overflow-hidden\">\n      <WebGLParticleField className=\"absolute inset-0\" count={1200} color=\"#a855f7\" speed={1} spread={6} />\n      <div className=\"relative z-10 flex min-h-[480px] items-center justify-center\">\n        <h1 className=\"text-4xl font-bold\">Your headline</h1>\n      </div>\n    </section>\n  );\n}",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add webgl-particle-field\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <WebGLParticleField>\n7. Also add internal deps: npx aurora-ui-cli add webgl-stage\n8. Required packages: @react-three/drei, @react-three/fiber, clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n\"use client\";\n\nexport default function Hero() {\n  return (\n    <section className=\"relative min-h-[480px] overflow-hidden\">\n      <WebGLParticleField className=\"absolute inset-0\" count={1200} color=\"#a855f7\" speed={1} spread={6} />\n      <div className=\"relative z-10 flex min-h-[480px] items-center justify-center\">\n        <h1 className=\"text-4xl font-bold\">Your headline</h1>\n      </div>\n    </section>\n  );\n}",
       "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/webgl-particle-field.tsx",
       "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/webgl-particle-field",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "webgl-stage",
+      "title": "WebGL Stage",
+      "category": "3D & WebGL",
+      "description": "Shared react-three-fiber Canvas wrapper with DPR scaling — used by WebGL Globe and Particle Field.",
+      "sourcePath": "components/ui/webgl-stage.tsx",
+      "tags": [
+        "3d",
+        "webgl",
+        "primitive"
+      ],
+      "exportName": "WebGLStage",
+      "exportNames": [
+        "WebGLStage",
+        "createFibonacciSphere",
+        "useFibonacciSphere",
+        "useSpin"
+      ],
+      "isClientComponent": true,
+      "internalDependencies": [],
+      "peerDependencies": [
+        "@react-three/drei",
+        "@react-three/fiber",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "props": [
+        {
+          "name": "color",
+          "type": "string",
+          "default": "#a855f7",
+          "description": "Mesh color"
+        },
+        {
+          "name": "count",
+          "type": "number",
+          "description": "Dot count"
+        },
+        {
+          "name": "color",
+          "type": "string",
+          "default": "#a855f7",
+          "description": "Color"
+        },
+        {
+          "name": "speed",
+          "type": "number",
+          "description": "Speed"
+        },
+        {
+          "name": "size",
+          "type": "number",
+          "description": "Dot size"
+        }
+      ],
+      "importExample": "import { WebGLStage, createFibonacciSphere, useFibonacciSphere, useSpin } from \"@/components/ui/webgl-stage\";",
+      "usageExample": "<WebGLStage color=\"#a855f7\" count={undefined} color=\"#a855f7\" speed={undefined} size={undefined} />",
+      "agentInstructions": "1. Run: npx aurora-ui-cli add webgl-stage\n2. Install printed peer dependencies with npm install\n3. Ensure lib/utils.ts exists (CLI creates it) and @/* alias is configured\n4. Copy theme CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into your globals.css\n5. Ensure tailwind.config content includes ./components/**/*.{ts,tsx}\n6. Add \"use client\" at the top of any file that renders <WebGLStage>\n8. Required packages: @react-three/drei, @react-three/fiber, clsx, tailwind-merge\n9. Use exactly this JSX (do not invent props):\n<WebGLStage color=\"#a855f7\" count={undefined} color=\"#a855f7\" speed={undefined} size={undefined} />",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/webgl-stage.tsx",
+      "liveSourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/webgl-stage",
       "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
     }
   ]

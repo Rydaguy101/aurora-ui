@@ -1370,6 +1370,17 @@ export const componentRegistry: ComponentEntry[] = [
     ],
   },
   {
+    slug: "webgl-stage",
+    title: "WebGL Stage",
+    category: "3D & WebGL",
+    description: "Shared react-three-fiber Canvas wrapper with DPR scaling — used by WebGL Globe and Particle Field.",
+    sourcePath: "components/ui/webgl-stage.tsx",
+    order: 5,
+    tags: ["3d", "webgl", "primitive"],
+    initialState: { color: "#a855f7" },
+    controls: [{ key: "color", label: "Mesh color", type: "color" }],
+  },
+  {
     slug: "webgl-globe",
     title: "WebGL Globe",
     category: "3D & WebGL",

@@ -1,6 +1,6 @@
 {
   "name": "aurora-ui-cli",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "CLI to list, inspect, and add Aurora UI copy-paste components",
   "license": "MIT",
   "type": "module",
