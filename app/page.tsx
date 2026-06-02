@@ -9,9 +9,6 @@ import {
   MousePointerClick,
   Github,
   Home,
-  Settings,
-  User,
-  Mail,
   Heart,
   Rocket,
   Shield,
@@ -52,6 +49,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Progress } from "@/components/ui/progress";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { CardStack } from "@/components/ui/card-stack";
+import { GitHubStarButton } from "@/components/ui/github-star-button";
+import { CATEGORY_COUNT, COMPONENT_COUNT, GITHUB_REPO, SITE_URL } from "@/lib/site-config";
 
 function Section({
   id,
@@ -115,7 +114,7 @@ const faqs = [
     id: "1",
     title: "What is Aurora UI built with?",
     content:
-      "Next.js App Router, React 18, Tailwind CSS and Framer Motion. No heavy runtime — just composable components.",
+      "Next.js App Router, React 19, Tailwind CSS, Radix UI, and Framer Motion. Copy-paste components — no heavy runtime package.",
   },
   {
     id: "2",
@@ -164,14 +163,12 @@ export default function Page() {
           </div>
           <nav className="hidden items-center gap-6 text-sm text-muted-foreground md:flex">
             <a href="/components" className="transition-colors hover:text-foreground">Components</a>
+            <a href="#features" className="transition-colors hover:text-foreground">Features</a>
             <a href="#buttons" className="transition-colors hover:text-foreground">Buttons</a>
-            <a href="#cards" className="transition-colors hover:text-foreground">Cards</a>
-            <a href="#text" className="transition-colors hover:text-foreground">Text</a>
             <a href="#layout" className="transition-colors hover:text-foreground">Layout</a>
+            <a href={`${SITE_URL}/docs/FOR_AI.md`} className="transition-colors hover:text-foreground">For AI</a>
           </nav>
-          <Button size="sm" variant="outline" className="gap-2">
-            <Github className="h-4 w-4" /> Star
-          </Button>
+          <GitHubStarButton variant="prominent" />
         </div>
       </header>
 
@@ -182,7 +179,7 @@ export default function Page() {
         <Particles quantity={70} />
         <div className="container relative z-10 flex flex-col items-center text-center">
           <Badge variant="gradient" className="mb-6 px-4 py-1.5">
-            <Sparkles className="h-3.5 w-3.5" /> 30+ animated components
+            <Sparkles className="h-3.5 w-3.5" /> {COMPONENT_COUNT}+ animated components · AI-ready
           </Badge>
           <h1 className="max-w-4xl text-balance text-5xl font-bold leading-[1.05] tracking-tight md:text-7xl">
             Build interfaces that <GradientText>feel alive</GradientText>
@@ -197,36 +194,43 @@ export default function Page() {
           </div>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <MagneticButton>
-              <RainbowButton>Get started</RainbowButton>
+              <a href="/components">
+                <RainbowButton>Browse components</RainbowButton>
+              </a>
             </MagneticButton>
             <ShimmerButton
               type="button"
               className="shadow-2xl"
               onClick={() => {
-                window.location.href = "/components";
+                window.open(GITHUB_REPO, "_blank", "noopener,noreferrer");
               }}
             >
-              <span className="text-sm font-medium">View components</span>
+              <span className="inline-flex items-center gap-2 text-sm font-medium">
+                <Github className="h-4 w-4" /> View on GitHub
+              </span>
             </ShimmerButton>
           </div>
-          <div className="mt-16 flex items-center gap-10 text-center">
+          <div className="mt-8">
+            <GitHubStarButton variant="prominent" />
+          </div>
+          <div className="mt-16 flex flex-wrap items-center justify-center gap-10 text-center">
             <div>
               <div className="text-3xl font-bold">
-                <NumberTicker value={30} />+
+                <NumberTicker value={COMPONENT_COUNT} />+
               </div>
               <div className="text-sm text-muted-foreground">Components</div>
             </div>
             <div>
               <div className="text-3xl font-bold">
-                <NumberTicker value={12000} />
+                <NumberTicker value={CATEGORY_COUNT} />
               </div>
-              <div className="text-sm text-muted-foreground">Downloads</div>
+              <div className="text-sm text-muted-foreground">Categories</div>
             </div>
             <div>
               <div className="text-3xl font-bold">
-                <NumberTicker value={99} decimalPlaces={1} />%
+                <NumberTicker value={3} />
               </div>
-              <div className="text-sm text-muted-foreground">Satisfaction</div>
+              <div className="text-sm text-muted-foreground">AI integrations</div>
             </div>
           </div>
         </div>
@@ -235,13 +239,64 @@ export default function Page() {
       {/* MARQUEE LOGOS */}
       <div className="border-y border-border/60 py-6">
         <Marquee pauseOnHover className="[--duration:25s]">
-          {["Next.js", "React", "Tailwind", "Framer Motion", "TypeScript", "Vercel"].map((t) => (
+          {["Next.js", "React 19", "Tailwind", "Framer Motion", "Radix UI", "WebGL", "TypeScript", "Vercel"].map((t) => (
             <span key={t} className="mx-8 text-lg font-semibold text-muted-foreground/60">
               {t}
             </span>
           ))}
         </Marquee>
       </div>
+
+      {/* FEATURES */}
+      <Section
+        id="features"
+        title="Everything you need"
+        subtitle="Copy-paste components, live docs, WebGL heroes, and a full AI discovery layer."
+      >
+        <BentoGrid>
+          <BentoCard
+            className="md:col-span-2"
+            icon={<Rocket className="h-8 w-8" />}
+            title={`${COMPONENT_COUNT}+ components`}
+            description="Actions, forms, cards, overlays, typography, hero backgrounds, and WebGL — all with live previews."
+            background={<Meteors number={14} />}
+            cta={
+              <a href="/components">
+                <Button size="sm" variant="outline">Open catalog</Button>
+              </a>
+            }
+          />
+          <BentoCard
+            icon={<Wand2 className="h-8 w-8" />}
+            title="AI-ready"
+            description="Registry JSON, CLI, MCP server, OpenAPI, and FOR_AI.md — built for agents that don't know this library."
+            background={<GridPattern variant="dot" />}
+            cta={
+              <a href={`${SITE_URL}/docs/FOR_AI.md`}>
+                <Button size="sm" variant="outline">Agent docs</Button>
+              </a>
+            }
+          />
+          <BentoCard
+            icon={<Shield className="h-8 w-8" />}
+            title="Copy-paste DX"
+            description="Like shadcn/ui — own the source, customize freely, no opaque npm UI package."
+            background={<div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent" />}
+          />
+          <BentoCard
+            className="md:col-span-2"
+            icon={<Layers className="h-8 w-8" />}
+            title="WebGL & hero backgrounds"
+            description="Interactive globe, particle fields, gradient meshes, aurora effects, and perspective grids for landing pages."
+            background={<Particles quantity={30} color="236, 72, 153" />}
+            cta={
+              <a href="/components">
+                <Button size="sm" variant="outline">See WebGL</Button>
+              </a>
+            }
+          />
+        </BentoGrid>
+      </Section>
 
       {/* BUTTONS */}
       <Section
@@ -488,21 +543,23 @@ export default function Page() {
             Ship something <GradientText>beautiful</GradientText>
           </h2>
           <p className="relative mx-auto mt-4 max-w-xl text-muted-foreground">
-            Drop Aurora UI into your Next.js project and start building interfaces
-            that feel premium today.
+            Drop Aurora UI into your Next.js project, explore {COMPONENT_COUNT}+ components live,
+            and star the repo if it saves you time.
           </p>
-          <div className="relative mt-8 flex justify-center">
-            <ShimmerButton>
-              <span className="font-medium">Install Aurora UI</span>
-            </ShimmerButton>
+          <div className="relative mt-8 flex flex-wrap items-center justify-center gap-4">
+            <a href="/components">
+              <ShimmerButton>
+                <span className="font-medium">Browse components</span>
+              </ShimmerButton>
+            </a>
+            <GitHubStarButton variant="prominent" />
           </div>
           <div className="relative mt-12 flex justify-center">
             <Dock>
-              <DockIcon><Home className="h-5 w-5" /></DockIcon>
-              <DockIcon><User className="h-5 w-5" /></DockIcon>
-              <DockIcon><Mail className="h-5 w-5" /></DockIcon>
-              <DockIcon><Settings className="h-5 w-5" /></DockIcon>
-              <DockIcon><Github className="h-5 w-5" /></DockIcon>
+              <DockIcon><a href="/" aria-label="Home"><Home className="h-5 w-5" /></a></DockIcon>
+              <DockIcon><a href="/components" aria-label="Components"><Layers className="h-5 w-5" /></a></DockIcon>
+              <DockIcon><a href={`${SITE_URL}/docs/FOR_AI.md`} aria-label="AI docs"><Sparkles className="h-5 w-5" /></a></DockIcon>
+              <DockIcon><a href={GITHUB_REPO} target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Github className="h-5 w-5" /></a></DockIcon>
             </Dock>
           </div>
         </div>
@@ -510,12 +567,18 @@ export default function Page() {
 
       {/* FOOTER */}
       <footer className="border-t border-border/60 py-10">
-        <div className="container flex flex-col items-center justify-between gap-4 text-sm text-muted-foreground md:flex-row">
-          <span>© {new Date().getFullYear()} Aurora UI. Built with Next.js.</span>
+        <div className="container flex flex-col items-center justify-between gap-6 text-sm text-muted-foreground md:flex-row">
+          <span>© {new Date().getFullYear()} Aurora UI · MIT License</span>
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <a href="/components" className="transition-colors hover:text-foreground">Components</a>
+            <a href={GITHUB_REPO} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-foreground">GitHub</a>
+            <a href={`${SITE_URL}/docs/FOR_AI.md`} className="transition-colors hover:text-foreground">For AI</a>
+            <GitHubStarButton size="sm" variant="outline" />
+          </div>
           <div className="flex items-center gap-2">
-            <span>Made with</span>
+            <span>Built with</span>
             <Heart className="h-4 w-4 text-pink-500" />
-            <span>and Framer Motion</span>
+            <span>Next.js & Framer Motion</span>
           </div>
         </div>
       </footer>

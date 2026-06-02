@@ -1,30 +1,56 @@
 # Aurora UI
 
-> Copy-paste animated React components for Next.js — built with Tailwind, Radix UI, and Framer Motion.
+[![Live Demo](https://img.shields.io/badge/demo-live-8b5cf6?style=for-the-badge&logo=vercel&logoColor=white)](https://aurora-ui-tau.vercel.app/components)
+[![GitHub stars](https://img.shields.io/github/stars/Rydaguy101/aurora-ui?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Rydaguy101/aurora-ui/stargazers)
+[![MIT License](https://img.shields.io/badge/license-MIT-22c55e?style=for-the-badge)](LICENSE)
+[![Components](https://img.shields.io/badge/components-84+-06b6d4?style=for-the-badge)](https://aurora-ui-tau.vercel.app/components)
 
-**Live docs:** [aurora-ui-tau.vercel.app/components](https://aurora-ui-tau.vercel.app/components)
+> **Copy-paste animated React components for Next.js** — Tailwind, Radix UI, Framer Motion, WebGL heroes, and a full AI discovery layer.
 
-Aurora UI is a **component source library** (like shadcn/ui), not a traditional npm UI kit. Copy components into your app or use the CLI.
+<p align="center">
+  <a href="https://aurora-ui-tau.vercel.app/components"><strong>✨ Browse live demos</strong></a>
+  ·
+  <a href="https://github.com/Rydaguy101/aurora-ui"><strong>⭐ Star on GitHub</strong></a>
+  ·
+  <a href="https://aurora-ui-tau.vercel.app/docs/FOR_AI.md"><strong>🤖 For AI agents</strong></a>
+</p>
 
-## Quick start (humans)
+---
+
+## Why Aurora UI?
+
+| | Traditional UI kit | Aurora UI |
+|---|-------------------|-----------|
+| **Install** | Opaque npm package | Copy source into your repo |
+| **Customize** | Fight the API | Edit the file directly |
+| **Motion** | Basic transitions | Framer Motion + WebGL heroes |
+| **AI tools** | Not discoverable | Registry + CLI + MCP + OpenAPI |
+
+**84+ components** across 8 categories — buttons, forms, cards, overlays, layout, typography, hero backgrounds, and WebGL.
+
+## Quick start
 
 ```bash
 git clone https://github.com/Rydaguy101/aurora-ui.git
-cd aurora-ui
-npm install
-npm run dev
-# Open http://localhost:3000/components
+cd aurora-ui && npm install && npm run dev
+# → http://localhost:3000/components
 ```
 
-### Add components to your project
+Add to your project:
 
 ```bash
-npx aurora-ui-cli add button shimmer-button card
+npx aurora-ui-cli add button shimmer-button webgl-globe
 ```
 
-## For AI assistants
+## Live docs
 
-Aurora UI is unlikely to be in your training data. **Fetch discovery URLs at runtime:**
+**https://aurora-ui-tau.vercel.app/components**
+
+- Live previews with customization controls
+- Source tab per component
+- WebGL globe & particle field demos
+
+## For AI assistants
 
 | Resource | URL |
 |----------|-----|
@@ -32,64 +58,16 @@ Aurora UI is unlikely to be in your training data. **Fetch discovery URLs at run
 | Integration guide | https://aurora-ui-tau.vercel.app/docs/FOR_AI.md |
 | Agent manifest | https://aurora-ui-tau.vercel.app/.well-known/agents.json |
 | OpenAPI | https://aurora-ui-tau.vercel.app/openapi.json |
-| llms.txt | https://aurora-ui-tau.vercel.app/llms.txt |
 
 ```bash
-npx aurora-ui-cli help
 npx aurora-ui-cli list
-npx aurora-ui-cli add webgl-globe
+npx aurora-ui-mcp   # MCP server for Cursor / Claude
 ```
 
-### MCP (Cursor / Claude Desktop)
+## Star the repo ⭐
 
-```json
-{
-  "mcpServers": {
-    "aurora-ui": {
-      "command": "npx",
-      "args": ["-y", "aurora-ui-mcp"]
-    }
-  }
-}
-```
-
-See [docs/FOR_AI.md](docs/FOR_AI.md) and [mcp/README.md](mcp/README.md).
-
-## Features
-
-- 84+ animated components with live previews
-- React Bits–style docs at `/components`
-- Hero backgrounds + WebGL (globe, particle field)
-- REST API + OpenAPI + MCP for AI agents
-- Machine-readable `registry.json` for tooling
-
-## Project structure
-
-```
-components/ui/          # Component source files (copy these)
-lib/components/         # Docs registry + loaders
-app/components/         # Live catalog site
-public/registry.json    # AI/tooling catalog (generated)
-cli/                    # aurora-ui-cli (npm)
-mcp/                    # aurora-ui-mcp (npm)
-docs/FOR_AI.md          # Agent integration guide
-```
-
-## Scripts
-
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start docs site |
-| `npm run build` | Production build |
-| `npm run generate:registry` | Regenerate `public/registry.json` |
-
-## npm packages
-
-| Package | Purpose |
-|---------|---------|
-| `aurora-ui-cli` | `npx aurora-ui-cli list \| info \| add` |
-| `aurora-ui-mcp` | MCP server for Cursor / Claude |
+If Aurora UI saves you time, **[star it on GitHub](https://github.com/Rydaguy101/aurora-ui)** — it helps others discover the project and keeps development going.
 
 ## License
 
-MIT
+MIT — see [LICENSE](LICENSE).

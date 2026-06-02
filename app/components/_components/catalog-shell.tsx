@@ -17,7 +17,10 @@ import { ComponentControls } from "@/app/components/_components/component-contro
 import { DocsView } from "@/app/components/_components/docs-view";
 import { PreviewLoading } from "@/app/components/_components/preview-shared";
 import { PropsTable } from "@/app/components/_components/props-table";
-import { SourceViewer } from "@/app/components/_components/source-viewer";import {
+import { SourceViewer } from "@/app/components/_components/source-viewer";
+import { GitHubStarButton } from "@/components/ui/github-star-button";
+import { GITHUB_REPO } from "@/lib/site-config";
+import {
   categoryOrder,
   type ComponentControlValue,
   type ComponentEntry,
@@ -222,7 +225,18 @@ Use the live demo settings as defaults where applicable.`;
             >
               Home
             </a>
+            <a
+              href={GITHUB_REPO}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[11px] font-medium uppercase tracking-[0.12em] text-muted-foreground transition-colors hover:text-foreground"
+            >
+              GitHub
+            </a>
           </nav>
+          <div className="mt-4">
+            <GitHubStarButton className="w-full justify-center" variant="prominent" />
+          </div>
         </div>
 
         {/* Sidebar navigation */}

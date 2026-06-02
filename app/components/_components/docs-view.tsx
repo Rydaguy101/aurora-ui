@@ -6,8 +6,8 @@ export function DocsView() {
           Using Aurora UI
         </h1>
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground">
-          Aurora UI components are copy-paste friendly. Pick one from the sidebar, preview it live,
-          then drop the source into your Next.js project.
+          Aurora UI is a copy-paste component library with 84+ live previews. Pick a component from
+          the sidebar, tweak it, copy the source, or use the CLI / MCP tools for AI-assisted setup.
         </p>
       </div>
 
@@ -100,14 +100,48 @@ export default function Page() {
       </section>
 
       <section className="space-y-4">
+        <h2 className="text-base font-medium text-foreground">CLI quick start</h2>
+        <div className="overflow-x-auto rounded-lg border border-border/60 bg-[#111111]">
+          <pre className="p-5 font-mono text-[13px] leading-7 text-foreground/90">
+            <code>{`npx aurora-ui-cli list
+npx aurora-ui-cli info shimmer-button
+npx aurora-ui-cli add button card webgl-globe`}</code>
+          </pre>
+        </div>
+        <p className="text-sm leading-7 text-muted-foreground">
+          GitHub fallback:{" "}
+          <code className="rounded bg-[#111111] px-1.5 py-0.5 font-mono text-[13px] text-foreground">
+            npx --yes github:Rydaguy101/aurora-ui/cli/bin/aurora-ui.mjs add button
+          </code>
+        </p>
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="text-base font-medium text-foreground">For AI agents</h2>
+        <div className="rounded-lg border border-border/60 bg-[#111111] px-5 py-4 text-sm leading-7 text-muted-foreground">
+          <p>
+            Fetch the registry at{" "}
+            <code className="rounded bg-[#0a0a0a] px-1.5 py-0.5 font-mono text-[13px] text-foreground">/api/registry</code>{" "}
+            or read{" "}
+            <a href="/docs/FOR_AI.md" className="text-foreground underline underline-offset-4">
+              FOR_AI.md
+            </a>
+            . MCP server:{" "}
+            <code className="rounded bg-[#0a0a0a] px-1.5 py-0.5 font-mono text-[13px] text-foreground">npx aurora-ui-mcp</code>
+          </p>
+        </div>
+      </section>
+
+      <section className="space-y-4">
         <h2 className="text-base font-medium text-foreground">Requirements</h2>
         <div className="rounded-lg border border-border/60 bg-[#111111] px-5 py-4 text-sm leading-7 text-muted-foreground">
           <ul className="list-inside list-disc space-y-1">
-            <li>Next.js (App Router)</li>
-            <li>React 18+</li>
+            <li>Next.js 15+ (App Router)</li>
+            <li>React 19+</li>
             <li>Tailwind CSS 3.4+</li>
             <li>Framer Motion 11+</li>
-            <li>lucide-react (icons)</li>
+            <li>Radix UI + lucide-react (per component)</li>
+            <li>three + @react-three/fiber for WebGL components</li>
           </ul>
         </div>
       </section>
