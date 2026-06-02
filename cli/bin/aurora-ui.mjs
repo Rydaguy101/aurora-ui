@@ -12,34 +12,42 @@ const DEFAULT_SITE = process.env.AURORA_UI_SITE ?? "https://aurora-ui-tau.vercel
 const DEFAULT_REGISTRY =
   process.env.AURORA_UI_REGISTRY ??
   `${DEFAULT_SITE}/api/registry`;
+const GITHUB_RAW = "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main";
+const NPX_CMD = "npx --yes github:Rydaguy101/aurora-ui";
 
 const HELP = `
 aurora-ui — copy-paste animated React components for Next.js
 
+INSTALL (works today — no npm publish required)
+  ${NPX_CMD} list
+  ${NPX_CMD} info shimmer-button
+  ${NPX_CMD} add button shimmer-button
+  ${NPX_CMD} guide webgl-globe
+
 USAGE
   aurora-ui list [--category <name>] [--json]
   aurora-ui info <slug>
+  aurora-ui guide <slug>          Full AI-friendly setup + usage for one component
   aurora-ui add <slug> [slug...] [--dir <path>] [--registry <url>]
   aurora-ui init
   aurora-ui docs
 
 AI / AGENT QUICK START
-  1. Fetch the machine-readable catalog:
-     curl -sL ${DEFAULT_REGISTRY}
-  2. Read integration guide:
-     ${DEFAULT_SITE}/docs/FOR_AI.md
-  3. Add a component:
-     npx aurora-ui-cli add button shimmer-button
-  4. Install peer deps printed after add, copy lib/utils.ts if missing.
-  5. MCP (Cursor/Claude): npx -y aurora-ui-mcp
+  1. Read: ${DEFAULT_SITE}/docs/FOR_AI.md
+  2. List components: ${NPX_CMD} list
+  3. Get exact usage: ${NPX_CMD} guide <slug>
+  4. Copy files: ${NPX_CMD} add <slug>
+  5. Install peer deps printed after add
+  6. MCP (Cursor): npx --yes github:Rydaguy101/aurora-ui aurora-ui-mcp
 
 ENV
   AURORA_UI_REGISTRY   Override registry.json URL
+  AURORA_UI_SITE         Docs site URL
 
 EXAMPLES
-  aurora-ui list --category "Actions"
-  aurora-ui info webgl-globe
-  aurora-ui add card spotlight-card --dir src/components/ui
+  ${NPX_CMD} list --category "Actions"
+  ${NPX_CMD} guide animated-modal
+  ${NPX_CMD} add card spotlight-card --dir src/components/ui
 `.trim();
 
 function parseArgs(argv) {
@@ -91,9 +99,19 @@ async function copyUtils(targetRoot) {
 
   ensureDir(path.dirname(utilsTarget));
   const utilsSource = path.join(repoRoot, "lib/utils.ts");
-  const content = fs.existsSync(utilsSource)
-    ? fs.readFileSync(utilsSource, "utf8")
-    : `import { clsx, type ClassValue } from "clsx";\nimport { twMerge } from "tailwind-merge";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n`;
+  let content;
+
+  if (fs.existsSync(utilsSource)) {
+    content = fs.readFileSync(utilsSource, "utf8");
+  } else {
+    const response = await fetch(`${GITHUB_RAW}/lib/utils.ts`);
+    if (!response.ok) {
+      content = `import { clsx, type ClassValue } from "clsx";\nimport { twMerge } from "tailwind-merge";\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n`;
+    } else {
+      content = await response.text();
+    }
+  }
+
   fs.writeFileSync(utilsTarget, content);
   console.log(`  + lib/utils.ts`);
 }
@@ -140,6 +158,37 @@ async function cmdInfo(registry, slug) {
   if (item.tags?.length) console.log(`Tags: ${item.tags.join(", ")}`);
   if (item.peerDependencies?.length) console.log(`Peer deps: ${item.peerDependencies.join(", ")}`);
   console.log(`Import: ${item.importExample}`);
+  if (item.isClientComponent) console.log(`Client component: yes — add "use client" to files that render it`);
+  if (item.usageExample) {
+    console.log(`\nUsage:\n${item.usageExample}`);
+  }
+}
+
+async function cmdGuide(registry, slug) {
+  const item = registry.components.find((entry) => entry.slug === slug);
+  if (!item) throw new Error(`Unknown component "${slug}". Run: aurora-ui list`);
+
+  console.log(`# ${item.title} (${item.slug})\n`);
+  console.log(item.description);
+  console.log(`\n## Install\n`);
+  console.log(`${NPX_CMD} add ${item.slug}`);
+  if (item.internalDependencies?.length) {
+    console.log(`${NPX_CMD} add ${item.internalDependencies.join(" ")}`);
+  }
+  console.log(`\n## Import\n`);
+  console.log(item.importExample);
+  console.log(`\n## Usage (copy exactly — do not invent props)\n`);
+  console.log(item.usageExample ?? "<Component />");
+  if (item.props?.length) {
+    console.log(`\n## Props\n`);
+    for (const prop of item.props) {
+      console.log(`- ${prop.name} (${prop.type}) default: ${JSON.stringify(prop.default)} — ${prop.description}`);
+    }
+  }
+  console.log(`\n## Agent checklist\n`);
+  console.log(item.agentInstructions ?? "See docs/FOR_AI.md");
+  console.log(`\n## Source\n`);
+  console.log(item.liveSourceUrl ?? item.sourceUrl);
 }
 
 async function cmdAdd(registry, slugs, flags) {
@@ -164,9 +213,20 @@ async function cmdAdd(registry, slugs, flags) {
 
   await copyUtils(process.cwd());
 
+  const lastItem = registry.components.find((entry) => entry.slug === slugs[slugs.length - 1]);
+
   console.log("\nInstall peer dependencies in your project:");
   console.log(`  npm install ${[...allPeerDeps].join(" ")}`);
-  console.log("\nEnsure @/ alias points to your project root and Tailwind scans the new files.");
+  console.log("\nRequired project setup:");
+  console.log(`  1. tsconfig paths: "@/*" -> "./*"`);
+  console.log(`  2. Copy theme CSS from ${GITHUB_RAW}/app/globals.css`);
+  console.log(`  3. Tailwind content must include ./components/**/*.{ts,tsx}`);
+  if (lastItem?.usageExample) {
+    console.log(`\nUsage example for ${lastItem.slug}:\n${lastItem.importExample}\n\n${lastItem.usageExample}`);
+  }
+  if (lastItem?.isClientComponent) {
+    console.log(`\nAdd "use client" at the top of the page/component file.`);
+  }
 }
 
 function cmdInit() {
@@ -174,20 +234,22 @@ function cmdInit() {
 
 1. Next.js App Router project with Tailwind CSS
 2. Add path alias in tsconfig.json: "@/*" -> "./*"
-3. Copy globals.css theme tokens from the repo (CSS variables for colors)
-4. Copy lib/utils.ts: npx aurora-ui add button  (creates utils if missing)
-5. Add components: npx aurora-ui add button card animated-tabs
-6. Browse live docs by cloning repo and running: npm install && npm run dev
-   Open http://localhost:3000/components
+3. Copy globals.css theme tokens from:
+   ${GITHUB_RAW}/app/globals.css
+4. Add components:
+   ${NPX_CMD} add button card
+5. Install peer deps printed by the add command
+6. Browse live docs: ${DEFAULT_SITE}/components
 
-AI agents: fetch ${DEFAULT_REGISTRY} and read docs/FOR_AI.md from the repository.`);
+AI agents: read ${DEFAULT_SITE}/docs/FOR_AI.md first, then run:
+  ${NPX_CMD} guide <slug>`);
 }
 
 function cmdDocs() {
   console.log(`${DEFAULT_SITE}/docs/FOR_AI.md`);
   console.log(`${DEFAULT_SITE}/.well-known/agents.json`);
   console.log(DEFAULT_REGISTRY);
-  console.log("MCP: npx -y aurora-ui-mcp");
+  console.log(`MCP: npx --yes github:Rydaguy101/aurora-ui aurora-ui-mcp`);
 }
 
 async function main() {
@@ -205,6 +267,10 @@ async function main() {
 
   if (command === "list") return cmdList(registry, flags);
   if (command === "info") return cmdInfo(registry, positional[0]);
+  if (command === "guide") {
+    if (!positional[0]) throw new Error("Usage: aurora-ui guide <slug>");
+    return cmdGuide(registry, positional[0]);
+  }
   if (command === "add") {
     if (positional.length === 0) throw new Error("Usage: aurora-ui add <slug> [slug...]");
     return cmdAdd(registry, positional, flags);

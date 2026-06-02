@@ -22,10 +22,12 @@ Aurora UI is a source-first component library. Components are copied into your p
 ## CLI
 
 ```bash
-npx aurora-ui-cli list
-npx aurora-ui-cli info webgl-globe
-npx aurora-ui-cli add button card shimmer-button
+npx --yes github:Rydaguy101/aurora-ui list
+npx --yes github:Rydaguy101/aurora-ui guide shimmer-button
+npx --yes github:Rydaguy101/aurora-ui add button card shimmer-button
 ```
+
+See [docs/QUICKSTART.md](docs/QUICKSTART.md) for full setup.
 
 ## MCP (Cursor / Claude Desktop)
 

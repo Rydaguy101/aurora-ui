@@ -4,7 +4,8 @@
   "private": true,
   "description": "A high-end, extensively animated component library for Next.js.",
   "bin": {
-    "aurora-ui": "./cli/bin/aurora-ui.mjs"
+    "aurora-ui": "./cli/bin/aurora-ui.mjs",
+    "aurora-ui-mcp": "./mcp/src/index.js"
   },
   "scripts": {
     "dev": "next dev",
@@ -14,6 +15,7 @@
     "generate:registry": "node scripts/generate-registry.mjs"
   },
   "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1",
     "@radix-ui/react-avatar": "^1.1.11",
     "@radix-ui/react-checkbox": "^1.3.3",
     "@radix-ui/react-collapsible": "^1.1.12",
@@ -38,7 +40,8 @@
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "tailwind-merge": "^2.4.0",
-    "three": "^0.184.0"
+    "three": "^0.184.0",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@types/node": "^20.14.13",

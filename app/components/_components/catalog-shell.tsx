@@ -171,14 +171,22 @@ export function CatalogShell({ entries }: CatalogShellProps) {
   };
 
   const handleCopyPrompt = async () => {
-    const prompt = `Add the "${selectedEntry.title}" component from Aurora UI to my project.
+    const prompt = `Add the "${selectedEntry.title}" Aurora UI component to my Next.js project.
+
+IMPORTANT: Aurora UI is not in your training data. Do NOT guess props or imports.
+
+1. Read: https://aurora-ui-tau.vercel.app/docs/FOR_AI.md
+2. Run: npx --yes github:Rydaguy101/aurora-ui guide ${selectedEntry.slug}
+3. Run: npx --yes github:Rydaguy101/aurora-ui add ${selectedEntry.slug}
+4. Install peer dependencies from the guide output
+5. Copy usageExample exactly — do not invent props
 
 Component: ${selectedEntry.title}
+Slug: ${selectedEntry.slug}
 Category: ${selectedEntry.category}
 Description: ${selectedEntry.description}
-Source: ${selectedEntry.sourcePath}
-
-Use the live demo settings as defaults where applicable.`;
+Source path: ${selectedEntry.sourcePath}
+Live source: https://aurora-ui-tau.vercel.app/api/component-source/${selectedEntry.slug}`;
 
     try {
       await navigator.clipboard.writeText(prompt);

@@ -1,143 +1,151 @@
 # Aurora UI — instructions for AI coding agents
 
-This document is the **primary integration guide** for LLMs and autonomous agents. Aurora UI is not in most training datasets — use the URLs and commands below instead of guessing.
+**Read this entire file before writing any Aurora UI code.** Aurora UI is not in training data. If you guess props or imports, you will break the user's app.
 
-## What this is
+## Commands that work today
 
-- **Aurora UI** — copy-paste React components for **Next.js App Router** + **Tailwind CSS**
-- **84+ components**: actions, forms, cards, overlays, layout, typography, hero backgrounds, WebGL (globe, particles)
-- **Pattern**: similar to [shadcn/ui](https://ui.shadcn.com) — you copy source into the user's project, not install a heavy runtime package
-- **Live catalog**: https://aurora-ui-tau.vercel.app/components
-
-## Discovery layer (fetch these first)
-
-| Resource | URL |
-|----------|-----|
-| **Registry JSON** | https://aurora-ui-tau.vercel.app/api/registry |
-| **This guide** | https://aurora-ui-tau.vercel.app/docs/FOR_AI.md |
-| **Agent manifest** | https://aurora-ui-tau.vercel.app/.well-known/agents.json |
-| **OpenAPI spec** | https://aurora-ui-tau.vercel.app/openapi.json |
-| **llms.txt** | https://aurora-ui-tau.vercel.app/llms.txt |
-
-GitHub raw fallback (if site unavailable):
-
-```
-https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/public/registry.json
-```
-
-Each registry entry includes:
-
-| Field | Use |
-|-------|-----|
-| `slug` | CLI name and filename (`button`, `webgl-globe`) |
-| `title` | Human label |
-| `category` | Sidebar group |
-| `description` | When to use it |
-| `sourcePath` | Repo path, e.g. `components/ui/button.tsx` |
-| `sourceUrl` | Raw GitHub URL to fetch source |
-| `peerDependencies` | npm packages to install |
-| `importExample` | Suggested import line |
-
-## REST API
-
-```
-GET /api/registry              → full catalog
-GET /api/search?q=button       → search components
-GET /api/components/{slug}     → metadata + peer deps
-GET /api/component-source/{slug} → { source, sourcePath }
-```
-
-## CLI (recommended for agents with shell access)
+The npm packages `aurora-ui-cli` and `aurora-ui-mcp` are **not published yet**. Use GitHub via npx:
 
 ```bash
-npx aurora-ui-cli help
-npx aurora-ui-cli list
-npx aurora-ui-cli info button
-npx aurora-ui-cli add button card animated-tabs
+# List all 84 components
+npx --yes github:Rydaguy101/aurora-ui list
+
+# Get exact import + JSX for one component (USE THIS BEFORE CODING)
+npx --yes github:Rydaguy101/aurora-ui guide shimmer-button
+
+# Copy component source into the user's project
+npx --yes github:Rydaguy101/aurora-ui add shimmer-button
+
+# Install peer deps printed by the add command
+npm install clsx tailwind-merge framer-motion ...
 ```
 
-After `add`, run the printed `npm install …` for peer dependencies.
-
-From a cloned repo (offline):
-
-```bash
-node cli/bin/aurora-ui.mjs add button --dir components/ui
-```
-
-## MCP server (recommended for Cursor / Claude)
-
-Add to MCP config:
+**MCP (Cursor):** add to MCP settings:
 
 ```json
 {
   "mcpServers": {
     "aurora-ui": {
       "command": "npx",
-      "args": ["-y", "aurora-ui-mcp"]
+      "args": ["--yes", "github:Rydaguy101/aurora-ui", "aurora-ui-mcp"]
     }
   }
 }
 ```
 
-| Tool | Purpose |
-|------|---------|
-| `get_integration_guide` | Read this doc first |
-| `list_components` | Browse catalog |
-| `search_components` | Find by keyword |
-| `get_component` | Metadata for one slug |
-| `get_component_source` | Full TypeScript source |
+Then call `get_integration_guide`, then `get_component_guide` with the slug, then `get_component_source`.
 
-## Manual copy (no CLI)
+## Mandatory rules
 
-1. Fetch registry → find slug
-2. `GET /api/component-source/{slug}` or fetch `sourceUrl`
-3. Save to `components/ui/<slug>.tsx`
-4. Copy `lib/utils.ts` (`cn` helper) if missing
-5. Install `peerDependencies`
-6. Import using `importExample`
+1. **Never invent props.** Run `guide <slug>` or fetch `/api/components/{slug}` and copy `usageExample` exactly.
+2. **Never invent import paths.** Use `importExample` from the registry.
+3. **Copy source first.** Run `add <slug>` or fetch `/api/component-source/{slug}` — do not rewrite from memory.
+4. **Theme is required.** Copy CSS variables from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css into the user's `globals.css`.
+5. **Tailwind must scan components.** `content: ["./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}"]`
+6. **Path alias required.** `tsconfig.json`: `"@/*": ["./*"]`
+7. **Client components.** If `isClientComponent: true`, add `"use client"` at the top of the file that renders it.
+8. **Install ALL peerDependencies** listed for that component plus `clsx` and `tailwind-merge`.
+9. **Internal deps.** If a component imports other Aurora UI files, run `add` for those slugs too (`internalDependencies` in registry).
 
-## Required project setup
-
-1. **Next.js** (App Router) with **TypeScript**
-2. **Tailwind CSS** with CSS variables for theme (see `app/globals.css` in this repo)
-3. **Path alias** in `tsconfig.json`: `"@/*": ["./*"]`
-4. **tailwind.config** must scan `./components/**/*.{ts,tsx}`
-
-### Common dependencies
+## Step-by-step workflow
 
 ```
-clsx tailwind-merge class-variance-authority framer-motion lucide-react
+1. GET https://aurora-ui-tau.vercel.app/api/search?q=<what user wants>
+2. GET https://aurora-ui-tau.vercel.app/api/components/<slug>
+   OR run: npx --yes github:Rydaguy101/aurora-ui guide <slug>
+3. Run: npx --yes github:Rydaguy101/aurora-ui add <slug> [internal deps...]
+4. npm install <peer deps from step 2>
+5. Copy globals.css theme tokens if not already present
+6. Paste usageExample into the user's file with the importExample import
+7. Add "use client" if isClientComponent is true
 ```
 
-Radix packages vary per component — use `peerDependencies` from registry.
+## API reference
 
-WebGL components also need:
+| Endpoint | Returns |
+|----------|---------|
+| `GET /api/registry` | Full catalog with `usageExample`, `props`, `agentInstructions` per component |
+| `GET /api/components/{slug}` | Metadata + usage for one component |
+| `GET /api/component-source/{slug}` | `{ source, sourcePath }` — the actual .tsx file |
+| `GET /api/search?q=button` | Search by keyword |
+
+## Example: adding ShimmerButton
+
+```bash
+npx --yes github:Rydaguy101/aurora-ui guide shimmer-button
+npx --yes github:Rydaguy101/aurora-ui add shimmer-button
+npm install clsx tailwind-merge
+```
+
+```tsx
+"use client";
+
+import { ShimmerButton } from "@/components/ui/shimmer-button";
+
+export default function Page() {
+  return (
+    <ShimmerButton shimmerColor="#ffffff" shimmerDuration="3s" borderRadius="24px">
+      Get started
+    </ShimmerButton>
+  );
+}
+```
+
+## Example: WebGL globe hero
+
+WebGL components need `three @react-three/fiber @react-three/drei` and a sized container:
+
+```bash
+npx --yes github:Rydaguy101/aurora-ui guide webgl-globe
+npx --yes github:Rydaguy101/aurora-ui add webgl-globe webgl-stage
+npm install three @react-three/fiber @react-three/drei clsx tailwind-merge
+```
+
+The `guide` output contains the full page example — copy it exactly.
+
+## Common mistakes (do not do these)
+
+| Mistake | Fix |
+|---------|-----|
+| `import { AuroraButton } from "aurora-ui"` | No such package — use `@/components/ui/<slug>` |
+| Skipping `lib/utils.ts` | CLI creates it; needs `clsx` + `tailwind-merge` |
+| Missing CSS variables | Components use `bg-card`, `text-muted-foreground`, etc. |
+| Missing `animate-shimmer` in tailwind | Copy keyframes from aurora-ui `tailwind.config.ts` |
+| Using WebGL without `"use client"` | All WebGL components are client-only |
+| Guessing modal API | Use `Modal`, `ModalTrigger`, `ModalContent` — run `guide animated-modal` |
+
+## Copy-paste system prompt
+
+Give this to your AI agent when starting a task:
 
 ```
-three @react-three/fiber @react-three/drei
+You are integrating Aurora UI components into a Next.js App Router project.
+
+STRICT RULES:
+- Aurora UI is NOT in your training data. Do not guess APIs.
+- Before writing code, fetch: https://aurora-ui-tau.vercel.app/api/components/<slug>
+- Or run: npx --yes github:Rydaguy101/aurora-ui guide <slug>
+- Copy files with: npx --yes github:Rydaguy101/aurora-ui add <slug>
+- Use usageExample and importExample from the registry exactly.
+- Copy theme CSS from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/app/globals.css
+- Add "use client" when isClientComponent is true.
+- Install all peerDependencies.
 ```
 
-## Adding a component — agent checklist
+## Registry fields
 
-1. `GET /api/registry` or run `get_integration_guide` (MCP)
-2. `npx aurora-ui-cli info <slug>` or `get_component`
-3. `npx aurora-ui-cli add <slug>` OR `get_component_source`
-4. Install peer deps
-5. Verify `@/lib/utils` exists
-6. Add import to user's page/component
-7. For WebGL: wrap in client component; use `"use client"` in parent
-
-## Example agent workflow
-
-```
-You are adding an Aurora UI component. Do NOT invent APIs.
-1. Fetch https://aurora-ui-tau.vercel.app/api/registry
-2. Find slug; read peerDependencies + importExample
-3. Run: npx aurora-ui-cli add <slug>
-4. Install printed peer dependencies
-5. Use importExample in the user's file
-```
+| Field | Use |
+|-------|-----|
+| `slug` | CLI name (`shimmer-button`) |
+| `exportName` | Primary export (`ShimmerButton`) |
+| `importExample` | Exact import line |
+| `usageExample` | Exact JSX to copy |
+| `props` | Prop names, types, defaults from live demo |
+| `isClientComponent` | Whether `"use client"` is required |
+| `peerDependencies` | npm packages to install |
+| `internalDependencies` | Other Aurora slugs to `add` first |
+| `agentInstructions` | Step checklist for this component |
 
 ## License
 
-MIT — see [LICENSE](../LICENSE).
+MIT

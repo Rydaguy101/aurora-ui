@@ -13,8 +13,21 @@ interface RegistryComponent {
   tags?: string[];
   sourcePath: string;
   sourceUrl?: string;
+  liveSourceUrl?: string;
+  exportName?: string;
+  exportNames?: string[];
+  isClientComponent?: boolean;
+  internalDependencies?: string[];
   peerDependencies?: string[];
   importExample?: string;
+  usageExample?: string;
+  agentInstructions?: string;
+  props?: Array<{
+    name: string;
+    type: string;
+    default?: unknown;
+    description: string;
+  }>;
 }
 
 async function getRegistryComponent(slug: string): Promise<RegistryComponent | null> {
@@ -55,6 +68,10 @@ export async function GET(
     category: entry.category,
     description: entry.description,
     tags: entry.tags ?? [],
+    exportName: entry.exportName,
+    exportNames: entry.exportNames ?? [],
+    isClientComponent: entry.isClientComponent ?? false,
+    internalDependencies: entry.internalDependencies ?? [],
     sourcePath: entry.sourcePath,
     sourceUrl: `${baseUrl}/api/component-source/${entry.slug}`,
     githubSourceUrl:
@@ -63,6 +80,11 @@ export async function GET(
     peerDependencies,
     importExample:
       entry.importExample ?? `import { /* see source */ } from "@/components/ui/${entry.slug}";`,
+    usageExample: entry.usageExample,
+    props: entry.props ?? [],
+    agentInstructions: entry.agentInstructions,
+    cliGuideCommand: `npx --yes github:Rydaguy101/aurora-ui guide ${entry.slug}`,
+    cliAddCommand: `npx --yes github:Rydaguy101/aurora-ui add ${entry.slug}`,
     previewUrl: `${baseUrl}/components#${entry.slug}`,
   });
 }

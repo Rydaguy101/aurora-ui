@@ -123,6 +123,49 @@ server.tool(
 );
 
 server.tool(
+  "get_component_guide",
+  "Get complete setup instructions, exact JSX usage, props, and import for one Aurora UI component. Call this BEFORE writing any component code.",
+  {
+    slug: z.string().describe("Component slug, e.g. shimmer-button"),
+  },
+  async ({ slug }) => {
+    const registry = await loadRegistry();
+    const item = findComponent(registry, slug);
+
+    return {
+      content: [
+        {
+          type: "text",
+          text: [
+            `# ${item.title} (${item.slug})`,
+            item.description,
+            "",
+            "## Import",
+            item.importExample,
+            "",
+            "## Usage (copy exactly)",
+            item.usageExample ?? "<Component />",
+            "",
+            "## Props",
+            JSON.stringify(item.props ?? [], null, 2),
+            "",
+            "## Checklist",
+            item.agentInstructions ?? "See FOR_AI.md",
+            "",
+            `isClientComponent: ${item.isClientComponent ?? false}`,
+            `peerDependencies: ${(item.peerDependencies ?? []).join(", ")}`,
+            `internalDependencies: ${(item.internalDependencies ?? []).join(", ") || "none"}`,
+            "",
+            "Install command:",
+            `npx --yes github:Rydaguy101/aurora-ui add ${item.slug}`,
+          ].join("\n"),
+        },
+      ],
+    };
+  }
+);
+
+server.tool(
   "get_component",
   "Get metadata for one Aurora UI component by slug",
   {
