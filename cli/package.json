@@ -1,0 +1,26 @@
+{
+  "name": "aurora-ui-cli",
+  "version": "1.0.0",
+  "description": "CLI to list, inspect, and add Aurora UI copy-paste components",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "aurora-ui": "./bin/aurora-ui.mjs"
+  },
+  "files": [
+    "bin"
+  ],
+  "keywords": [
+    "aurora-ui",
+    "react",
+    "nextjs",
+    "components",
+    "cli",
+    "shadcn",
+    "framer-motion"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Rydaguy101/aurora-ui"
+  }
+}

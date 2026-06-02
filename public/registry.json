@@ -1,0 +1,1326 @@
+{
+  "$schema": "./registry.schema.json",
+  "name": "aurora-ui",
+  "version": "1.0.0",
+  "description": "High-end animated React component library for Next.js (copy-paste + CLI).",
+  "repository": "https://github.com/Rydaguy101/aurora-ui",
+  "homepage": "https://github.com/Rydaguy101/aurora-ui#readme",
+  "registryUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/public/registry.json",
+  "aiDocsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md",
+  "llmsTxtUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/llms.txt",
+  "categoryOrder": [
+    "Actions",
+    "Forms & Feedback",
+    "Cards & Surfaces",
+    "Overlays & Menus",
+    "Layout & Navigation",
+    "Typography & Counters",
+    "Backgrounds & Ambient Effects",
+    "3D & WebGL"
+  ],
+  "componentCount": 84,
+  "components": [
+    {
+      "slug": "accordion",
+      "title": "Accordion",
+      "category": "Forms & Feedback",
+      "description": "Animated disclosure panels for compact FAQ and settings layouts.",
+      "sourcePath": "components/ui/accordion.tsx",
+      "tags": [
+        "faq",
+        "disclosure"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { Accordion } from \"@/components/ui/accordion\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/accordion.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "alert",
+      "title": "Alert",
+      "category": "Forms & Feedback",
+      "description": "Contextual callout banners for info, success, warning, and error states.",
+      "sourcePath": "components/ui/alert.tsx",
+      "tags": [
+        "feedback",
+        "status"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { Alert } from \"@/components/ui/alert\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/alert.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "animated-modal",
+      "title": "Animated Modal",
+      "category": "Forms & Feedback",
+      "description": "A spring-based modal system with backdrop blur and layered motion.",
+      "sourcePath": "components/ui/animated-modal.tsx",
+      "tags": [
+        "modal",
+        "overlay"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { Modal } from \"@/components/ui/animated-modal\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/animated-modal.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "animated-tabs",
+      "title": "Animated Tabs",
+      "category": "Forms & Feedback",
+      "description": "A sliding pill tabset powered by shared layout animation.",
+      "sourcePath": "components/ui/animated-tabs.tsx",
+      "tags": [
+        "tabs",
+        "navigation"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { AnimatedTabs } from \"@/components/ui/animated-tabs\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/animated-tabs.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "aurora-background",
+      "title": "Aurora Background",
+      "category": "Backgrounds & Ambient Effects",
+      "description": "A living gradient field that gives pages atmosphere without heavy markup.",
+      "sourcePath": "components/ui/aurora-background.tsx",
+      "tags": [
+        "background",
+        "aurora"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { AuroraBackground } from \"@/components/ui/aurora-background\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/aurora-background.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "avatar",
+      "title": "Avatar",
+      "category": "Cards & Surfaces",
+      "description": "User avatar with image support and gradient fallback initials.",
+      "sourcePath": "components/ui/avatar.tsx",
+      "tags": [
+        "profile",
+        "avatar"
+      ],
+      "peerDependencies": [
+        "@radix-ui/react-avatar"
+      ],
+      "importExample": "import { Avatar } from \"@/components/ui/avatar\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/avatar.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "badge",
+      "title": "Badge",
+      "category": "Actions",
+      "description": "Compact status chips for labels, release notes, or category tags.",
+      "sourcePath": "components/ui/badge.tsx",
+      "tags": [
+        "label",
+        "status"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { Badge } from \"@/components/ui/badge\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/badge.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "beams-background",
+      "title": "Beams Background",
+      "category": "Backgrounds & Ambient Effects",
+      "description": "Vertical light beams that pulse behind landing page heroes.",
+      "sourcePath": "components/ui/beams-background.tsx",
+      "tags": [
+        "background",
+        "hero",
+        "beams"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { BeamsBackground } from \"@/components/ui/beams-background\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/beams-background.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "bento-grid",
+      "title": "Bento Grid",
+      "category": "Layout & Navigation",
+      "description": "A responsive editorial grid for mixing product stories and feature cards.",
+      "sourcePath": "components/ui/bento-grid.tsx",
+      "tags": [
+        "grid",
+        "layout"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { BentoGrid } from \"@/components/ui/bento-grid\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/bento-grid.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "blur-text",
+      "title": "Blur Text",
+      "category": "Typography & Counters",
+      "description": "Characters or words animate in from blur with staggered timing.",
+      "sourcePath": "components/ui/blur-text.tsx",
+      "tags": [
+        "text",
+        "animation"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { BlurText } from \"@/components/ui/blur-text\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/blur-text.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "border-beam",
+      "title": "Border Beam",
+      "category": "Cards & Surfaces",
+      "description": "A comet-like beam that traces the perimeter of a rounded surface.",
+      "sourcePath": "components/ui/border-beam.tsx",
+      "tags": [
+        "border",
+        "beam"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { BorderBeam } from \"@/components/ui/border-beam\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/border-beam.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "breadcrumb",
+      "title": "Breadcrumb",
+      "category": "Layout & Navigation",
+      "description": "Hierarchical breadcrumb trail for nested pages and settings.",
+      "sourcePath": "components/ui/breadcrumb.tsx",
+      "tags": [
+        "navigation",
+        "breadcrumb"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { Breadcrumb } from \"@/components/ui/breadcrumb\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/breadcrumb.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "button",
+      "title": "Button",
+      "category": "Actions",
+      "description": "The core button primitive with variants, sizes, and disabled states.",
+      "sourcePath": "components/ui/button.tsx",
+      "tags": [
+        "action",
+        "variant",
+        "cta"
+      ],
+      "peerDependencies": [
+        "@radix-ui/react-slot"
+      ],
+      "importExample": "import { /* see source */ } from \"@/components/ui/button\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/button.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "card",
+      "title": "Card",
+      "category": "Cards & Surfaces",
+      "description": "Composable card primitive with header, content, and footer sections.",
+      "sourcePath": "components/ui/card.tsx",
+      "tags": [
+        "card",
+        "layout"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { Card } from \"@/components/ui/card\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/card.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "card-3d",
+      "title": "3D Card",
+      "category": "Cards & Surfaces",
+      "description": "A perspective tilt card with configurable motion intensity.",
+      "sourcePath": "components/ui/card-3d.tsx",
+      "tags": [
+        "card",
+        "motion",
+        "tilt"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { Card3D } from \"@/components/ui/card-3d\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/card-3d.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "card-stack",
+      "title": "Card Stack",
+      "category": "Cards & Surfaces",
+      "description": "An auto-cycling layered stack that keeps the top card in focus.",
+      "sourcePath": "components/ui/card-stack.tsx",
+      "tags": [
+        "stack",
+        "testimonials"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { CardStack } from \"@/components/ui/card-stack\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/card-stack.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "carousel",
+      "title": "Carousel",
+      "category": "Cards & Surfaces",
+      "description": "Animated slide carousel with arrows, dots, and optional autoplay.",
+      "sourcePath": "components/ui/carousel.tsx",
+      "tags": [
+        "carousel",
+        "slides"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { Carousel } from \"@/components/ui/carousel\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/carousel.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "checkbox",
+      "title": "Checkbox",
+      "category": "Forms & Feedback",
+      "description": "Accessible checkbox built on Radix with Aurora focus and checked states.",
+      "sourcePath": "components/ui/checkbox.tsx",
+      "tags": [
+        "form",
+        "toggle"
+      ],
+      "peerDependencies": [
+        "@radix-ui/react-checkbox"
+      ],
+      "importExample": "import { Checkbox } from \"@/components/ui/checkbox\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/checkbox.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "circular-text",
+      "title": "Circular Text",
+      "category": "Typography & Counters",
+      "description": "Text arranged in a spinning circle around a center point.",
+      "sourcePath": "components/ui/circular-text.tsx",
+      "tags": [
+        "text",
+        "circular"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { CircularText } from \"@/components/ui/circular-text\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/circular-text.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "collapsible",
+      "title": "Collapsible",
+      "category": "Overlays & Menus",
+      "description": "Expandable section with smooth height animation.",
+      "sourcePath": "components/ui/collapsible.tsx",
+      "tags": [
+        "disclosure",
+        "accordion"
+      ],
+      "peerDependencies": [
+        "@radix-ui/react-collapsible"
+      ],
+      "importExample": "import { CollapsibleSection } from \"@/components/ui/collapsible\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/collapsible.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "command-menu",
+      "title": "Command Menu",
+      "category": "Overlays & Menus",
+      "description": "Spotlight-style command palette with search and keyboard shortcuts.",
+      "sourcePath": "components/ui/command-menu.tsx",
+      "tags": [
+        "command",
+        "search"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { CommandMenu } from \"@/components/ui/command-menu\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/command-menu.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "context-menu",
+      "title": "Context Menu",
+      "category": "Overlays & Menus",
+      "description": "Right-click menu with nested items and checkbox options.",
+      "sourcePath": "components/ui/context-menu.tsx",
+      "tags": [
+        "menu",
+        "context"
+      ],
+      "peerDependencies": [
+        "@radix-ui/react-context-menu"
+      ],
+      "importExample": "import { ContextMenu } from \"@/components/ui/context-menu\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/context-menu.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "countdown",
+      "title": "Countdown",
+      "category": "Typography & Counters",
+      "description": "Live countdown timer with animated digit transitions.",
+      "sourcePath": "components/ui/countdown.tsx",
+      "tags": [
+        "timer",
+        "launch"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { Countdown } from \"@/components/ui/countdown\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/countdown.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "dock",
+      "title": "Dock",
+      "category": "Layout & Navigation",
+      "description": "A magnifying dock inspired by desktop launchers and app bars.",
+      "sourcePath": "components/ui/dock.tsx",
+      "tags": [
+        "navigation",
+        "dock"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { Dock } from \"@/components/ui/dock\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/dock.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "dropdown-menu",
+      "title": "Dropdown Menu",
+      "category": "Overlays & Menus",
+      "description": "Context menu with items, shortcuts, and keyboard navigation.",
+      "sourcePath": "components/ui/dropdown-menu.tsx",
+      "tags": [
+        "menu",
+        "overlay"
+      ],
+      "peerDependencies": [
+        "@radix-ui/react-dropdown-menu"
+      ],
+      "importExample": "import { DropdownMenu } from \"@/components/ui/dropdown-menu\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/dropdown-menu.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "empty-state",
+      "title": "Empty State",
+      "category": "Forms & Feedback",
+      "description": "Placeholder for empty lists, search results, or first-run experiences.",
+      "sourcePath": "components/ui/empty-state.tsx",
+      "tags": [
+        "empty",
+        "placeholder"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { EmptyState } from \"@/components/ui/empty-state\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/empty-state.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "fade-in",
+      "title": "Fade In",
+      "category": "Typography & Counters",
+      "description": "Scroll-triggered fade and blur entrance wrapper for any content.",
+      "sourcePath": "components/ui/fade-in.tsx",
+      "tags": [
+        "scroll",
+        "reveal"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { FadeIn } from \"@/components/ui/fade-in\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/fade-in.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "file-dropzone",
+      "title": "File Dropzone",
+      "category": "Forms & Feedback",
+      "description": "Drag-and-drop upload zone with file size limits.",
+      "sourcePath": "components/ui/file-dropzone.tsx",
+      "tags": [
+        "form",
+        "upload"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { FileDropzone } from \"@/components/ui/file-dropzone\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/file-dropzone.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "flip-words",
+      "title": "Flip Words",
+      "category": "Typography & Counters",
+      "description": "Inline word swaps that preserve layout while cycling through a set.",
+      "sourcePath": "components/ui/flip-words.tsx",
+      "tags": [
+        "hero",
+        "text"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { FlipWords } from \"@/components/ui/flip-words\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/flip-words.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "floating-input",
+      "title": "Floating Input",
+      "category": "Forms & Feedback",
+      "description": "A text field with an animated label that lifts as content appears.",
+      "sourcePath": "components/ui/floating-input.tsx",
+      "tags": [
+        "form",
+        "input"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { FloatingInput } from \"@/components/ui/floating-input\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/floating-input.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "floating-orbs",
+      "title": "Floating Orbs",
+      "category": "Backgrounds & Ambient Effects",
+      "description": "Soft blurred gradient orbs that drift behind hero headlines and CTAs.",
+      "sourcePath": "components/ui/floating-orbs.tsx",
+      "tags": [
+        "background",
+        "hero",
+        "orbs"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { FloatingOrbs } from \"@/components/ui/floating-orbs\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/floating-orbs.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "footer",
+      "title": "Footer",
+      "category": "Layout & Navigation",
+      "description": "Site footer with brand, navigation links, and social link.",
+      "sourcePath": "components/ui/footer.tsx",
+      "tags": [
+        "layout",
+        "footer"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { Footer } from \"@/components/ui/footer\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/footer.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "glow-card",
+      "title": "Glow Card",
+      "category": "Cards & Surfaces",
+      "description": "A border glow that tracks the mouse for connected grids and panels.",
+      "sourcePath": "components/ui/glow-card.tsx",
+      "tags": [
+        "card",
+        "glow"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { GlowCard } from \"@/components/ui/glow-card\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/glow-card.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "gradient-mesh",
+      "title": "Gradient Mesh",
+      "category": "Backgrounds & Ambient Effects",
+      "description": "Animated color blobs that blend into a living mesh backdrop.",
+      "sourcePath": "components/ui/gradient-mesh.tsx",
+      "tags": [
+        "background",
+        "hero",
+        "gradient"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { GradientMesh } from \"@/components/ui/gradient-mesh\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/gradient-mesh.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "gradient-text",
+      "title": "Gradient Text",
+      "category": "Typography & Counters",
+      "description": "Animated gradient typography for large headlines and accents.",
+      "sourcePath": "components/ui/gradient-text.tsx",
+      "tags": [
+        "headline",
+        "gradient"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { GradientText } from \"@/components/ui/gradient-text\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/gradient-text.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "grid-pattern",
+      "title": "Grid Pattern",
+      "category": "Backgrounds & Ambient Effects",
+      "description": "Low-contrast grids or dots for grounded surfaces and hero backdrops.",
+      "sourcePath": "components/ui/grid-pattern.tsx",
+      "tags": [
+        "background",
+        "pattern"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { GridPattern } from \"@/components/ui/grid-pattern\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/grid-pattern.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "hero-waves",
+      "title": "Hero Waves",
+      "category": "Backgrounds & Ambient Effects",
+      "description": "Layered SVG waves anchored to the bottom of hero sections.",
+      "sourcePath": "components/ui/hero-waves.tsx",
+      "tags": [
+        "background",
+        "hero",
+        "waves"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { HeroWaves } from \"@/components/ui/hero-waves\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/hero-waves.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "hover-card",
+      "title": "Hover Card",
+      "category": "Cards & Surfaces",
+      "description": "Rich preview card that appears on hover with smooth enter/exit motion.",
+      "sourcePath": "components/ui/hover-card.tsx",
+      "tags": [
+        "hover",
+        "preview"
+      ],
+      "peerDependencies": [
+        "@radix-ui/react-hover-card"
+      ],
+      "importExample": "import { HoverCard } from \"@/components/ui/hover-card\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/hover-card.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "infinite-moving-cards",
+      "title": "Infinite Moving Cards",
+      "category": "Layout & Navigation",
+      "description": "A testimonial rail built on top of the marquee primitive.",
+      "sourcePath": "components/ui/infinite-moving-cards.tsx",
+      "tags": [
+        "marquee",
+        "testimonials"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { InfiniteMovingCards } from \"@/components/ui/infinite-moving-cards\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/infinite-moving-cards.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "input",
+      "title": "Input",
+      "category": "Forms & Feedback",
+      "description": "A styled text input primitive for forms, filters, and search fields.",
+      "sourcePath": "components/ui/input.tsx",
+      "tags": [
+        "form",
+        "input"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { Input } from \"@/components/ui/input\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/input.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "light-rays",
+      "title": "Light Rays",
+      "category": "Backgrounds & Ambient Effects",
+      "description": "Radiating light beams from a central glow point.",
+      "sourcePath": "components/ui/light-rays.tsx",
+      "tags": [
+        "background",
+        "light"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { LightRays } from \"@/components/ui/light-rays\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/light-rays.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "magnetic-button",
+      "title": "Magnetic Button",
+      "category": "Actions",
+      "description": "Cursor-reactive movement that adds a tactile pull to any child button.",
+      "sourcePath": "components/ui/magnetic-button.tsx",
+      "tags": [
+        "button",
+        "motion",
+        "hover"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { MagneticButton } from \"@/components/ui/magnetic-button\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/magnetic-button.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "marquee",
+      "title": "Marquee",
+      "category": "Layout & Navigation",
+      "description": "An endlessly looping strip for logos, pills, or small content rows.",
+      "sourcePath": "components/ui/marquee.tsx",
+      "tags": [
+        "loop",
+        "layout"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { Marquee } from \"@/components/ui/marquee\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/marquee.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "meteors",
+      "title": "Meteors",
+      "category": "Backgrounds & Ambient Effects",
+      "description": "A meteor shower overlay for dramatic cards and promotional blocks.",
+      "sourcePath": "components/ui/meteors.tsx",
+      "tags": [
+        "background",
+        "effect"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { Meteors } from \"@/components/ui/meteors\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/meteors.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "navbar",
+      "title": "Navbar",
+      "category": "Layout & Navigation",
+      "description": "Responsive top navigation with mobile drawer and CTA button.",
+      "sourcePath": "components/ui/navbar.tsx",
+      "tags": [
+        "navigation",
+        "header"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { Navbar } from \"@/components/ui/navbar\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/navbar.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "number-ticker",
+      "title": "Number Ticker",
+      "category": "Typography & Counters",
+      "description": "Animated figures for stats, dashboards, and compact metric cards.",
+      "sourcePath": "components/ui/number-ticker.tsx",
+      "tags": [
+        "metrics",
+        "stats"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { NumberTicker } from \"@/components/ui/number-ticker\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/number-ticker.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "otp-input",
+      "title": "OTP Input",
+      "category": "Forms & Feedback",
+      "description": "Segmented one-time-password input with paste support and arrow navigation.",
+      "sourcePath": "components/ui/otp-input.tsx",
+      "tags": [
+        "form",
+        "auth"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { OtpInput } from \"@/components/ui/otp-input\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/otp-input.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "pagination",
+      "title": "Pagination",
+      "category": "Layout & Navigation",
+      "description": "Numbered page controls with previous/next navigation.",
+      "sourcePath": "components/ui/pagination.tsx",
+      "tags": [
+        "navigation",
+        "pagination"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { Pagination } from \"@/components/ui/pagination\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/pagination.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "particles",
+      "title": "Particles",
+      "category": "Backgrounds & Ambient Effects",
+      "description": "A lightweight particle field for ambient motion and hover depth.",
+      "sourcePath": "components/ui/particles.tsx",
+      "tags": [
+        "canvas",
+        "ambient"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { Particles } from \"@/components/ui/particles\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/particles.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "password-input",
+      "title": "Password Input",
+      "category": "Forms & Feedback",
+      "description": "Password field with show/hide visibility toggle.",
+      "sourcePath": "components/ui/password-input.tsx",
+      "tags": [
+        "form",
+        "auth"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { PasswordInput } from \"@/components/ui/password-input\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/password-input.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "perspective-grid",
+      "title": "Perspective Grid",
+      "category": "Backgrounds & Ambient Effects",
+      "description": "A receding floor grid for tech and SaaS hero sections.",
+      "sourcePath": "components/ui/perspective-grid.tsx",
+      "tags": [
+        "background",
+        "hero",
+        "grid"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { PerspectiveGrid } from \"@/components/ui/perspective-grid\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/perspective-grid.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "popover",
+      "title": "Popover",
+      "category": "Overlays & Menus",
+      "description": "Floating panel anchored to a trigger for compact secondary content.",
+      "sourcePath": "components/ui/popover.tsx",
+      "tags": [
+        "overlay",
+        "popover"
+      ],
+      "peerDependencies": [
+        "@radix-ui/react-popover"
+      ],
+      "importExample": "import { Popover } from \"@/components/ui/popover\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/popover.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "pricing-card",
+      "title": "Pricing Card",
+      "category": "Cards & Surfaces",
+      "description": "Marketing pricing tier card with feature list and CTA.",
+      "sourcePath": "components/ui/pricing-card.tsx",
+      "tags": [
+        "pricing",
+        "marketing"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { PricingCard } from \"@/components/ui/pricing-card\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/pricing-card.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "progress",
+      "title": "Progress",
+      "category": "Forms & Feedback",
+      "description": "A fluid progress bar with optional multicolor gradient fill.",
+      "sourcePath": "components/ui/progress.tsx",
+      "tags": [
+        "feedback",
+        "loading"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { Progress } from \"@/components/ui/progress\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/progress.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "radio-group",
+      "title": "Radio Group",
+      "category": "Forms & Feedback",
+      "description": "Single-select radio options with accessible keyboard navigation.",
+      "sourcePath": "components/ui/radio-group.tsx",
+      "tags": [
+        "form",
+        "radio"
+      ],
+      "peerDependencies": [
+        "@radix-ui/react-radio-group"
+      ],
+      "importExample": "import { RadioGroup } from \"@/components/ui/radio-group\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/radio-group.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "rainbow-button",
+      "title": "Rainbow Button",
+      "category": "Actions",
+      "description": "A saturated rainbow border treatment with a soft spectral glow.",
+      "sourcePath": "components/ui/rainbow-button.tsx",
+      "tags": [
+        "button",
+        "gradient"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { RainbowButton } from \"@/components/ui/rainbow-button\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/rainbow-button.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "range-slider",
+      "title": "Slider",
+      "category": "Forms & Feedback",
+      "description": "Draggable range control with gradient fill and spring thumb.",
+      "sourcePath": "components/ui/slider.tsx",
+      "tags": [
+        "form",
+        "range"
+      ],
+      "peerDependencies": [
+        "@radix-ui/react-slider"
+      ],
+      "importExample": "import { Slider } from \"@/components/ui/range-slider\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/slider.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "ripple-button",
+      "title": "Ripple Button",
+      "category": "Actions",
+      "description": "A soft expanding ripple that responds to the click position.",
+      "sourcePath": "components/ui/ripple-button.tsx",
+      "tags": [
+        "button",
+        "feedback"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { RippleButton } from \"@/components/ui/ripple-button\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/ripple-button.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "scroll-progress",
+      "title": "Scroll Progress",
+      "category": "Layout & Navigation",
+      "description": "A viewport-bound progress indicator that tracks page scroll.",
+      "sourcePath": "components/ui/scroll-progress.tsx",
+      "tags": [
+        "viewport",
+        "progress"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { ScrollProgress } from \"@/components/ui/scroll-progress\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/scroll-progress.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "select",
+      "title": "Select",
+      "category": "Forms & Feedback",
+      "description": "Keyboard-friendly select menu with animated open/close transitions.",
+      "sourcePath": "components/ui/select.tsx",
+      "tags": [
+        "form",
+        "select"
+      ],
+      "peerDependencies": [
+        "@radix-ui/react-select"
+      ],
+      "importExample": "import { Select } from \"@/components/ui/select\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/select.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "sheet",
+      "title": "Sheet",
+      "category": "Overlays & Menus",
+      "description": "Spring-animated slide-over panel for settings, filters, and mobile nav.",
+      "sourcePath": "components/ui/sheet.tsx",
+      "tags": [
+        "drawer",
+        "overlay"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { Sheet } from \"@/components/ui/sheet\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/sheet.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "shimmer-button",
+      "title": "Shimmer Button",
+      "category": "Actions",
+      "description": "A premium button with a conic shimmer sweep and layered lighting.",
+      "sourcePath": "components/ui/shimmer-button.tsx",
+      "tags": [
+        "button",
+        "shimmer",
+        "animated"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { ShimmerButton } from \"@/components/ui/shimmer-button\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/shimmer-button.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "shiny-text",
+      "title": "Shiny Text",
+      "category": "Typography & Counters",
+      "description": "A glossy text treatment with a subtle moving highlight.",
+      "sourcePath": "components/ui/shiny-text.tsx",
+      "tags": [
+        "headline",
+        "shimmer"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { ShinyText } from \"@/components/ui/shiny-text\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/shiny-text.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "skeleton",
+      "title": "Skeleton",
+      "category": "Cards & Surfaces",
+      "description": "A subtle shimmer placeholder for loading content blocks and avatars.",
+      "sourcePath": "components/ui/skeleton.tsx",
+      "tags": [
+        "loading",
+        "placeholder"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { Skeleton } from \"@/components/ui/skeleton\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/skeleton.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "spinner",
+      "title": "Spinner",
+      "category": "Forms & Feedback",
+      "description": "Animated loading indicator in three sizes.",
+      "sourcePath": "components/ui/spinner.tsx",
+      "tags": [
+        "loading",
+        "feedback"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { Spinner } from \"@/components/ui/spinner\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/spinner.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "split-text",
+      "title": "Split Text",
+      "category": "Typography & Counters",
+      "description": "Split and stagger text by characters, words, or lines with 3D rotation.",
+      "sourcePath": "components/ui/split-text.tsx",
+      "tags": [
+        "text",
+        "hero"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { SplitText } from \"@/components/ui/split-text\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/split-text.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "spotlight",
+      "title": "Spotlight",
+      "category": "Backgrounds & Ambient Effects",
+      "description": "An oversized, animated spotlight that energizes hero sections.",
+      "sourcePath": "components/ui/spotlight.tsx",
+      "tags": [
+        "background",
+        "hero"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { Spotlight } from \"@/components/ui/spotlight\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/spotlight.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "spotlight-card",
+      "title": "Spotlight Card",
+      "category": "Cards & Surfaces",
+      "description": "A card surface that blooms with a radial spotlight under the cursor.",
+      "sourcePath": "components/ui/spotlight-card.tsx",
+      "tags": [
+        "card",
+        "hover"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { SpotlightCard } from \"@/components/ui/spotlight-card\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/spotlight-card.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "star-rating",
+      "title": "Star Rating",
+      "category": "Forms & Feedback",
+      "description": "Interactive star rating with hover preview and read-only mode.",
+      "sourcePath": "components/ui/star-rating.tsx",
+      "tags": [
+        "form",
+        "rating"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { StarRating } from \"@/components/ui/star-rating\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/star-rating.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "starfield-background",
+      "title": "Starfield",
+      "category": "Backgrounds & Ambient Effects",
+      "description": "Twinkling star field for dark hero backgrounds and launch pages.",
+      "sourcePath": "components/ui/starfield-background.tsx",
+      "tags": [
+        "background",
+        "hero",
+        "stars"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { StarfieldBackground } from \"@/components/ui/starfield-background\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/starfield-background.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "stat-card",
+      "title": "Stat Card",
+      "category": "Cards & Surfaces",
+      "description": "Dashboard metric card with optional trend indicator.",
+      "sourcePath": "components/ui/stat-card.tsx",
+      "tags": [
+        "dashboard",
+        "metrics"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { StatCard } from \"@/components/ui/stat-card\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/stat-card.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "stepper",
+      "title": "Stepper",
+      "category": "Layout & Navigation",
+      "description": "Multi-step progress indicator for wizards and onboarding flows.",
+      "sourcePath": "components/ui/stepper.tsx",
+      "tags": [
+        "wizard",
+        "steps"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { Stepper } from \"@/components/ui/stepper\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/stepper.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "switch",
+      "title": "Switch",
+      "category": "Forms & Feedback",
+      "description": "A springy toggle with clear active, inactive, and disabled states.",
+      "sourcePath": "components/ui/switch.tsx",
+      "tags": [
+        "toggle",
+        "form"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { Switch } from \"@/components/ui/switch\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/switch.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "table",
+      "title": "Table",
+      "category": "Cards & Surfaces",
+      "description": "Styled data table with hover rows and compact typography.",
+      "sourcePath": "components/ui/table.tsx",
+      "tags": [
+        "data",
+        "table"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { Table } from \"@/components/ui/table\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/table.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "text-reveal",
+      "title": "Text Reveal",
+      "category": "Typography & Counters",
+      "description": "Word-by-word reveals that activate as content enters the viewport.",
+      "sourcePath": "components/ui/text-reveal.tsx",
+      "tags": [
+        "scroll",
+        "headline"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { TextReveal } from \"@/components/ui/text-reveal\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/text-reveal.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "text-scramble",
+      "title": "Text Scramble",
+      "category": "Typography & Counters",
+      "description": "Decrypt-style character scramble animation on load.",
+      "sourcePath": "components/ui/text-scramble.tsx",
+      "tags": [
+        "text",
+        "scramble"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { TextScramble } from \"@/components/ui/text-scramble\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/text-scramble.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "textarea",
+      "title": "Textarea",
+      "category": "Forms & Feedback",
+      "description": "Multi-line text input with matching Aurora styling and focus states.",
+      "sourcePath": "components/ui/textarea.tsx",
+      "tags": [
+        "form",
+        "textarea"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { Textarea } from \"@/components/ui/textarea\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/textarea.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "timeline",
+      "title": "Timeline",
+      "category": "Layout & Navigation",
+      "description": "Vertical activity timeline for logs, history, and changelogs.",
+      "sourcePath": "components/ui/timeline.tsx",
+      "tags": [
+        "history",
+        "activity"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { Timeline } from \"@/components/ui/timeline\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/timeline.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "toast",
+      "title": "Toast",
+      "category": "Overlays & Menus",
+      "description": "Animated toast notifications with success, error, and info variants.",
+      "sourcePath": "components/ui/toast.tsx",
+      "tags": [
+        "notification",
+        "feedback"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { useToast } from \"@/components/ui/toast\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/toast.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "toggle-group",
+      "title": "Toggle Group",
+      "category": "Forms & Feedback",
+      "description": "Segmented control for switching between a small set of views or filters.",
+      "sourcePath": "components/ui/toggle-group.tsx",
+      "tags": [
+        "form",
+        "segmented"
+      ],
+      "peerDependencies": [
+        "@radix-ui/react-toggle-group"
+      ],
+      "importExample": "import { ToggleGroup } from \"@/components/ui/toggle-group\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/toggle-group.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "tooltip",
+      "title": "Tooltip",
+      "category": "Forms & Feedback",
+      "description": "Directional tooltips for adding quick context around interactions.",
+      "sourcePath": "components/ui/tooltip.tsx",
+      "tags": [
+        "hover",
+        "overlay"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { Tooltip } from \"@/components/ui/tooltip\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/tooltip.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "typewriter",
+      "title": "Typewriter",
+      "category": "Typography & Counters",
+      "description": "Typing and deleting copy for hero lines, taglines, and product loops.",
+      "sourcePath": "components/ui/typewriter.tsx",
+      "tags": [
+        "text",
+        "typing"
+      ],
+      "peerDependencies": [],
+      "importExample": "import { Typewriter } from \"@/components/ui/typewriter\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/typewriter.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "webgl-globe",
+      "title": "WebGL Globe",
+      "category": "3D & WebGL",
+      "description": "Interactive dotted globe rendered with react-three-fiber — spin, glow, and depth for platform heroes.",
+      "sourcePath": "components/ui/webgl-globe.tsx",
+      "tags": [
+        "3d",
+        "webgl",
+        "globe"
+      ],
+      "peerDependencies": [
+        "@react-three/drei"
+      ],
+      "importExample": "import { WebGLGlobe } from \"@/components/ui/webgl-globe\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/webgl-globe.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    },
+    {
+      "slug": "webgl-particle-field",
+      "title": "WebGL Particle Field",
+      "category": "3D & WebGL",
+      "description": "Depth-filled particle cloud with cursor parallax — a lightweight WebGL hero backdrop.",
+      "sourcePath": "components/ui/webgl-particle-field.tsx",
+      "tags": [
+        "3d",
+        "webgl",
+        "particles",
+        "hero"
+      ],
+      "peerDependencies": [
+        "@react-three/drei",
+        "@react-three/fiber"
+      ],
+      "importExample": "import { WebGLParticleField } from \"@/components/ui/webgl-particle-field\";",
+      "sourceUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/components/ui/webgl-particle-field.tsx",
+      "docsUrl": "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/docs/FOR_AI.md"
+    }
+  ]
+}

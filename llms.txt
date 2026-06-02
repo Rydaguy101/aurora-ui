@@ -1,0 +1,34 @@
+# Aurora UI
+
+> Copy-paste animated React components for Next.js (Tailwind, Radix, Framer Motion, WebGL).
+
+Aurora UI is a source-first component library. Components are copied into your project — there is no opaque npm UI package.
+
+## Primary resources for AI agents
+
+- [Agent integration guide](docs/FOR_AI.md): step-by-step for LLMs — **read this first**
+- [Component registry JSON](public/registry.json): machine-readable catalog with slugs, descriptions, raw source URLs, peer deps, import examples
+- [CLI](cli/bin/aurora-ui.mjs): `list`, `info`, `add`, `init` — run with `--help`
+
+## Quick commands
+
+```bash
+# List all components
+npx --yes github:Rydaguy101/aurora-ui/cli/bin/aurora-ui.mjs list
+
+# Add components to your app
+npx --yes github:Rydaguy101/aurora-ui/cli/bin/aurora-ui.mjs add button card webgl-globe
+```
+
+## Live documentation
+
+Clone the repo and run `npm run dev`, then open `/components` for previews, customization controls, and source tabs.
+
+## Categories
+
+Actions · Forms & Feedback · Cards & Surfaces · Overlays & Menus · Layout & Navigation · Typography & Counters · Backgrounds & Ambient Effects · 3D & WebGL
+
+## Optional
+
+- [README.md](README.md): human-oriented overview
+- [AGENTS.md](AGENTS.md): Cursor workspace preferences
