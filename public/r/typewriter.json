@@ -1,0 +1,62 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typewriter",
+  "type": "registry:ui",
+  "title": "Typewriter",
+  "description": "Typing and deleting copy for hero lines, taglines, and product loops.",
+  "categories": [
+    "Typography & Counters",
+    "text",
+    "typing"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/typewriter.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport React, { useEffect, useState } from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface TypewriterProps {\r\n  words: string[];\r\n  className?: string;\r\n  typingSpeed?: number;\r\n  deletingSpeed?: number;\r\n  pauseTime?: number;\r\n  cursorClassName?: string;\r\n}\r\n\r\nexport function Typewriter({\r\n  words,\r\n  className,\r\n  typingSpeed = 90,\r\n  deletingSpeed = 45,\r\n  pauseTime = 1600,\r\n  cursorClassName,\r\n}: TypewriterProps) {\r\n  const [index, setIndex] = useState(0);\r\n  const [subIndex, setSubIndex] = useState(0);\r\n  const [deleting, setDeleting] = useState(false);\r\n\r\n  useEffect(() => {\r\n    const current = words[index % words.length];\r\n\r\n    if (!deleting && subIndex === current.length) {\r\n      const t = setTimeout(() => setDeleting(true), pauseTime);\r\n      return () => clearTimeout(t);\r\n    }\r\n\r\n    if (deleting && subIndex === 0) {\r\n      setDeleting(false);\r\n      setIndex((prev) => (prev + 1) % words.length);\r\n      return;\r\n    }\r\n\r\n    const timeout = setTimeout(\r\n      () => setSubIndex((prev) => prev + (deleting ? -1 : 1)),\r\n      deleting ? deletingSpeed : typingSpeed\r\n    );\r\n    return () => clearTimeout(timeout);\r\n  }, [subIndex, deleting, index, words, typingSpeed, deletingSpeed, pauseTime]);\r\n\r\n  return (\r\n    <span className={cn(\"inline-flex items-center\", className)}>\r\n      {words[index % words.length].substring(0, subIndex)}\r\n      <span\r\n        className={cn(\r\n          \"ml-0.5 inline-block h-[1em] w-[3px] animate-pulse bg-primary\",\r\n          cursorClassName\r\n        )}\r\n      />\r\n    </span>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Typewriter\nTyping and deleting copy for hero lines, taglines, and product loops.\n## Import\n```tsx\nimport { Typewriter } from \"@/components/ui/typewriter\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<Typewriter words=\"websites\" typingSpeed={90} deletingSpeed={45} pauseTime={1600} />\n```\n## Props\n- **words** (string) — default: `\"websites\"`: Words\n- **typingSpeed** (number) — default: `90`: Typing speed\n- **deletingSpeed** (number) — default: `45`: Deleting speed\n- **pauseTime** (number) — default: `1600`: Pause time\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add typewriter\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/typewriter\n```",
+  "meta": {
+    "exportName": "Typewriter",
+    "exportNames": [
+      "Typewriter"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<Typewriter words=\"websites\" typingSpeed={90} deletingSpeed={45} pauseTime={1600} />",
+    "importExample": "import { Typewriter } from \"@/components/ui/typewriter\";",
+    "props": [
+      {
+        "name": "words",
+        "type": "string",
+        "default": "websites",
+        "description": "Words"
+      },
+      {
+        "name": "typingSpeed",
+        "type": "number",
+        "default": 90,
+        "description": "Typing speed"
+      },
+      {
+        "name": "deletingSpeed",
+        "type": "number",
+        "default": 45,
+        "description": "Deleting speed"
+      },
+      {
+        "name": "pauseTime",
+        "type": "number",
+        "default": 1600,
+        "description": "Pause time"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#typewriter",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/typewriter",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/typewriter"
+  }
+}

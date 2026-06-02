@@ -10,6 +10,12 @@
   "aiPluginUrl": "https://aurora-ui-tau.vercel.app/.well-known/ai-plugin.json",
   "agentsManifestUrl": "https://aurora-ui-tau.vercel.app/.well-known/agents.json",
   "cliCommand": "npx --yes github:Rydaguy101/aurora-ui",
+  "shadcnRegistryUrl": "https://aurora-ui-tau.vercel.app/shadcn-registry.json",
+  "shadcnItemUrlTemplate": "https://aurora-ui-tau.vercel.app/r/{name}.json",
+  "shadcnAddCommandTemplate": "npx shadcn@latest add @aurora/{name}",
+  "componentsJsonRegistry": {
+    "@aurora": "https://aurora-ui-tau.vercel.app/r/{name}.json"
+  },
   "mcpCommand": "npx --yes github:Rydaguy101/aurora-ui aurora-ui-mcp",
   "cliPackage": "aurora-ui-cli",
   "mcpPackage": "aurora-ui-mcp",

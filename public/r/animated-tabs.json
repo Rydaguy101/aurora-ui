@@ -1,0 +1,49 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-tabs",
+  "type": "registry:ui",
+  "title": "Animated Tabs",
+  "description": "A sliding pill tabset powered by shared layout animation.",
+  "categories": [
+    "Forms & Feedback",
+    "tabs",
+    "navigation"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/animated-tabs.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport React, { useState } from \"react\";\r\nimport { motion } from \"framer-motion\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nexport interface TabItem {\r\n  id: string;\r\n  label: string;\r\n  content: React.ReactNode;\r\n}\r\n\r\ninterface AnimatedTabsProps {\r\n  tabs: TabItem[];\r\n  className?: string;\r\n  defaultTab?: string;\r\n}\r\n\r\nexport function AnimatedTabs({ tabs, className, defaultTab }: AnimatedTabsProps) {\r\n  const [active, setActive] = useState(defaultTab ?? tabs[0]?.id);\r\n  const activeTab = tabs.find((t) => t.id === active);\r\n\r\n  return (\r\n    <div className={cn(\"w-full\", className)}>\r\n      <div className=\"inline-flex items-center gap-1 rounded-xl border border-border bg-card/50 p-1 backdrop-blur\">\r\n        {tabs.map((tab) => (\r\n          <button\r\n            key={tab.id}\r\n            onClick={() => setActive(tab.id)}\r\n            className={cn(\r\n              \"relative rounded-lg px-4 py-2 text-sm font-medium transition-colors\",\r\n              active === tab.id\r\n                ? \"text-primary-foreground\"\r\n                : \"text-muted-foreground hover:text-foreground\"\r\n            )}\r\n          >\r\n            {active === tab.id && (\r\n              <motion.div\r\n                layoutId=\"active-tab-pill\"\r\n                className=\"absolute inset-0 rounded-lg bg-primary\"\r\n                transition={{ type: \"spring\", stiffness: 380, damping: 30 }}\r\n              />\r\n            )}\r\n            <span className=\"relative z-10\">{tab.label}</span>\r\n          </button>\r\n        ))}\r\n      </div>\r\n      <div className=\"relative mt-6 overflow-hidden\">\r\n        <motion.div\r\n          key={active}\r\n          initial={{ opacity: 0, y: 12 }}\r\n          animate={{ opacity: 1, y: 0 }}\r\n          transition={{ duration: 0.3, ease: \"easeOut\" }}\r\n        >\r\n          {activeTab?.content}\r\n        </motion.div>\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Animated Tabs\nA sliding pill tabset powered by shared layout animation.\n## Import\n```tsx\nimport { AnimatedTabs } from \"@/components/ui/animated-tabs\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<AnimatedTabs\n  defaultTab=\"design\"\n  tabs={[\n    { id: \"design\", label: \"Design\", content: <p>Design content</p> },\n    { id: \"motion\", label: \"Motion\", content: <p>Motion content</p> },\n  ]}\n/>\n```\n## Props\n- **defaultTab** (string) — default: `\"design\"`: Default tab\n- **label** (string): Trigger label\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add animated-tabs\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/animated-tabs\n```",
+  "meta": {
+    "exportName": "AnimatedTabs",
+    "exportNames": [
+      "AnimatedTabs"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<AnimatedTabs\n  defaultTab=\"design\"\n  tabs={[\n    { id: \"design\", label: \"Design\", content: <p>Design content</p> },\n    { id: \"motion\", label: \"Motion\", content: <p>Motion content</p> },\n  ]}\n/>",
+    "importExample": "import { AnimatedTabs } from \"@/components/ui/animated-tabs\";",
+    "props": [
+      {
+        "name": "defaultTab",
+        "type": "string",
+        "default": "design",
+        "description": "Default tab"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "description": "Trigger label"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#animated-tabs",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/animated-tabs",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/animated-tabs"
+  }
+}

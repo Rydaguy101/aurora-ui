@@ -1,0 +1,54 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stepper",
+  "type": "registry:ui",
+  "title": "Stepper",
+  "description": "Multi-step progress indicator for wizards and onboarding flows.",
+  "categories": [
+    "Layout & Navigation",
+    "wizard",
+    "steps"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/stepper.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport { Check } from \"lucide-react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nexport interface StepItem {\r\n  id: string;\r\n  title: string;\r\n  description?: string;\r\n}\r\n\r\ninterface StepperProps {\r\n  steps: StepItem[];\r\n  currentStep: number;\r\n  className?: string;\r\n}\r\n\r\nexport function Stepper({ steps, currentStep, className }: StepperProps) {\r\n  return (\r\n    <div className={cn(\"w-full\", className)}>\r\n      <div className=\"flex items-center\">\r\n        {steps.map((step, index) => {\r\n          const done = index < currentStep;\r\n          const active = index === currentStep;\r\n          return (\r\n            <div key={step.id} className=\"flex flex-1 items-center\">\r\n              <div className=\"flex flex-col items-center gap-2\">\r\n                <div\r\n                  className={cn(\r\n                    \"flex size-9 items-center justify-center rounded-full border text-sm font-semibold transition-colors\",\r\n                    done && \"border-primary bg-primary text-primary-foreground\",\r\n                    active && \"border-primary bg-primary/15 text-primary\",\r\n                    !done && !active && \"border-border bg-card/50 text-muted-foreground\"\r\n                  )}\r\n                >\r\n                  {done ? <Check className=\"size-4\" /> : index + 1}\r\n                </div>\r\n                <div className=\"hidden text-center sm:block\">\r\n                  <p className={cn(\"text-sm font-medium\", active ? \"text-foreground\" : \"text-muted-foreground\")}>{step.title}</p>\r\n                  {step.description && <p className=\"mt-0.5 text-xs text-muted-foreground\">{step.description}</p>}\r\n                </div>\r\n              </div>\r\n              {index < steps.length - 1 && (\r\n                <div className={cn(\"mx-2 h-px flex-1\", index < currentStep ? \"bg-primary\" : \"bg-border\")} />\r\n              )}\r\n            </div>\r\n          );\r\n        })}\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Stepper\nMulti-step progress indicator for wizards and onboarding flows.\n## Import\n```tsx\nimport { Stepper } from \"@/components/ui/stepper\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<Stepper currentStep={1} itemCount={undefined} brand={undefined} />\n```\n## Props\n- **currentStep** (number) — default: `1`: Current step\n- **itemCount** (number): Items shown\n- **brand** (string): Brand\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add stepper\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/stepper\n```",
+  "meta": {
+    "exportName": "Stepper",
+    "exportNames": [
+      "Stepper"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<Stepper currentStep={1} itemCount={undefined} brand={undefined} />",
+    "importExample": "import { Stepper } from \"@/components/ui/stepper\";",
+    "props": [
+      {
+        "name": "currentStep",
+        "type": "number",
+        "default": 1,
+        "description": "Current step"
+      },
+      {
+        "name": "itemCount",
+        "type": "number",
+        "description": "Items shown"
+      },
+      {
+        "name": "brand",
+        "type": "string",
+        "description": "Brand"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#stepper",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/stepper",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/stepper"
+  }
+}

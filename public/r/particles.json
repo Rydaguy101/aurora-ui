@@ -1,0 +1,61 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "particles",
+  "type": "registry:ui",
+  "title": "Particles",
+  "description": "A lightweight particle field for ambient motion and hover depth.",
+  "categories": [
+    "Backgrounds & Ambient Effects",
+    "canvas",
+    "ambient"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/particles.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport React, { useEffect, useRef } from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface ParticlesProps {\r\n  className?: string;\r\n  quantity?: number;\r\n  color?: string;\r\n  speed?: number;\r\n}\r\n\r\ninterface Particle {\r\n  x: number;\r\n  y: number;\r\n  vx: number;\r\n  vy: number;\r\n  size: number;\r\n  alpha: number;\r\n}\r\n\r\nexport function Particles({\r\n  className,\r\n  quantity = 80,\r\n  color = \"168, 85, 247\",\r\n  speed = 0.4,\r\n}: ParticlesProps) {\r\n  const canvasRef = useRef<HTMLCanvasElement>(null);\r\n  const mouse = useRef({ x: 0, y: 0 });\r\n\r\n  useEffect(() => {\r\n    const canvas = canvasRef.current;\r\n    if (!canvas) return;\r\n    const ctx = canvas.getContext(\"2d\");\r\n    if (!ctx) return;\r\n\r\n    let raf = 0;\r\n    let particles: Particle[] = [];\r\n    const dpr = window.devicePixelRatio || 1;\r\n\r\n    const resize = () => {\r\n      const parent = canvas.parentElement;\r\n      if (!parent) return;\r\n      canvas.width = parent.clientWidth * dpr;\r\n      canvas.height = parent.clientHeight * dpr;\r\n      canvas.style.width = `${parent.clientWidth}px`;\r\n      canvas.style.height = `${parent.clientHeight}px`;\r\n    };\r\n\r\n    const init = () => {\r\n      particles = Array.from({ length: quantity }).map(() => ({\r\n        x: Math.random() * canvas.width,\r\n        y: Math.random() * canvas.height,\r\n        vx: (Math.random() - 0.5) * speed * dpr,\r\n        vy: (Math.random() - 0.5) * speed * dpr,\r\n        size: Math.random() * 2 + 0.5,\r\n        alpha: Math.random() * 0.5 + 0.2,\r\n      }));\r\n    };\r\n\r\n    const draw = () => {\r\n      ctx.clearRect(0, 0, canvas.width, canvas.height);\r\n      particles.forEach((p) => {\r\n        p.x += p.vx;\r\n        p.y += p.vy;\r\n        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;\r\n        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;\r\n        ctx.beginPath();\r\n        ctx.arc(p.x, p.y, p.size * dpr, 0, Math.PI * 2);\r\n        ctx.fillStyle = `rgba(${color}, ${p.alpha})`;\r\n        ctx.fill();\r\n      });\r\n      raf = requestAnimationFrame(draw);\r\n    };\r\n\r\n    resize();\r\n    init();\r\n    draw();\r\n    window.addEventListener(\"resize\", () => {\r\n      resize();\r\n      init();\r\n    });\r\n\r\n    return () => {\r\n      cancelAnimationFrame(raf);\r\n      window.removeEventListener(\"resize\", resize);\r\n    };\r\n  }, [quantity, color, speed]);\r\n\r\n  return (\r\n    <canvas\r\n      ref={canvasRef}\r\n      onMouseMove={(e) => (mouse.current = { x: e.clientX, y: e.clientY })}\r\n      className={cn(\"pointer-events-none absolute inset-0\", className)}\r\n    />\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Particles\nA lightweight particle field for ambient motion and hover depth.\n## Import\n```tsx\nimport { Particles } from \"@/components/ui/particles\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<Particles quantity={60} speed={0.45} color=\"#a855f7\" number={undefined} />\n```\n## Props\n- **quantity** (number) — default: `60`: Quantity\n- **speed** (number) — default: `0.45`: Speed\n- **color** (string) — default: `\"#a855f7\"`: Color\n- **number** (number): Count\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add particles\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/particles\n```",
+  "meta": {
+    "exportName": "Particles",
+    "exportNames": [
+      "Particles"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<Particles quantity={60} speed={0.45} color=\"#a855f7\" number={undefined} />",
+    "importExample": "import { Particles } from \"@/components/ui/particles\";",
+    "props": [
+      {
+        "name": "quantity",
+        "type": "number",
+        "default": 60,
+        "description": "Quantity"
+      },
+      {
+        "name": "speed",
+        "type": "number",
+        "default": 0.45,
+        "description": "Speed"
+      },
+      {
+        "name": "color",
+        "type": "string",
+        "default": "#a855f7",
+        "description": "Color"
+      },
+      {
+        "name": "number",
+        "type": "number",
+        "description": "Count"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#particles",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/particles",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/particles"
+  }
+}

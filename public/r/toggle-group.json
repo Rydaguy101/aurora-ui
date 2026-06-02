@@ -1,0 +1,52 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle-group",
+  "type": "registry:ui",
+  "title": "Toggle Group",
+  "description": "Segmented control for switching between a small set of views or filters.",
+  "categories": [
+    "Forms & Feedback",
+    "form",
+    "segmented"
+  ],
+  "dependencies": [
+    "@radix-ui/react-toggle-group"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/toggle-group.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport * as ToggleGroupPrimitive from \"@radix-ui/react-toggle-group\";\r\nimport { cva, type VariantProps } from \"class-variance-authority\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nconst toggleVariants = cva(\r\n  \"inline-flex items-center justify-center rounded-lg px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 data-[state=on]:bg-primary data-[state=on]:text-primary-foreground\",\r\n  {\r\n    variants: {\r\n      variant: {\r\n        default: \"bg-transparent hover:bg-secondary/80\",\r\n        outline: \"border border-border bg-transparent hover:bg-secondary/60\",\r\n      },\r\n    },\r\n    defaultVariants: { variant: \"default\" },\r\n  }\r\n);\r\n\r\nexport const ToggleGroup = React.forwardRef<\r\n  React.ElementRef<typeof ToggleGroupPrimitive.Root>,\r\n  React.ComponentPropsWithoutRef<typeof ToggleGroupPrimitive.Root> & VariantProps<typeof toggleVariants>\r\n>(({ className, variant, ...props }, ref) => (\r\n  <ToggleGroupPrimitive.Root\r\n    ref={ref}\r\n    className={cn(\"inline-flex items-center gap-1 rounded-xl border border-border bg-card/40 p-1\", className)}\r\n    {...props}\r\n  />\r\n));\r\nToggleGroup.displayName = ToggleGroupPrimitive.Root.displayName;\r\n\r\nexport const ToggleGroupItem = React.forwardRef<\r\n  React.ElementRef<typeof ToggleGroupPrimitive.Item>,\r\n  React.ComponentPropsWithoutRef<typeof ToggleGroupPrimitive.Item> & VariantProps<typeof toggleVariants>\r\n>(({ className, variant, ...props }, ref) => (\r\n  <ToggleGroupPrimitive.Item ref={ref} className={cn(toggleVariants({ variant }), className)} {...props} />\r\n));\r\nToggleGroupItem.displayName = ToggleGroupPrimitive.Item.displayName;\r\n"
+    }
+  ],
+  "docs": "# Toggle Group\nSegmented control for switching between a small set of views or filters.\n## Import\n```tsx\nimport { ToggleGroup, ToggleGroupItem } from \"@/components/ui/toggle-group\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<ToggleGroup value=\"week\" placeholder={undefined} />\n```\n## Props\n- **value** (string) — default: `\"week\"`: Selected\n- **placeholder** (string): Placeholder\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add toggle-group\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/toggle-group\n```",
+  "meta": {
+    "exportName": "ToggleGroup",
+    "exportNames": [
+      "ToggleGroup",
+      "ToggleGroupItem"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<ToggleGroup value=\"week\" placeholder={undefined} />",
+    "importExample": "import { ToggleGroup, ToggleGroupItem } from \"@/components/ui/toggle-group\";",
+    "props": [
+      {
+        "name": "value",
+        "type": "string",
+        "default": "week",
+        "description": "Selected"
+      },
+      {
+        "name": "placeholder",
+        "type": "string",
+        "description": "Placeholder"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#toggle-group",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/toggle-group",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/toggle-group"
+  }
+}

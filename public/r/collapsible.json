@@ -1,0 +1,60 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "collapsible",
+  "type": "registry:ui",
+  "title": "Collapsible",
+  "description": "Expandable section with smooth height animation.",
+  "categories": [
+    "Overlays & Menus",
+    "disclosure",
+    "accordion"
+  ],
+  "dependencies": [
+    "@radix-ui/react-collapsible"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/collapsible.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport * as CollapsiblePrimitive from \"@radix-ui/react-collapsible\";\r\nimport { ChevronDown } from \"lucide-react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nexport const Collapsible = CollapsiblePrimitive.Root;\r\nexport const CollapsibleTrigger = CollapsiblePrimitive.Trigger;\r\nexport const CollapsibleContent = CollapsiblePrimitive.Content;\r\n\r\nexport function CollapsibleSection({\r\n  title,\r\n  children,\r\n  defaultOpen = false,\r\n  className,\r\n}: {\r\n  title: string;\r\n  children: React.ReactNode;\r\n  defaultOpen?: boolean;\r\n  className?: string;\r\n}) {\r\n  const [open, setOpen] = React.useState(defaultOpen);\r\n\r\n  return (\r\n    <Collapsible open={open} onOpenChange={setOpen} className={cn(\"w-full rounded-xl border border-border bg-card/50\", className)}>\r\n      <CollapsibleTrigger className=\"flex w-full items-center justify-between px-4 py-3 text-left font-medium transition-colors hover:text-primary\">\r\n        {title}\r\n        <ChevronDown className={cn(\"size-4 text-muted-foreground transition-transform\", open && \"rotate-180\")} />\r\n      </CollapsibleTrigger>\r\n      <CollapsibleContent className=\"overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down\">\r\n        <div className=\"border-t border-border px-4 py-3 text-sm text-muted-foreground\">{children}</div>\r\n      </CollapsibleContent>\r\n    </Collapsible>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Collapsible\nExpandable section with smooth height animation.\n## Import\n```tsx\nimport { Collapsible, CollapsibleTrigger, CollapsibleContent, CollapsibleSection } from \"@/components/ui/collapsible\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<Collapsible title=\"Advanced settings\" defaultOpen={false} currentStep={undefined} />\n```\n## Props\n- **title** (string) — default: `\"Advanced settings\"`: Title\n- **defaultOpen** (boolean) — default: `false`: Default open\n- **currentStep** (number): Current step\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add collapsible\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/collapsible\n```",
+  "meta": {
+    "exportName": "Collapsible",
+    "exportNames": [
+      "Collapsible",
+      "CollapsibleTrigger",
+      "CollapsibleContent",
+      "CollapsibleSection"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<Collapsible title=\"Advanced settings\" defaultOpen={false} currentStep={undefined} />",
+    "importExample": "import { Collapsible, CollapsibleTrigger, CollapsibleContent, CollapsibleSection } from \"@/components/ui/collapsible\";",
+    "props": [
+      {
+        "name": "title",
+        "type": "string",
+        "default": "Advanced settings",
+        "description": "Title"
+      },
+      {
+        "name": "defaultOpen",
+        "type": "boolean",
+        "default": false,
+        "description": "Default open"
+      },
+      {
+        "name": "currentStep",
+        "type": "number",
+        "description": "Current step"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#collapsible",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/collapsible",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/collapsible"
+  }
+}

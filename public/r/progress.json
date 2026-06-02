@@ -1,0 +1,60 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progress",
+  "type": "registry:ui",
+  "title": "Progress",
+  "description": "A fluid progress bar with optional multicolor gradient fill.",
+  "categories": [
+    "Forms & Feedback",
+    "feedback",
+    "loading"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/progress.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport React from \"react\";\r\nimport { motion } from \"framer-motion\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface ProgressProps {\r\n  value: number;\r\n  className?: string;\r\n  indicatorClassName?: string;\r\n  gradient?: boolean;\r\n}\r\n\r\nexport function Progress({\r\n  value,\r\n  className,\r\n  indicatorClassName,\r\n  gradient = true,\r\n}: ProgressProps) {\r\n  return (\r\n    <div\r\n      className={cn(\r\n        \"relative h-2.5 w-full overflow-hidden rounded-full bg-secondary\",\r\n        className\r\n      )}\r\n    >\r\n      <motion.div\r\n        initial={{ width: 0 }}\r\n        animate={{ width: `${Math.min(Math.max(value, 0), 100)}%` }}\r\n        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}\r\n        className={cn(\r\n          \"h-full rounded-full\",\r\n          gradient\r\n            ? \"bg-gradient-to-r from-violet-500 via-fuchsia-500 to-cyan-400\"\r\n            : \"bg-primary\",\r\n          indicatorClassName\r\n        )}\r\n      />\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Progress\nA fluid progress bar with optional multicolor gradient fill.\n## Import\n```tsx\nimport { Progress } from \"@/components/ui/progress\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<Progress value={68} gradient content={undefined} side={undefined} />\n```\n## Props\n- **value** (number) — default: `68`: Value\n- **gradient** (boolean) — default: `true`: Gradient\n- **content** (string): Content\n- **side** (string): Side\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add progress\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/progress\n```",
+  "meta": {
+    "exportName": "Progress",
+    "exportNames": [
+      "Progress"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<Progress value={68} gradient content={undefined} side={undefined} />",
+    "importExample": "import { Progress } from \"@/components/ui/progress\";",
+    "props": [
+      {
+        "name": "value",
+        "type": "number",
+        "default": 68,
+        "description": "Value"
+      },
+      {
+        "name": "gradient",
+        "type": "boolean",
+        "default": true,
+        "description": "Gradient"
+      },
+      {
+        "name": "content",
+        "type": "string",
+        "description": "Content"
+      },
+      {
+        "name": "side",
+        "type": "string",
+        "description": "Side"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#progress",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/progress",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/progress"
+  }
+}

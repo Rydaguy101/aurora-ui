@@ -1,0 +1,73 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gradient-mesh",
+  "type": "registry:ui",
+  "title": "Gradient Mesh",
+  "description": "Animated color blobs that blend into a living mesh backdrop.",
+  "categories": [
+    "Backgrounds & Ambient Effects",
+    "background",
+    "hero",
+    "gradient"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/gradient-mesh.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport React from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface GradientMeshProps {\r\n  className?: string;\r\n  colorFrom?: string;\r\n  colorTo?: string;\r\n  speed?: number;\r\n}\r\n\r\nexport function GradientMesh({\r\n  className,\r\n  colorFrom = \"#a855f7\",\r\n  colorTo = \"#22d3ee\",\r\n  speed = 1,\r\n}: GradientMeshProps) {\r\n  return (\r\n    <div className={cn(\"pointer-events-none absolute inset-0 overflow-hidden\", className)}>\r\n      <div\r\n        className=\"absolute -left-1/4 -top-1/4 size-[70%] animate-blob rounded-full opacity-50 blur-3xl\"\r\n        style={{\r\n          background: colorFrom,\r\n          animationDuration: `${10 / speed}s`,\r\n        }}\r\n      />\r\n      <div\r\n        className=\"absolute -bottom-1/4 -right-1/4 size-[65%] animate-blob rounded-full opacity-45 blur-3xl\"\r\n        style={{\r\n          background: colorTo,\r\n          animationDuration: `${12 / speed}s`,\r\n          animationDelay: \"2s\",\r\n        }}\r\n      />\r\n      <div\r\n        className=\"absolute left-1/3 top-1/2 size-[45%] -translate-y-1/2 animate-blob rounded-full opacity-35 blur-3xl\"\r\n        style={{\r\n          background: `linear-gradient(135deg, ${colorFrom}, ${colorTo})`,\r\n          animationDuration: `${14 / speed}s`,\r\n          animationDelay: \"4s\",\r\n        }}\r\n      />\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Gradient Mesh\nAnimated color blobs that blend into a living mesh backdrop.\n## Import\n```tsx\nimport { GradientMesh } from \"@/components/ui/gradient-mesh\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<GradientMesh colorFrom=\"#a855f7\" colorTo=\"#22d3ee\" speed={1} count={undefined} color={undefined} speed={1} />\n```\n## Props\n- **colorFrom** (string) — default: `\"#a855f7\"`: From\n- **colorTo** (string) — default: `\"#22d3ee\"`: To\n- **speed** (number) — default: `1`: Speed\n- **count** (number): Beam count\n- **color** (string): Color\n- **speed** (number) — default: `1`: Speed\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add gradient-mesh\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/gradient-mesh\n```",
+  "meta": {
+    "exportName": "GradientMesh",
+    "exportNames": [
+      "GradientMesh"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<GradientMesh colorFrom=\"#a855f7\" colorTo=\"#22d3ee\" speed={1} count={undefined} color={undefined} speed={1} />",
+    "importExample": "import { GradientMesh } from \"@/components/ui/gradient-mesh\";",
+    "props": [
+      {
+        "name": "colorFrom",
+        "type": "string",
+        "default": "#a855f7",
+        "description": "From"
+      },
+      {
+        "name": "colorTo",
+        "type": "string",
+        "default": "#22d3ee",
+        "description": "To"
+      },
+      {
+        "name": "speed",
+        "type": "number",
+        "default": 1,
+        "description": "Speed"
+      },
+      {
+        "name": "count",
+        "type": "number",
+        "description": "Beam count"
+      },
+      {
+        "name": "color",
+        "type": "string",
+        "description": "Color"
+      },
+      {
+        "name": "speed",
+        "type": "number",
+        "default": 1,
+        "description": "Speed"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#gradient-mesh",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/gradient-mesh",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/gradient-mesh"
+  }
+}

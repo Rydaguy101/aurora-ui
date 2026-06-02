@@ -15,6 +15,8 @@ let registryCache = null;
 let registryLoadedAt = 0;
 const CACHE_MS = 60_000;
 
+const NPX_CMD = "npx --yes github:Rydaguy101/aurora-ui";
+
 async function loadRegistry() {
   const now = Date.now();
   if (registryCache && now - registryLoadedAt < CACHE_MS) return registryCache;
@@ -230,6 +232,138 @@ server.tool(
     }
     const text = await response.text();
     return { content: [{ type: "text", text }] };
+  }
+);
+
+// shadcn-compatible MCP tool names (same workflow as shadcn Cursor plugin)
+server.tool(
+  "list_items_in_registries",
+  "List Aurora UI components in the @aurora registry (shadcn-compatible)",
+  {
+    registries: z.array(z.string()).optional().describe('Registries to list, default ["@aurora"]'),
+  },
+  async ({ registries }) => {
+    const registry = await loadRegistry();
+    const lines = registry.components.map(
+      (item) => `@aurora/${item.slug} — ${item.title}: ${item.description}`
+    );
+    return {
+      content: [
+        {
+          type: "text",
+          text: `Registries: ${(registries ?? ["@aurora"]).join(", ")}\n\n${lines.join("\n")}`,
+        },
+      ],
+    };
+  }
+);
+
+server.tool(
+  "search_items_in_registries",
+  "Search Aurora UI components (shadcn-compatible)",
+  {
+    registries: z.array(z.string()).optional(),
+    query: z.string().describe("Search query, e.g. button, webgl, card"),
+  },
+  async ({ query }) => {
+    const registry = await loadRegistry();
+    const q = query.trim().toLowerCase();
+    const matches = registry.components.filter((item) => {
+      const haystack = [item.slug, item.title, item.description, item.category, ...(item.tags ?? [])]
+        .join(" ")
+        .toLowerCase();
+      return haystack.includes(q);
+    });
+
+    const lines = matches.map((item) => `@aurora/${item.slug} — ${item.title}`);
+    return {
+      content: [
+        {
+          type: "text",
+          text: matches.length
+            ? `Found ${matches.length} item(s):\n\n${lines.join("\n")}`
+            : `No items matched "${query}".`,
+        },
+      ],
+    };
+  }
+);
+
+server.tool(
+  "get_add_command_for_items",
+  "Get the add command for Aurora UI items (shadcn-compatible)",
+  {
+    items: z.array(z.string()).describe("Items like @aurora/shimmer-button or shimmer-button"),
+  },
+  async ({ items }) => {
+    const commands = items.map((item) => {
+      const slug = item.replace(/^@aurora\//, "");
+      return {
+        item,
+        auroraCli: `${NPX_CMD} add ${slug}`,
+        shadcnCli: `npx shadcn@latest add @aurora/${slug}`,
+      };
+    });
+
+    return {
+      content: [
+        {
+          type: "text",
+          text: commands
+            .map((entry) => `${entry.item}\n  ${entry.auroraCli}\n  ${entry.shadcnCli}`)
+            .join("\n\n"),
+        },
+      ],
+    };
+  }
+);
+
+server.tool(
+  "get_item_examples_from_registries",
+  "Get usage examples for Aurora UI components (shadcn-compatible)",
+  {
+    registries: z.array(z.string()).optional(),
+    query: z.string().describe("Component slug or search term, e.g. shimmer-button"),
+  },
+  async ({ query }) => {
+    const registry = await loadRegistry();
+    const q = query.trim().toLowerCase();
+    const item =
+      registry.components.find((entry) => entry.slug === q) ??
+      registry.components.find((entry) => {
+        const haystack = [entry.slug, entry.title, ...(entry.tags ?? [])].join(" ").toLowerCase();
+        return haystack.includes(q);
+      });
+
+    if (!item) {
+      return { content: [{ type: "text", text: `No example found for "${query}".` }] };
+    }
+
+    return {
+      content: [
+        {
+          type: "text",
+          text: [
+            `# @aurora/${item.slug} — ${item.title}`,
+            item.description,
+            "",
+            "## Import",
+            item.importExample,
+            "",
+            "## Usage",
+            item.usageExample ?? "<Component />",
+            "",
+            "## Props",
+            JSON.stringify(item.props ?? [], null, 2),
+            "",
+            `isClientComponent: ${item.isClientComponent ?? false}`,
+            "",
+            `${NPX_CMD} add ${item.slug}`,
+            `npx shadcn@latest add @aurora/${item.slug}`,
+          ].join("\n"),
+        },
+      ],
+    };
   }
 );
 

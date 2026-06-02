@@ -1,0 +1,56 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ripple-button",
+  "type": "registry:ui",
+  "title": "Ripple Button",
+  "description": "A soft expanding ripple that responds to the click position.",
+  "categories": [
+    "Actions",
+    "button",
+    "feedback"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/ripple-button.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport React, { useState } from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface Ripple {\r\n  x: number;\r\n  y: number;\r\n  size: number;\r\n  key: number;\r\n}\r\n\r\ninterface RippleButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {\r\n  rippleColor?: string;\r\n  children: React.ReactNode;\r\n}\r\n\r\nexport function RippleButton({\r\n  children,\r\n  className,\r\n  rippleColor = \"rgba(255,255,255,0.5)\",\r\n  onClick,\r\n  ...props\r\n}: RippleButtonProps) {\r\n  const [ripples, setRipples] = useState<Ripple[]>([]);\r\n\r\n  const createRipple = (e: React.MouseEvent<HTMLButtonElement>) => {\r\n    const button = e.currentTarget;\r\n    const rect = button.getBoundingClientRect();\r\n    const size = Math.max(rect.width, rect.height);\r\n    const x = e.clientX - rect.left - size / 2;\r\n    const y = e.clientY - rect.top - size / 2;\r\n    const key = Date.now();\r\n    setRipples((prev) => [...prev, { x, y, size, key }]);\r\n    setTimeout(() => {\r\n      setRipples((prev) => prev.filter((r) => r.key !== key));\r\n    }, 600);\r\n    onClick?.(e);\r\n  };\r\n\r\n  return (\r\n    <button\r\n      onClick={createRipple}\r\n      className={cn(\r\n        \"relative overflow-hidden rounded-lg bg-secondary px-6 py-3 font-medium text-foreground transition-colors hover:bg-secondary/80 active:scale-[0.98]\",\r\n        className\r\n      )}\r\n      {...props}\r\n    >\r\n      <span className=\"relative z-10\">{children}</span>\r\n      {ripples.map((r) => (\r\n        <span\r\n          key={r.key}\r\n          className=\"pointer-events-none absolute animate-[ripple_0.6s_linear] rounded-full\"\r\n          style={{\r\n            left: r.x,\r\n            top: r.y,\r\n            width: r.size,\r\n            height: r.size,\r\n            background: rippleColor,\r\n            transform: \"scale(0)\",\r\n            animation: \"ripple-expand 0.6s linear\",\r\n          }}\r\n        />\r\n      ))}\r\n      <style jsx>{`\r\n        @keyframes ripple-expand {\r\n          to {\r\n            transform: scale(2.5);\r\n            opacity: 0;\r\n          }\r\n        }\r\n      `}</style>\r\n    </button>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Ripple Button\nA soft expanding ripple that responds to the click position.\n## Import\n```tsx\nimport { RippleButton } from \"@/components/ui/ripple-button\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<RippleButton rippleColor=\"#ffffff\">Test Me</RippleButton>\n```\n## Props\n- **label** (string) — default: `\"Test Me\"`: Label\n- **rippleColor** (string) — default: `\"#ffffff\"`: Ripple color\n- **label** (string) — default: `\"Test Me\"`: Label\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add ripple-button\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/ripple-button\n```",
+  "meta": {
+    "exportName": "RippleButton",
+    "exportNames": [
+      "RippleButton"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<RippleButton rippleColor=\"#ffffff\">Test Me</RippleButton>",
+    "importExample": "import { RippleButton } from \"@/components/ui/ripple-button\";",
+    "props": [
+      {
+        "name": "label",
+        "type": "string",
+        "default": "Test Me",
+        "description": "Label"
+      },
+      {
+        "name": "rippleColor",
+        "type": "string",
+        "default": "#ffffff",
+        "description": "Ripple color"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "default": "Test Me",
+        "description": "Label"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#ripple-button",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/ripple-button",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/ripple-button"
+  }
+}

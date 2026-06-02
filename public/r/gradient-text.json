@@ -1,0 +1,61 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gradient-text",
+  "type": "registry:ui",
+  "title": "Gradient Text",
+  "description": "Animated gradient typography for large headlines and accents.",
+  "categories": [
+    "Typography & Counters",
+    "headline",
+    "gradient"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/gradient-text.tsx",
+      "type": "registry:ui",
+      "content": "import React from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface GradientTextProps {\r\n  children: React.ReactNode;\r\n  className?: string;\r\n  from?: string;\r\n  via?: string;\r\n  to?: string;\r\n  animate?: boolean;\r\n}\r\n\r\nexport function GradientText({\r\n  children,\r\n  className,\r\n  from = \"from-violet-500\",\r\n  via = \"via-fuchsia-500\",\r\n  to = \"to-cyan-400\",\r\n  animate = true,\r\n}: GradientTextProps) {\r\n  return (\r\n    <span\r\n      className={cn(\r\n        \"bg-gradient-to-r bg-clip-text text-transparent [background-size:200%_auto]\",\r\n        from,\r\n        via,\r\n        to,\r\n        animate && \"animate-gradient\",\r\n        className\r\n      )}\r\n    >\r\n      {children}\r\n    </span>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Gradient Text\nAnimated gradient typography for large headlines and accents.\n## Import\n```tsx\nimport { GradientText } from \"@/components/ui/gradient-text\";\n```\n## Usage\n```tsx\n<GradientText animate shimmerWidth={undefined}>Aurora gradient</GradientText>\n```\n## Props\n- **label** (string) — default: `\"Aurora gradient\"`: Text\n- **animate** (boolean) — default: `true`: Animate\n- **label** (string) — default: `\"Aurora gradient\"`: Text\n- **shimmerWidth** (number): Shimmer width\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add gradient-text\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/gradient-text\n```",
+  "meta": {
+    "exportName": "GradientText",
+    "exportNames": [
+      "GradientText"
+    ],
+    "isClientComponent": false,
+    "usageExample": "<GradientText animate shimmerWidth={undefined}>Aurora gradient</GradientText>",
+    "importExample": "import { GradientText } from \"@/components/ui/gradient-text\";",
+    "props": [
+      {
+        "name": "label",
+        "type": "string",
+        "default": "Aurora gradient",
+        "description": "Text"
+      },
+      {
+        "name": "animate",
+        "type": "boolean",
+        "default": true,
+        "description": "Animate"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "default": "Aurora gradient",
+        "description": "Text"
+      },
+      {
+        "name": "shimmerWidth",
+        "type": "number",
+        "description": "Shimmer width"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#gradient-text",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/gradient-text",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/gradient-text"
+  }
+}

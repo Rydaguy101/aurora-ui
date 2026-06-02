@@ -1,0 +1,50 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-3d",
+  "type": "registry:ui",
+  "title": "3D Card",
+  "description": "A perspective tilt card with configurable motion intensity.",
+  "categories": [
+    "Cards & Surfaces",
+    "card",
+    "motion",
+    "tilt"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/card-3d.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport React, { useRef } from \"react\";\r\nimport { motion, useMotionValue, useSpring, useTransform } from \"framer-motion\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface Card3DProps {\r\n  children: React.ReactNode;\r\n  className?: string;\r\n  intensity?: number;\r\n}\r\n\r\nexport function Card3D({ children, className, intensity = 12 }: Card3DProps) {\r\n  const ref = useRef<HTMLDivElement>(null);\r\n  const x = useMotionValue(0);\r\n  const y = useMotionValue(0);\r\n\r\n  const mouseXSpring = useSpring(x, { stiffness: 200, damping: 20 });\r\n  const mouseYSpring = useSpring(y, { stiffness: 200, damping: 20 });\r\n\r\n  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], [`${intensity}deg`, `-${intensity}deg`]);\r\n  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], [`-${intensity}deg`, `${intensity}deg`]);\r\n\r\n  const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {\r\n    const rect = ref.current?.getBoundingClientRect();\r\n    if (!rect) return;\r\n    x.set((e.clientX - rect.left) / rect.width - 0.5);\r\n    y.set((e.clientY - rect.top) / rect.height - 0.5);\r\n  };\r\n\r\n  const reset = () => {\r\n    x.set(0);\r\n    y.set(0);\r\n  };\r\n\r\n  return (\r\n    <motion.div\r\n      ref={ref}\r\n      onMouseMove={handleMove}\r\n      onMouseLeave={reset}\r\n      style={{ rotateX, rotateY, transformStyle: \"preserve-3d\" }}\r\n      className={cn(\r\n        \"relative rounded-2xl border border-border bg-card p-8 shadow-2xl [perspective:1000px]\",\r\n        className\r\n      )}\r\n    >\r\n      <div style={{ transform: \"translateZ(50px)\", transformStyle: \"preserve-3d\" }}>\r\n        {children}\r\n      </div>\r\n    </motion.div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# 3D Card\nA perspective tilt card with configurable motion intensity.\n## Import\n```tsx\nimport { Card3D } from \"@/components/ui/card-3d\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<Card3D intensity={12} glowColor={undefined} />\n```\n## Props\n- **intensity** (number) — default: `12`: Intensity\n- **glowColor** (string): Glow color\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add card-3d\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/card-3d\n```",
+  "meta": {
+    "exportName": "Card3D",
+    "exportNames": [
+      "Card3D"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<Card3D intensity={12} glowColor={undefined} />",
+    "importExample": "import { Card3D } from \"@/components/ui/card-3d\";",
+    "props": [
+      {
+        "name": "intensity",
+        "type": "number",
+        "default": 12,
+        "description": "Intensity"
+      },
+      {
+        "name": "glowColor",
+        "type": "string",
+        "description": "Glow color"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#card-3d",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/card-3d",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/card-3d"
+  }
+}

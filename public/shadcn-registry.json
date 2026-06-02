@@ -1,0 +1,437 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "aurora",
+  "homepage": "https://aurora-ui-tau.vercel.app",
+  "items": [
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/accordion.json"
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/alert.json"
+    },
+    {
+      "name": "animated-modal",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/animated-modal.json"
+    },
+    {
+      "name": "animated-tabs",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/animated-tabs.json"
+    },
+    {
+      "name": "aurora-background",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/aurora-background.json"
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/avatar.json"
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/badge.json"
+    },
+    {
+      "name": "beams-background",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/beams-background.json"
+    },
+    {
+      "name": "bento-grid",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/bento-grid.json"
+    },
+    {
+      "name": "blur-text",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/blur-text.json"
+    },
+    {
+      "name": "border-beam",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/border-beam.json"
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/breadcrumb.json"
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/button.json"
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/card.json"
+    },
+    {
+      "name": "card-3d",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/card-3d.json"
+    },
+    {
+      "name": "card-stack",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/card-stack.json"
+    },
+    {
+      "name": "carousel",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/carousel.json"
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/checkbox.json"
+    },
+    {
+      "name": "circular-text",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/circular-text.json"
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/collapsible.json"
+    },
+    {
+      "name": "command-menu",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/command-menu.json"
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/context-menu.json"
+    },
+    {
+      "name": "countdown",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/countdown.json"
+    },
+    {
+      "name": "dock",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/dock.json"
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/dropdown-menu.json"
+    },
+    {
+      "name": "empty-state",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/empty-state.json"
+    },
+    {
+      "name": "fade-in",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/fade-in.json"
+    },
+    {
+      "name": "file-dropzone",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/file-dropzone.json"
+    },
+    {
+      "name": "flip-words",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/flip-words.json"
+    },
+    {
+      "name": "floating-input",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/floating-input.json"
+    },
+    {
+      "name": "floating-orbs",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/floating-orbs.json"
+    },
+    {
+      "name": "footer",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/footer.json"
+    },
+    {
+      "name": "glow-card",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/glow-card.json"
+    },
+    {
+      "name": "gradient-mesh",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/gradient-mesh.json"
+    },
+    {
+      "name": "gradient-text",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/gradient-text.json"
+    },
+    {
+      "name": "grid-pattern",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/grid-pattern.json"
+    },
+    {
+      "name": "hero-waves",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/hero-waves.json"
+    },
+    {
+      "name": "hover-card",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/hover-card.json"
+    },
+    {
+      "name": "infinite-moving-cards",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/infinite-moving-cards.json"
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/input.json"
+    },
+    {
+      "name": "light-rays",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/light-rays.json"
+    },
+    {
+      "name": "magnetic-button",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/magnetic-button.json"
+    },
+    {
+      "name": "marquee",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/marquee.json"
+    },
+    {
+      "name": "meteors",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/meteors.json"
+    },
+    {
+      "name": "navbar",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/navbar.json"
+    },
+    {
+      "name": "number-ticker",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/number-ticker.json"
+    },
+    {
+      "name": "otp-input",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/otp-input.json"
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/pagination.json"
+    },
+    {
+      "name": "particles",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/particles.json"
+    },
+    {
+      "name": "password-input",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/password-input.json"
+    },
+    {
+      "name": "perspective-grid",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/perspective-grid.json"
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/popover.json"
+    },
+    {
+      "name": "pricing-card",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/pricing-card.json"
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/progress.json"
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/radio-group.json"
+    },
+    {
+      "name": "rainbow-button",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/rainbow-button.json"
+    },
+    {
+      "name": "range-slider",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/range-slider.json"
+    },
+    {
+      "name": "ripple-button",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/ripple-button.json"
+    },
+    {
+      "name": "scroll-progress",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/scroll-progress.json"
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/select.json"
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/sheet.json"
+    },
+    {
+      "name": "shimmer-button",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/shimmer-button.json"
+    },
+    {
+      "name": "shiny-text",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/shiny-text.json"
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/skeleton.json"
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/spinner.json"
+    },
+    {
+      "name": "split-text",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/split-text.json"
+    },
+    {
+      "name": "spotlight",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/spotlight.json"
+    },
+    {
+      "name": "spotlight-card",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/spotlight-card.json"
+    },
+    {
+      "name": "star-rating",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/star-rating.json"
+    },
+    {
+      "name": "starfield-background",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/starfield-background.json"
+    },
+    {
+      "name": "stat-card",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/stat-card.json"
+    },
+    {
+      "name": "stepper",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/stepper.json"
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/switch.json"
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/table.json"
+    },
+    {
+      "name": "text-reveal",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/text-reveal.json"
+    },
+    {
+      "name": "text-scramble",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/text-scramble.json"
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/textarea.json"
+    },
+    {
+      "name": "timeline",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/timeline.json"
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/toast.json"
+    },
+    {
+      "name": "toggle-group",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/toggle-group.json"
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/tooltip.json"
+    },
+    {
+      "name": "typewriter",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/typewriter.json"
+    },
+    {
+      "name": "webgl-globe",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/webgl-globe.json"
+    },
+    {
+      "name": "webgl-particle-field",
+      "type": "registry:ui",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/webgl-particle-field.json"
+    },
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/utils.json"
+    },
+    {
+      "name": "theme",
+      "type": "registry:theme",
+      "registryUrl": "https://aurora-ui-tau.vercel.app/r/theme.json"
+    }
+  ]
+}

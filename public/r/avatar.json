@@ -1,0 +1,59 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar",
+  "type": "registry:ui",
+  "title": "Avatar",
+  "description": "User avatar with image support and gradient fallback initials.",
+  "categories": [
+    "Cards & Surfaces",
+    "profile",
+    "avatar"
+  ],
+  "dependencies": [
+    "@radix-ui/react-avatar"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/avatar.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport * as AvatarPrimitive from \"@radix-ui/react-avatar\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nexport const Avatar = React.forwardRef<\r\n  React.ElementRef<typeof AvatarPrimitive.Root>,\r\n  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root>\r\n>(({ className, ...props }, ref) => (\r\n  <AvatarPrimitive.Root\r\n    ref={ref}\r\n    className={cn(\"relative flex size-10 shrink-0 overflow-hidden rounded-full border border-border\", className)}\r\n    {...props}\r\n  />\r\n));\r\nAvatar.displayName = AvatarPrimitive.Root.displayName;\r\n\r\nexport const AvatarImage = React.forwardRef<\r\n  React.ElementRef<typeof AvatarPrimitive.Image>,\r\n  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Image>\r\n>(({ className, ...props }, ref) => (\r\n  <AvatarPrimitive.Image ref={ref} className={cn(\"aspect-square size-full object-cover\", className)} {...props} />\r\n));\r\nAvatarImage.displayName = AvatarPrimitive.Image.displayName;\r\n\r\nexport const AvatarFallback = React.forwardRef<\r\n  React.ElementRef<typeof AvatarPrimitive.Fallback>,\r\n  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Fallback>\r\n>(({ className, ...props }, ref) => (\r\n  <AvatarPrimitive.Fallback\r\n    ref={ref}\r\n    className={cn(\"flex size-full items-center justify-center bg-gradient-to-br from-primary to-cyan-400 text-sm font-semibold text-white\", className)}\r\n    {...props}\r\n  />\r\n));\r\nAvatarFallback.displayName = AvatarPrimitive.Fallback.displayName;\r\n"
+    }
+  ],
+  "docs": "# Avatar\nUser avatar with image support and gradient fallback initials.\n## Import\n```tsx\nimport { Avatar, AvatarImage, AvatarFallback } from \"@/components/ui/avatar\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<Avatar fallback=\"AU\" size=\"md\" intensity={undefined} />\n```\n## Props\n- **fallback** (string) — default: `\"AU\"`: Fallback\n- **size** (string) — default: `\"md\"`: Size\n- **intensity** (number): Intensity\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add avatar\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/avatar\n```",
+  "meta": {
+    "exportName": "Avatar",
+    "exportNames": [
+      "Avatar",
+      "AvatarImage",
+      "AvatarFallback"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<Avatar fallback=\"AU\" size=\"md\" intensity={undefined} />",
+    "importExample": "import { Avatar, AvatarImage, AvatarFallback } from \"@/components/ui/avatar\";",
+    "props": [
+      {
+        "name": "fallback",
+        "type": "string",
+        "default": "AU",
+        "description": "Fallback"
+      },
+      {
+        "name": "size",
+        "type": "string",
+        "default": "md",
+        "description": "Size"
+      },
+      {
+        "name": "intensity",
+        "type": "number",
+        "description": "Intensity"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#avatar",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/avatar",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/avatar"
+  }
+}

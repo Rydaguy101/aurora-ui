@@ -1,0 +1,69 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "floating-orbs",
+  "type": "registry:ui",
+  "title": "Floating Orbs",
+  "description": "Soft blurred gradient orbs that drift behind hero headlines and CTAs.",
+  "categories": [
+    "Backgrounds & Ambient Effects",
+    "background",
+    "hero",
+    "orbs"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/floating-orbs.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport React, { useMemo } from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface FloatingOrbsProps {\r\n  className?: string;\r\n  count?: number;\r\n  color?: string;\r\n  speed?: number;\r\n  blur?: number;\r\n}\r\n\r\nfunction seeded(index: number, salt: number) {\r\n  const value = Math.sin(index * 12.9898 + salt * 78.233) * 43758.5453;\r\n  return value - Math.floor(value);\r\n}\r\n\r\nexport function FloatingOrbs({\r\n  className,\r\n  count = 4,\r\n  color = \"#a855f7\",\r\n  speed = 1,\r\n  blur = 80,\r\n}: FloatingOrbsProps) {\r\n  const orbs = useMemo(\r\n    () =>\r\n      Array.from({ length: count }, (_, index) => ({\r\n        id: index,\r\n        size: 100 + seeded(index, 1) * 160,\r\n        left: `${8 + seeded(index, 2) * 72}%`,\r\n        top: `${10 + seeded(index, 3) * 65}%`,\r\n        delay: seeded(index, 4) * 4,\r\n        duration: 5 + seeded(index, 5) * 4,\r\n      })),\r\n    [count]\r\n  );\r\n\r\n  return (\r\n    <div className={cn(\"pointer-events-none absolute inset-0 overflow-hidden\", className)}>\r\n      {orbs.map((orb) => (\r\n        <div\r\n          key={orb.id}\r\n          className=\"absolute animate-float rounded-full opacity-60\"\r\n          style={{\r\n            width: orb.size,\r\n            height: orb.size,\r\n            left: orb.left,\r\n            top: orb.top,\r\n            background: `radial-gradient(circle, ${color} 0%, transparent 70%)`,\r\n            filter: `blur(${blur}px)`,\r\n            animationDuration: `${orb.duration / speed}s`,\r\n            animationDelay: `${orb.delay}s`,\r\n          }}\r\n        />\r\n      ))}\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Floating Orbs\nSoft blurred gradient orbs that drift behind hero headlines and CTAs.\n## Import\n```tsx\nimport { FloatingOrbs } from \"@/components/ui/floating-orbs\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<FloatingOrbs count={4} color=\"#a855f7\" speed={1} blur={80} color=\"#a855f7\" />\n```\n## Props\n- **count** (number) — default: `4`: Orb count\n- **color** (string) — default: `\"#a855f7\"`: Color\n- **speed** (number) — default: `1`: Speed\n- **blur** (number) — default: `80`: Blur\n- **color** (string) — default: `\"#a855f7\"`: Color\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add floating-orbs\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/floating-orbs\n```",
+  "meta": {
+    "exportName": "FloatingOrbs",
+    "exportNames": [
+      "FloatingOrbs"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<FloatingOrbs count={4} color=\"#a855f7\" speed={1} blur={80} color=\"#a855f7\" />",
+    "importExample": "import { FloatingOrbs } from \"@/components/ui/floating-orbs\";",
+    "props": [
+      {
+        "name": "count",
+        "type": "number",
+        "default": 4,
+        "description": "Orb count"
+      },
+      {
+        "name": "color",
+        "type": "string",
+        "default": "#a855f7",
+        "description": "Color"
+      },
+      {
+        "name": "speed",
+        "type": "number",
+        "default": 1,
+        "description": "Speed"
+      },
+      {
+        "name": "blur",
+        "type": "number",
+        "default": 80,
+        "description": "Blur"
+      },
+      {
+        "name": "color",
+        "type": "string",
+        "default": "#a855f7",
+        "description": "Color"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#floating-orbs",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/floating-orbs",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/floating-orbs"
+  }
+}

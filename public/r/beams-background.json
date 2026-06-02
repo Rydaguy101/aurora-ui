@@ -1,0 +1,74 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "beams-background",
+  "type": "registry:ui",
+  "title": "Beams Background",
+  "description": "Vertical light beams that pulse behind landing page heroes.",
+  "categories": [
+    "Backgrounds & Ambient Effects",
+    "background",
+    "hero",
+    "beams"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/beams-background.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport React, { useMemo } from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface BeamsBackgroundProps {\r\n  className?: string;\r\n  count?: number;\r\n  color?: string;\r\n  speed?: number;\r\n}\r\n\r\nfunction seeded(index: number) {\r\n  const value = Math.sin(index * 9.123 + 4.567) * 43758.5453;\r\n  return value - Math.floor(value);\r\n}\r\n\r\nexport function BeamsBackground({\r\n  className,\r\n  count = 8,\r\n  color = \"#a855f7\",\r\n  speed = 1,\r\n}: BeamsBackgroundProps) {\r\n  const beams = useMemo(\r\n    () =>\r\n      Array.from({ length: count }, (_, index) => ({\r\n        id: index,\r\n        left: `${(index / Math.max(count - 1, 1)) * 100}%`,\r\n        width: 1 + seeded(index) * 2,\r\n        delay: seeded(index + 1) * 3,\r\n        duration: 3 + seeded(index + 2) * 4,\r\n        opacity: 0.15 + seeded(index + 3) * 0.35,\r\n      })),\r\n    [count]\r\n  );\r\n\r\n  return (\r\n    <div className={cn(\"pointer-events-none absolute inset-0 overflow-hidden\", className)}>\r\n      <div className=\"absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_75%)]\">\r\n        {beams.map((beam) => (\r\n          <div\r\n            key={beam.id}\r\n            className=\"absolute top-0 h-full animate-beam-pulse\"\r\n            style={{\r\n              left: beam.left,\r\n              width: beam.width,\r\n              background: `linear-gradient(to bottom, transparent, ${color}, transparent)`,\r\n              opacity: beam.opacity,\r\n              animationDuration: `${beam.duration / speed}s`,\r\n              animationDelay: `${beam.delay}s`,\r\n            }}\r\n          />\r\n        ))}\r\n      </div>\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Beams Background\nVertical light beams that pulse behind landing page heroes.\n## Import\n```tsx\nimport { BeamsBackground } from \"@/components/ui/beams-background\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<BeamsBackground count={8} color=\"#a855f7\" speed={1} color=\"#a855f7\" speed={1} layers={undefined} />\n```\n## Props\n- **count** (number) — default: `8`: Beam count\n- **color** (string) — default: `\"#a855f7\"`: Color\n- **speed** (number) — default: `1`: Speed\n- **color** (string) — default: `\"#a855f7\"`: Color\n- **speed** (number) — default: `1`: Speed\n- **layers** (number): Layers\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add beams-background\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/beams-background\n```",
+  "meta": {
+    "exportName": "BeamsBackground",
+    "exportNames": [
+      "BeamsBackground"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<BeamsBackground count={8} color=\"#a855f7\" speed={1} color=\"#a855f7\" speed={1} layers={undefined} />",
+    "importExample": "import { BeamsBackground } from \"@/components/ui/beams-background\";",
+    "props": [
+      {
+        "name": "count",
+        "type": "number",
+        "default": 8,
+        "description": "Beam count"
+      },
+      {
+        "name": "color",
+        "type": "string",
+        "default": "#a855f7",
+        "description": "Color"
+      },
+      {
+        "name": "speed",
+        "type": "number",
+        "default": 1,
+        "description": "Speed"
+      },
+      {
+        "name": "color",
+        "type": "string",
+        "default": "#a855f7",
+        "description": "Color"
+      },
+      {
+        "name": "speed",
+        "type": "number",
+        "default": 1,
+        "description": "Speed"
+      },
+      {
+        "name": "layers",
+        "type": "number",
+        "description": "Layers"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#beams-background",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/beams-background",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/beams-background"
+  }
+}

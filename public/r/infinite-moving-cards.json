@@ -1,0 +1,55 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "infinite-moving-cards",
+  "type": "registry:ui",
+  "title": "Infinite Moving Cards",
+  "description": "A testimonial rail built on top of the marquee primitive.",
+  "categories": [
+    "Layout & Navigation",
+    "marquee",
+    "testimonials"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/infinite-moving-cards.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport React from \"react\";\r\nimport { Marquee } from \"./marquee\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nexport interface MovingCard {\r\n  quote: string;\r\n  name: string;\r\n  title: string;\r\n}\r\n\r\ninterface InfiniteMovingCardsProps {\r\n  items: MovingCard[];\r\n  reverse?: boolean;\r\n  duration?: number;\r\n  className?: string;\r\n}\r\n\r\nexport function InfiniteMovingCards({\r\n  items,\r\n  reverse,\r\n  duration = 40,\r\n  className,\r\n}: InfiniteMovingCardsProps) {\r\n  return (\r\n    <div\r\n      className={cn(\r\n        \"relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]\",\r\n        className\r\n      )}\r\n    >\r\n      <Marquee reverse={reverse} pauseOnHover duration={duration}>\r\n        {items.map((item, idx) => (\r\n          <figure\r\n            key={idx}\r\n            className=\"relative w-80 shrink-0 rounded-2xl border border-border bg-card p-6\"\r\n          >\r\n            <blockquote className=\"text-sm leading-relaxed text-foreground/90\">\r\n              &ldquo;{item.quote}&rdquo;\r\n            </blockquote>\r\n            <figcaption className=\"mt-4 flex items-center gap-3\">\r\n              <div className=\"flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-primary to-pink-500 text-xs font-bold text-white\">\r\n                {item.name.charAt(0)}\r\n              </div>\r\n              <div>\r\n                <div className=\"text-sm font-semibold\">{item.name}</div>\r\n                <div className=\"text-xs text-muted-foreground\">{item.title}</div>\r\n              </div>\r\n            </figcaption>\r\n          </figure>\r\n        ))}\r\n      </Marquee>\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Infinite Moving Cards\nA testimonial rail built on top of the marquee primitive.\n## Import\n```tsx\nimport { InfiniteMovingCards } from \"@/components/ui/infinite-moving-cards\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<InfiniteMovingCards reverse={false} duration=\"40s\" panelHeight={undefined} />\n```\n## Props\n- **reverse** (boolean) — default: `false`: Reverse\n- **duration** (number) — default: `40`: Duration (s)\n- **panelHeight** (number): Panel height\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add infinite-moving-cards\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/infinite-moving-cards\n```",
+  "meta": {
+    "exportName": "InfiniteMovingCards",
+    "exportNames": [
+      "InfiniteMovingCards"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<InfiniteMovingCards reverse={false} duration=\"40s\" panelHeight={undefined} />",
+    "importExample": "import { InfiniteMovingCards } from \"@/components/ui/infinite-moving-cards\";",
+    "props": [
+      {
+        "name": "reverse",
+        "type": "boolean",
+        "default": false,
+        "description": "Reverse"
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": 40,
+        "description": "Duration (s)"
+      },
+      {
+        "name": "panelHeight",
+        "type": "number",
+        "description": "Panel height"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#infinite-moving-cards",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/infinite-moving-cards",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/infinite-moving-cards"
+  }
+}

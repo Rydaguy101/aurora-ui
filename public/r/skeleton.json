@@ -1,0 +1,60 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "skeleton",
+  "type": "registry:ui",
+  "title": "Skeleton",
+  "description": "A subtle shimmer placeholder for loading content blocks and avatars.",
+  "categories": [
+    "Cards & Surfaces",
+    "loading",
+    "placeholder"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/skeleton.tsx",
+      "type": "registry:ui",
+      "content": "import React from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nexport function Skeleton({\r\n  className,\r\n  ...props\r\n}: React.HTMLAttributes<HTMLDivElement>) {\r\n  return (\r\n    <div\r\n      className={cn(\r\n        \"relative overflow-hidden rounded-md bg-secondary\",\r\n        \"before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer-slide_2s_ease-in-out_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent\",\r\n        className\r\n      )}\r\n      {...props}\r\n    />\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Skeleton\nA subtle shimmer placeholder for loading content blocks and avatars.\n## Import\n```tsx\nimport { Skeleton } from \"@/components/ui/skeleton\";\n```\n## Usage\n```tsx\n<Skeleton columns={1} showAvatar interval={undefined} offset={undefined} />\n```\n## Props\n- **columns** (number) — default: `1`: Columns\n- **showAvatar** (boolean) — default: `true`: Show avatar row\n- **interval** (number): Cycle interval (ms)\n- **offset** (number): Stack offset\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add skeleton\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/skeleton\n```",
+  "meta": {
+    "exportName": "Skeleton",
+    "exportNames": [
+      "Skeleton"
+    ],
+    "isClientComponent": false,
+    "usageExample": "<Skeleton columns={1} showAvatar interval={undefined} offset={undefined} />",
+    "importExample": "import { Skeleton } from \"@/components/ui/skeleton\";",
+    "props": [
+      {
+        "name": "columns",
+        "type": "number",
+        "default": 1,
+        "description": "Columns"
+      },
+      {
+        "name": "showAvatar",
+        "type": "boolean",
+        "default": true,
+        "description": "Show avatar row"
+      },
+      {
+        "name": "interval",
+        "type": "number",
+        "description": "Cycle interval (ms)"
+      },
+      {
+        "name": "offset",
+        "type": "number",
+        "description": "Stack offset"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#skeleton",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/skeleton",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/skeleton"
+  }
+}

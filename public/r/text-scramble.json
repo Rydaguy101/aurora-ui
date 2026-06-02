@@ -1,0 +1,60 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text-scramble",
+  "type": "registry:ui",
+  "title": "Text Scramble",
+  "description": "Decrypt-style character scramble animation on load.",
+  "categories": [
+    "Typography & Counters",
+    "text",
+    "scramble"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/text-scramble.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport React, { useEffect, useState } from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nconst CHARSET = \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%\";\r\n\r\ninterface TextScrambleProps {\r\n  text: string;\r\n  className?: string;\r\n  duration?: number;\r\n  trigger?: boolean;\r\n}\r\n\r\nexport function TextScramble({ text, className, duration = 1200, trigger = true }: TextScrambleProps) {\r\n  const [display, setDisplay] = useState(text);\r\n\r\n  useEffect(() => {\r\n    if (!trigger) return;\r\n    let frame = 0;\r\n    const totalFrames = Math.ceil(duration / 30);\r\n    const timer = setInterval(() => {\r\n      frame += 1;\r\n      const progress = frame / totalFrames;\r\n      setDisplay(\r\n        text\r\n          .split(\"\")\r\n          .map((char, index) => {\r\n            if (char === \" \") return \" \";\r\n            if (progress > index / text.length) return char;\r\n            return CHARSET[Math.floor(Math.random() * CHARSET.length)];\r\n          })\r\n          .join(\"\")\r\n      );\r\n      if (frame >= totalFrames) {\r\n        setDisplay(text);\r\n        clearInterval(timer);\r\n      }\r\n    }, 30);\r\n    return () => clearInterval(timer);\r\n  }, [text, duration, trigger]);\r\n\r\n  return <span className={cn(\"font-mono\", className)}>{display}</span>;\r\n}\r\n"
+    }
+  ],
+  "docs": "# Text Scramble\nDecrypt-style character scramble animation on load.\n## Import\n```tsx\nimport { TextScramble } from \"@/components/ui/text-scramble\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<TextScramble text=\"ACCESS GRANTED\" duration=\"1200s\" count={undefined} color={undefined} />\n```\n## Props\n- **text** (string) — default: `\"ACCESS GRANTED\"`: Text\n- **duration** (number) — default: `1200`: Duration (ms)\n- **count** (number): Ray count\n- **color** (string): Color\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add text-scramble\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/text-scramble\n```",
+  "meta": {
+    "exportName": "TextScramble",
+    "exportNames": [
+      "TextScramble"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<TextScramble text=\"ACCESS GRANTED\" duration=\"1200s\" count={undefined} color={undefined} />",
+    "importExample": "import { TextScramble } from \"@/components/ui/text-scramble\";",
+    "props": [
+      {
+        "name": "text",
+        "type": "string",
+        "default": "ACCESS GRANTED",
+        "description": "Text"
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": 1200,
+        "description": "Duration (ms)"
+      },
+      {
+        "name": "count",
+        "type": "number",
+        "description": "Ray count"
+      },
+      {
+        "name": "color",
+        "type": "string",
+        "description": "Color"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#text-scramble",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/text-scramble",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/text-scramble"
+  }
+}

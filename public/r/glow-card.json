@@ -1,0 +1,64 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glow-card",
+  "type": "registry:ui",
+  "title": "Glow Card",
+  "description": "A border glow that tracks the mouse for connected grids and panels.",
+  "categories": [
+    "Cards & Surfaces",
+    "card",
+    "glow"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/glow-card.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport React, { useCallback, useRef } from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface GlowCardProps extends React.HTMLAttributes<HTMLDivElement> {\r\n  children: React.ReactNode;\r\n  glowColor?: string;\r\n}\r\n\r\n/**\r\n * A card whose border glows and follows the cursor. Use multiple together for\r\n * a connected \"glowing grid\" effect.\r\n */\r\nexport function GlowCard({ children, className, glowColor = \"hsl(263 70% 60% / 0.4)\", ...props }: GlowCardProps) {\r\n  const ref = useRef<HTMLDivElement>(null);\r\n\r\n  const handleMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {\r\n    const el = ref.current;\r\n    if (!el) return;\r\n    const rect = el.getBoundingClientRect();\r\n    el.style.setProperty(\"--mouse-x\", `${e.clientX - rect.left}px`);\r\n    el.style.setProperty(\"--mouse-y\", `${e.clientY - rect.top}px`);\r\n  }, []);\r\n\r\n  return (\r\n    <div\r\n      ref={ref}\r\n      onMouseMove={handleMove}\r\n      className={cn(\r\n        \"group relative rounded-2xl border border-border bg-card p-px\",\r\n        className\r\n      )}\r\n      {...props}\r\n    >\r\n      {/* glow border */}\r\n      <div\r\n        className=\"pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100\"\r\n        style={{\r\n          background: `radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), ${glowColor}, transparent 40%)`,\r\n        }}\r\n      />\r\n      <div className=\"relative h-full rounded-2xl bg-card p-8\">{children}</div>\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Glow Card\nA border glow that tracks the mouse for connected grids and panels.\n## Import\n```tsx\nimport { GlowCard } from \"@/components/ui/glow-card\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<GlowCard glowColor=\"#a855f7\" size={undefined} duration={undefined} colorFrom={undefined} colorTo={undefined} />\n```\n## Props\n- **glowColor** (string) — default: `\"#a855f7\"`: Glow color\n- **size** (number): Beam size\n- **duration** (number): Duration\n- **colorFrom** (string): From\n- **colorTo** (string): To\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add glow-card\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/glow-card\n```",
+  "meta": {
+    "exportName": "GlowCard",
+    "exportNames": [
+      "GlowCard"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<GlowCard glowColor=\"#a855f7\" size={undefined} duration={undefined} colorFrom={undefined} colorTo={undefined} />",
+    "importExample": "import { GlowCard } from \"@/components/ui/glow-card\";",
+    "props": [
+      {
+        "name": "glowColor",
+        "type": "string",
+        "default": "#a855f7",
+        "description": "Glow color"
+      },
+      {
+        "name": "size",
+        "type": "number",
+        "description": "Beam size"
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "description": "Duration"
+      },
+      {
+        "name": "colorFrom",
+        "type": "string",
+        "description": "From"
+      },
+      {
+        "name": "colorTo",
+        "type": "string",
+        "description": "To"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#glow-card",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/glow-card",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/glow-card"
+  }
+}

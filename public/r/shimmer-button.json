@@ -1,0 +1,69 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shimmer-button",
+  "type": "registry:ui",
+  "title": "Shimmer Button",
+  "description": "A premium button with a conic shimmer sweep and layered lighting.",
+  "categories": [
+    "Actions",
+    "button",
+    "shimmer",
+    "animated"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/shimmer-button.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport React, { CSSProperties } from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface ShimmerButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {\r\n  shimmerColor?: string;\r\n  shimmerSize?: string;\r\n  borderRadius?: string;\r\n  shimmerDuration?: string;\r\n  background?: string;\r\n  children?: React.ReactNode;\r\n}\r\n\r\nexport const ShimmerButton = React.forwardRef<HTMLButtonElement, ShimmerButtonProps>(\r\n  (\r\n    {\r\n      shimmerColor = \"#ffffff\",\r\n      shimmerSize = \"0.05em\",\r\n      shimmerDuration = \"3s\",\r\n      borderRadius = \"100px\",\r\n      background = \"rgba(20, 20, 25, 1)\",\r\n      className,\r\n      children,\r\n      ...props\r\n    },\r\n    ref\r\n  ) => {\r\n    return (\r\n      <button\r\n        style={\r\n          {\r\n            \"--spread\": \"90deg\",\r\n            \"--shimmer-color\": shimmerColor,\r\n            \"--radius\": borderRadius,\r\n            \"--speed\": shimmerDuration,\r\n            \"--cut\": shimmerSize,\r\n            \"--bg\": background,\r\n          } as CSSProperties\r\n        }\r\n        className={cn(\r\n          \"group relative z-0 flex cursor-pointer items-center justify-center overflow-hidden whitespace-nowrap border border-white/10 px-6 py-3 text-white [background:var(--bg)] [border-radius:var(--radius)] transition-transform duration-300 active:translate-y-px\",\r\n          className\r\n        )}\r\n        ref={ref}\r\n        {...props}\r\n      >\r\n        {/* spark container */}\r\n        <div className=\"-z-30 blur-[2px] absolute inset-0 overflow-visible [container-type:size]\">\r\n          <div className=\"absolute inset-0 h-[100cqh] animate-shimmer [aspect-ratio:1] [border-radius:0] [mask:none]\">\r\n            <div className=\"absolute -inset-full w-auto rotate-0 animate-spin [background:conic-gradient(from_calc(270deg-(var(--spread)*0.5)),transparent_0,var(--shimmer-color)_var(--spread),transparent_var(--spread))] [translate:0_0]\" />\r\n          </div>\r\n        </div>\r\n        {children}\r\n        {/* highlight */}\r\n        <div className=\"insert-0 absolute size-full transform-gpu rounded-2xl px-4 py-1.5 text-sm font-medium shadow-[inset_0_-8px_10px_#ffffff1f] transition-all duration-300 group-hover:shadow-[inset_0_-6px_10px_#ffffff3f] group-active:shadow-[inset_0_-10px_10px_#ffffff3f] [border-radius:var(--radius)]\" />\r\n        {/* backdrop */}\r\n        <div className=\"absolute -z-20 [background:var(--bg)] [border-radius:var(--radius)] [inset:var(--cut)]\" />\r\n      </button>\r\n    );\r\n  }\r\n);\r\n\r\nShimmerButton.displayName = \"ShimmerButton\";\r\n"
+    }
+  ],
+  "docs": "# Shimmer Button\nA premium button with a conic shimmer sweep and layered lighting.\n## Import\n```tsx\nimport { ShimmerButton } from \"@/components/ui/shimmer-button\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<ShimmerButton shimmerColor=\"#ffffff\" shimmerDuration=\"3s\" borderRadius=\"24px\">Test Me</ShimmerButton>\n```\n## Props\n- **label** (string) — default: `\"Test Me\"`: Label\n- **shimmerColor** (string) — default: `\"#ffffff\"`: Shimmer color\n- **shimmerDuration** (number) — default: `3`: Duration\n- **borderRadius** (number) — default: `24`: Radius\n- **label** (string) — default: `\"Test Me\"`: Label\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add shimmer-button\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/shimmer-button\n```",
+  "meta": {
+    "exportName": "ShimmerButton",
+    "exportNames": [
+      "ShimmerButton"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<ShimmerButton shimmerColor=\"#ffffff\" shimmerDuration=\"3s\" borderRadius=\"24px\">Test Me</ShimmerButton>",
+    "importExample": "import { ShimmerButton } from \"@/components/ui/shimmer-button\";",
+    "props": [
+      {
+        "name": "label",
+        "type": "string",
+        "default": "Test Me",
+        "description": "Label"
+      },
+      {
+        "name": "shimmerColor",
+        "type": "string",
+        "default": "#ffffff",
+        "description": "Shimmer color"
+      },
+      {
+        "name": "shimmerDuration",
+        "type": "number",
+        "default": 3,
+        "description": "Duration"
+      },
+      {
+        "name": "borderRadius",
+        "type": "number",
+        "default": 24,
+        "description": "Radius"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "default": "Test Me",
+        "description": "Label"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#shimmer-button",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/shimmer-button",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/shimmer-button"
+  }
+}

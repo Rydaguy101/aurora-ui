@@ -1,0 +1,54 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aurora-background",
+  "type": "registry:ui",
+  "title": "Aurora Background",
+  "description": "A living gradient field that gives pages atmosphere without heavy markup.",
+  "categories": [
+    "Backgrounds & Ambient Effects",
+    "background",
+    "aurora"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/aurora-background.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport React from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface AuroraBackgroundProps extends React.HTMLProps<HTMLDivElement> {\r\n  children: React.ReactNode;\r\n  showRadialGradient?: boolean;\r\n}\r\n\r\nexport function AuroraBackground({\r\n  className,\r\n  children,\r\n  showRadialGradient = true,\r\n  ...props\r\n}: AuroraBackgroundProps) {\r\n  return (\r\n    <div\r\n      className={cn(\r\n        \"relative flex flex-col items-center justify-center overflow-hidden bg-background text-foreground\",\r\n        className\r\n      )}\r\n      {...props}\r\n    >\r\n      <div className=\"absolute inset-0 overflow-hidden\">\r\n        <div\r\n          className={cn(\r\n            \"pointer-events-none absolute -inset-[10px] opacity-50 blur-[10px] will-change-transform\",\r\n            \"[background-image:repeating-linear-gradient(100deg,#a855f7_10%,#6366f1_15%,#0ea5e9_20%,#22d3ee_25%,#a855f7_30%)]\",\r\n            \"[background-size:300%_200%] [background-position:50%_50%] animate-aurora\",\r\n            showRadialGradient &&\r\n              \"[mask-image:radial-gradient(ellipse_at_100%_0%,black_10%,transparent_70%)]\"\r\n          )}\r\n        />\r\n      </div>\r\n      <div className=\"relative z-10 w-full\">{children}</div>\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Aurora Background\nA living gradient field that gives pages atmosphere without heavy markup.\n## Import\n```tsx\nimport { AuroraBackground } from \"@/components/ui/aurora-background\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<AuroraBackground showRadialGradient variant={undefined} fade={undefined} />\n```\n## Props\n- **showRadialGradient** (boolean) — default: `true`: Radial mask\n- **variant** (string): Variant\n- **fade** (boolean): Fade mask\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add aurora-background\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/aurora-background\n```",
+  "meta": {
+    "exportName": "AuroraBackground",
+    "exportNames": [
+      "AuroraBackground"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<AuroraBackground showRadialGradient variant={undefined} fade={undefined} />",
+    "importExample": "import { AuroraBackground } from \"@/components/ui/aurora-background\";",
+    "props": [
+      {
+        "name": "showRadialGradient",
+        "type": "boolean",
+        "default": true,
+        "description": "Radial mask"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "description": "Variant"
+      },
+      {
+        "name": "fade",
+        "type": "boolean",
+        "description": "Fade mask"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#aurora-background",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/aurora-background",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/aurora-background"
+  }
+}

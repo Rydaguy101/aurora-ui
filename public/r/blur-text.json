@@ -1,0 +1,62 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "blur-text",
+  "type": "registry:ui",
+  "title": "Blur Text",
+  "description": "Characters or words animate in from blur with staggered timing.",
+  "categories": [
+    "Typography & Counters",
+    "text",
+    "animation"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/blur-text.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport React, { useEffect, useMemo, useRef, useState } from \"react\";\r\nimport { motion, useInView } from \"framer-motion\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface BlurTextProps {\r\n  text: string;\r\n  className?: string;\r\n  delay?: number;\r\n  animateBy?: \"chars\" | \"words\";\r\n  direction?: \"top\" | \"bottom\";\r\n}\r\n\r\nexport function BlurText({\r\n  text,\r\n  className,\r\n  delay = 50,\r\n  animateBy = \"chars\",\r\n  direction = \"top\",\r\n}: BlurTextProps) {\r\n  const ref = useRef<HTMLParagraphElement>(null);\r\n  const isInView = useInView(ref, { once: true, margin: \"-10%\" });\r\n  const [started, setStarted] = useState(false);\r\n\r\n  useEffect(() => {\r\n    if (isInView) setStarted(true);\r\n  }, [isInView]);\r\n\r\n  const segments = useMemo(\r\n    () => (animateBy === \"words\" ? text.split(\" \") : text.split(\"\")),\r\n    [animateBy, text]\r\n  );\r\n\r\n  const y = direction === \"top\" ? -12 : 12;\r\n\r\n  return (\r\n    <p ref={ref} className={cn(\"flex flex-wrap justify-center gap-x-[0.25em]\", className)}>\r\n      {segments.map((segment, index) => (\r\n        <motion.span\r\n          key={`${segment}-${index}`}\r\n          initial={{ opacity: 0, y, filter: \"blur(10px)\" }}\r\n          animate={started ? { opacity: 1, y: 0, filter: \"blur(0px)\" } : {}}\r\n          transition={{ duration: 0.45, delay: (index * delay) / 1000, ease: \"easeOut\" }}\r\n          className=\"inline-block\"\r\n        >\r\n          {segment}\r\n          {animateBy === \"words\" && index < segments.length - 1 ? \"\\u00A0\" : \"\"}\r\n        </motion.span>\r\n      ))}\r\n    </p>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Blur Text\nCharacters or words animate in from blur with staggered timing.\n## Import\n```tsx\nimport { BlurText } from \"@/components/ui/blur-text\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<BlurText text=\"Beautiful motion\" delay={50} animateBy=\"chars\" direction=\"top\" />\n```\n## Props\n- **text** (string) — default: `\"Beautiful motion\"`: Text\n- **delay** (number) — default: `50`: Stagger (ms)\n- **animateBy** (string) — default: `\"chars\"`: Animate by\n- **direction** (string) — default: `\"top\"`: Direction\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add blur-text\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/blur-text\n```",
+  "meta": {
+    "exportName": "BlurText",
+    "exportNames": [
+      "BlurText"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<BlurText text=\"Beautiful motion\" delay={50} animateBy=\"chars\" direction=\"top\" />",
+    "importExample": "import { BlurText } from \"@/components/ui/blur-text\";",
+    "props": [
+      {
+        "name": "text",
+        "type": "string",
+        "default": "Beautiful motion",
+        "description": "Text"
+      },
+      {
+        "name": "delay",
+        "type": "number",
+        "default": 50,
+        "description": "Stagger (ms)"
+      },
+      {
+        "name": "animateBy",
+        "type": "string",
+        "default": "chars",
+        "description": "Animate by"
+      },
+      {
+        "name": "direction",
+        "type": "string",
+        "default": "top",
+        "description": "Direction"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#blur-text",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/blur-text",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/blur-text"
+  }
+}

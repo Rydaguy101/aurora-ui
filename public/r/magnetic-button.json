@@ -1,0 +1,62 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "magnetic-button",
+  "type": "registry:ui",
+  "title": "Magnetic Button",
+  "description": "Cursor-reactive movement that adds a tactile pull to any child button.",
+  "categories": [
+    "Actions",
+    "button",
+    "motion",
+    "hover"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/magnetic-button.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport React, { useRef, useState } from \"react\";\r\nimport { motion } from \"framer-motion\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface MagneticButtonProps extends React.HTMLAttributes<HTMLDivElement> {\r\n  strength?: number;\r\n  children: React.ReactNode;\r\n}\r\n\r\nexport function MagneticButton({\r\n  children,\r\n  strength = 0.35,\r\n  className,\r\n  ...props\r\n}: MagneticButtonProps) {\r\n  const ref = useRef<HTMLDivElement>(null);\r\n  const [pos, setPos] = useState({ x: 0, y: 0 });\r\n\r\n  const handleMouse = (e: React.MouseEvent<HTMLDivElement>) => {\r\n    const el = ref.current;\r\n    if (!el) return;\r\n    const { clientX, clientY } = e;\r\n    const { width, height, left, top } = el.getBoundingClientRect();\r\n    const x = (clientX - (left + width / 2)) * strength;\r\n    const y = (clientY - (top + height / 2)) * strength;\r\n    setPos({ x, y });\r\n  };\r\n\r\n  const reset = () => setPos({ x: 0, y: 0 });\r\n\r\n  return (\r\n    <motion.div\r\n      ref={ref}\r\n      onMouseMove={handleMouse}\r\n      onMouseLeave={reset}\r\n      animate={{ x: pos.x, y: pos.y }}\r\n      transition={{ type: \"spring\", stiffness: 150, damping: 15, mass: 0.1 }}\r\n      className={cn(\"inline-block\", className)}\r\n      {...(props as any)}\r\n    >\r\n      {children}\r\n    </motion.div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Magnetic Button\nCursor-reactive movement that adds a tactile pull to any child button.\n## Import\n```tsx\nimport { MagneticButton } from \"@/components/ui/magnetic-button\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<MagneticButton strength={0.35}>\n  <Button>Test Me</Button>\n</MagneticButton>\n```\n## Props\n- **label** (string) — default: `\"Test Me\"`: Label\n- **strength** (number) — default: `0.35`: Strength\n- **label** (string) — default: `\"Test Me\"`: Label\n- **rippleColor** (string): Ripple color\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add magnetic-button\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/magnetic-button\n```",
+  "meta": {
+    "exportName": "MagneticButton",
+    "exportNames": [
+      "MagneticButton"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<MagneticButton strength={0.35}>\n  <Button>Test Me</Button>\n</MagneticButton>",
+    "importExample": "import { MagneticButton } from \"@/components/ui/magnetic-button\";",
+    "props": [
+      {
+        "name": "label",
+        "type": "string",
+        "default": "Test Me",
+        "description": "Label"
+      },
+      {
+        "name": "strength",
+        "type": "number",
+        "default": 0.35,
+        "description": "Strength"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "default": "Test Me",
+        "description": "Label"
+      },
+      {
+        "name": "rippleColor",
+        "type": "string",
+        "description": "Ripple color"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#magnetic-button",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/magnetic-button",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/magnetic-button"
+  }
+}

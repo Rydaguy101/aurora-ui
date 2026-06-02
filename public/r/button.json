@@ -1,0 +1,63 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button",
+  "type": "registry:ui",
+  "title": "Button",
+  "description": "The core button primitive with variants, sizes, and disabled states.",
+  "categories": [
+    "Actions",
+    "action",
+    "variant",
+    "cta"
+  ],
+  "dependencies": [
+    "@radix-ui/react-slot"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/button.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { Slot } from \"@radix-ui/react-slot\";\r\nimport { cva, type VariantProps } from \"class-variance-authority\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nconst buttonVariants = cva(\r\n  \"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50 active:scale-[0.97]\",\r\n  {\r\n    variants: {\r\n      variant: {\r\n        default:\r\n          \"bg-primary text-primary-foreground shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:brightness-110\",\r\n        secondary:\r\n          \"bg-secondary text-secondary-foreground hover:bg-secondary/80\",\r\n        outline:\r\n          \"border border-border bg-transparent hover:bg-secondary/60 hover:border-primary/50\",\r\n        ghost: \"hover:bg-secondary/60\",\r\n        destructive:\r\n          \"bg-red-500 text-white shadow-lg shadow-red-500/25 hover:bg-red-500/90\",\r\n        link: \"text-primary underline-offset-4 hover:underline\",\r\n      },\r\n      size: {\r\n        default: \"h-10 px-5 py-2\",\r\n        sm: \"h-8 rounded-md px-3 text-xs\",\r\n        lg: \"h-12 rounded-xl px-8 text-base\",\r\n        icon: \"h-10 w-10\",\r\n      },\r\n    },\r\n    defaultVariants: { variant: \"default\", size: \"default\" },\r\n  }\r\n);\r\n\r\nexport interface ButtonProps\r\n  extends React.ButtonHTMLAttributes<HTMLButtonElement>,\r\n    VariantProps<typeof buttonVariants> {\r\n  asChild?: boolean;\r\n}\r\n\r\nconst Button = React.forwardRef<HTMLButtonElement, ButtonProps>(\r\n  ({ className, variant, size, asChild = false, ...props }, ref) => {\r\n    const Comp = asChild ? Slot : \"button\";\r\n    return (\r\n      <Comp\r\n        className={cn(buttonVariants({ variant, size, className }))}\r\n        ref={ref}\r\n        {...props}\r\n      />\r\n    );\r\n  }\r\n);\r\nButton.displayName = \"Button\";\r\n\r\nexport { Button, buttonVariants };\r\n"
+    }
+  ],
+  "docs": "# Button\nThe core button primitive with variants, sizes, and disabled states.\n## Import\n```tsx\nimport { /* see source */ } from \"@/components/ui/button\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<Component variant=\"default\" size=\"default\" disabled={false}>Test Me</Component>\n```\n## Props\n- **label** (string) — default: `\"Test Me\"`: Label\n- **variant** (string) — default: `\"default\"`: Variant\n- **size** (string) — default: `\"default\"`: Size\n- **disabled** (boolean) — default: `false`: Disabled\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add button\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/button\n```",
+  "meta": {
+    "exportName": null,
+    "exportNames": [],
+    "isClientComponent": true,
+    "usageExample": "<Component variant=\"default\" size=\"default\" disabled={false}>Test Me</Component>",
+    "importExample": "import { /* see source */ } from \"@/components/ui/button\";",
+    "props": [
+      {
+        "name": "label",
+        "type": "string",
+        "default": "Test Me",
+        "description": "Label"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "default": "default",
+        "description": "Variant"
+      },
+      {
+        "name": "size",
+        "type": "string",
+        "default": "default",
+        "description": "Size"
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": false,
+        "description": "Disabled"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#button",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/button",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/button"
+  }
+}

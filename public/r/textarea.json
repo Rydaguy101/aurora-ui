@@ -1,0 +1,60 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea",
+  "type": "registry:ui",
+  "title": "Textarea",
+  "description": "Multi-line text input with matching Aurora styling and focus states.",
+  "categories": [
+    "Forms & Feedback",
+    "form",
+    "textarea"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/textarea.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nexport interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {}\r\n\r\nexport const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(\r\n  ({ className, ...props }, ref) => (\r\n    <textarea\r\n      className={cn(\r\n        \"flex min-h-24 w-full rounded-xl border border-border bg-card/50 px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-primary disabled:cursor-not-allowed disabled:opacity-50\",\r\n        className\r\n      )}\r\n      ref={ref}\r\n      {...props}\r\n    />\r\n  )\r\n);\r\nTextarea.displayName = \"Textarea\";\r\n"
+    }
+  ],
+  "docs": "# Textarea\nMulti-line text input with matching Aurora styling and focus states.\n## Import\n```tsx\nimport { Textarea } from \"@/components/ui/textarea\";\n```\n## Usage\n```tsx\n<Textarea placeholder=\"Write something...\" rows={4} value={undefined} gradient={undefined} />\n```\n## Props\n- **placeholder** (string) — default: `\"Write something...\"`: Placeholder\n- **rows** (number) — default: `4`: Rows\n- **value** (number): Value\n- **gradient** (boolean): Gradient\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add textarea\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/textarea\n```",
+  "meta": {
+    "exportName": "Textarea",
+    "exportNames": [
+      "Textarea"
+    ],
+    "isClientComponent": false,
+    "usageExample": "<Textarea placeholder=\"Write something...\" rows={4} value={undefined} gradient={undefined} />",
+    "importExample": "import { Textarea } from \"@/components/ui/textarea\";",
+    "props": [
+      {
+        "name": "placeholder",
+        "type": "string",
+        "default": "Write something...",
+        "description": "Placeholder"
+      },
+      {
+        "name": "rows",
+        "type": "number",
+        "default": 4,
+        "description": "Rows"
+      },
+      {
+        "name": "value",
+        "type": "number",
+        "description": "Value"
+      },
+      {
+        "name": "gradient",
+        "type": "boolean",
+        "description": "Gradient"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#textarea",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/textarea",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/textarea"
+  }
+}

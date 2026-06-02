@@ -1,0 +1,55 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "carousel",
+  "type": "registry:ui",
+  "title": "Carousel",
+  "description": "Animated slide carousel with arrows, dots, and optional autoplay.",
+  "categories": [
+    "Cards & Surfaces",
+    "carousel",
+    "slides"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/carousel.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport React, { useState } from \"react\";\r\nimport { AnimatePresence, motion } from \"framer-motion\";\r\nimport { ChevronLeft, ChevronRight } from \"lucide-react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface CarouselProps {\r\n  items: React.ReactNode[];\r\n  className?: string;\r\n  autoPlay?: boolean;\r\n  interval?: number;\r\n}\r\n\r\nexport function Carousel({ items, className, autoPlay = false, interval = 4000 }: CarouselProps) {\r\n  const [index, setIndex] = useState(0);\r\n  const count = items.length;\r\n\r\n  React.useEffect(() => {\r\n    if (!autoPlay || count <= 1) return;\r\n    const timer = setInterval(() => setIndex((current) => (current + 1) % count), interval);\r\n    return () => clearInterval(timer);\r\n  }, [autoPlay, count, interval]);\r\n\r\n  const prev = () => setIndex((current) => (current - 1 + count) % count);\r\n  const next = () => setIndex((current) => (current + 1) % count);\r\n\r\n  if (count === 0) return null;\r\n\r\n  return (\r\n    <div className={cn(\"relative w-full max-w-xl\", className)}>\r\n      <div className=\"relative overflow-hidden rounded-2xl border border-border bg-card/60\">\r\n        <AnimatePresence mode=\"wait\">\r\n          <motion.div\r\n            key={index}\r\n            initial={{ opacity: 0, x: 40 }}\r\n            animate={{ opacity: 1, x: 0 }}\r\n            exit={{ opacity: 0, x: -40 }}\r\n            transition={{ duration: 0.35, ease: \"easeInOut\" }}\r\n            className=\"min-h-[220px] p-8\"\r\n          >\r\n            {items[index]}\r\n          </motion.div>\r\n        </AnimatePresence>\r\n\r\n        {count > 1 && (\r\n          <>\r\n            <button\r\n              type=\"button\"\r\n              onClick={prev}\r\n              className=\"absolute left-3 top-1/2 flex size-9 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-background/80 text-foreground backdrop-blur transition-colors hover:border-primary/40\"\r\n            >\r\n              <ChevronLeft className=\"size-4\" />\r\n            </button>\r\n            <button\r\n              type=\"button\"\r\n              onClick={next}\r\n              className=\"absolute right-3 top-1/2 flex size-9 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-background/80 text-foreground backdrop-blur transition-colors hover:border-primary/40\"\r\n            >\r\n              <ChevronRight className=\"size-4\" />\r\n            </button>\r\n          </>\r\n        )}\r\n      </div>\r\n\r\n      {count > 1 && (\r\n        <div className=\"mt-4 flex items-center justify-center gap-2\">\r\n          {items.map((_, dotIndex) => (\r\n            <button\r\n              key={dotIndex}\r\n              type=\"button\"\r\n              onClick={() => setIndex(dotIndex)}\r\n              className={cn(\r\n                \"size-2 rounded-full transition-all\",\r\n                dotIndex === index ? \"w-6 bg-primary\" : \"bg-muted-foreground/30 hover:bg-muted-foreground/50\"\r\n              )}\r\n            />\r\n          ))}\r\n        </div>\r\n      )}\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Carousel\nAnimated slide carousel with arrows, dots, and optional autoplay.\n## Import\n```tsx\nimport { Carousel } from \"@/components/ui/carousel\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<Carousel items={[{ id: \"1\", title: \"Slide 1\" }, { id: \"2\", title: \"Slide 2\" }]} />\n```\n## Props\n- **autoPlay** (boolean) — default: `false`: Auto play\n- **interval** (number) — default: `4000`: Interval (ms)\n- **triggerLabel** (string): Trigger label\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add carousel\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/carousel\n```",
+  "meta": {
+    "exportName": "Carousel",
+    "exportNames": [
+      "Carousel"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<Carousel items={[{ id: \"1\", title: \"Slide 1\" }, { id: \"2\", title: \"Slide 2\" }]} />",
+    "importExample": "import { Carousel } from \"@/components/ui/carousel\";",
+    "props": [
+      {
+        "name": "autoPlay",
+        "type": "boolean",
+        "default": false,
+        "description": "Auto play"
+      },
+      {
+        "name": "interval",
+        "type": "number",
+        "default": 4000,
+        "description": "Interval (ms)"
+      },
+      {
+        "name": "triggerLabel",
+        "type": "string",
+        "description": "Trigger label"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#carousel",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/carousel",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/carousel"
+  }
+}

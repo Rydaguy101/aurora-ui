@@ -1,0 +1,57 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toast",
+  "type": "registry:ui",
+  "title": "Toast",
+  "description": "Animated toast notifications with success, error, and info variants.",
+  "categories": [
+    "Overlays & Menus",
+    "notification",
+    "feedback"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/toast.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport React, { createContext, useCallback, useContext, useState } from \"react\";\r\nimport { AnimatePresence, motion } from \"framer-motion\";\r\nimport { CheckCircle2, Info, X, XCircle } from \"lucide-react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ntype ToastVariant = \"default\" | \"success\" | \"error\" | \"info\";\r\n\r\ninterface ToastItem {\r\n  id: string;\r\n  title: string;\r\n  description?: string;\r\n  variant?: ToastVariant;\r\n}\r\n\r\ninterface ToastContextType {\r\n  toast: (item: Omit<ToastItem, \"id\">) => void;\r\n}\r\n\r\nconst ToastContext = createContext<ToastContextType | null>(null);\r\n\r\nexport function useToast() {\r\n  const ctx = useContext(ToastContext);\r\n  if (!ctx) throw new Error(\"useToast must be used within ToastProvider\");\r\n  return ctx;\r\n}\r\n\r\nconst icons = {\r\n  default: Info,\r\n  success: CheckCircle2,\r\n  error: XCircle,\r\n  info: Info,\r\n};\r\n\r\nexport function ToastProvider({ children }: { children: React.ReactNode }) {\r\n  const [toasts, setToasts] = useState<ToastItem[]>([]);\r\n\r\n  const toast = useCallback((item: Omit<ToastItem, \"id\">) => {\r\n    const id = crypto.randomUUID();\r\n    setToasts((current) => [...current, { ...item, id }]);\r\n    window.setTimeout(() => {\r\n      setToasts((current) => current.filter((t) => t.id !== id));\r\n    }, 4000);\r\n  }, []);\r\n\r\n  const dismiss = (id: string) => setToasts((current) => current.filter((t) => t.id !== id));\r\n\r\n  return (\r\n    <ToastContext.Provider value={{ toast }}>\r\n      {children}\r\n      <div className=\"pointer-events-none fixed bottom-4 right-4 z-50 flex w-full max-w-sm flex-col gap-2\">\r\n        <AnimatePresence>\r\n          {toasts.map((item) => {\r\n            const Icon = icons[item.variant ?? \"default\"];\r\n            return (\r\n              <motion.div\r\n                key={item.id}\r\n                initial={{ opacity: 0, y: 16, scale: 0.96 }}\r\n                animate={{ opacity: 1, y: 0, scale: 1 }}\r\n                exit={{ opacity: 0, y: 8, scale: 0.98 }}\r\n                className=\"pointer-events-auto rounded-xl border border-border bg-card p-4 shadow-xl\"\r\n              >\r\n                <div className=\"flex gap-3\">\r\n                  <Icon className={cn(\"mt-0.5 size-5 shrink-0\", item.variant === \"success\" && \"text-emerald-400\", item.variant === \"error\" && \"text-red-400\", item.variant === \"info\" && \"text-primary\")} />\r\n                  <div className=\"min-w-0 flex-1\">\r\n                    <p className=\"font-medium\">{item.title}</p>\r\n                    {item.description && <p className=\"mt-1 text-sm text-muted-foreground\">{item.description}</p>}\r\n                  </div>\r\n                  <button type=\"button\" onClick={() => dismiss(item.id)} className=\"text-muted-foreground hover:text-foreground\">\r\n                    <X className=\"size-4\" />\r\n                  </button>\r\n                </div>\r\n              </motion.div>\r\n            );\r\n          })}\r\n        </AnimatePresence>\r\n      </div>\r\n    </ToastContext.Provider>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Toast\nAnimated toast notifications with success, error, and info variants.\n## Import\n```tsx\nimport { useToast, ToastProvider } from \"@/components/ui/toast\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<useToast variant=\"success\" title=\"Changes saved\" description=\"Your settings were updated successfully.\" />\n```\n## Props\n- **variant** (string) — default: `\"success\"`: Variant\n- **title** (string) — default: `\"Changes saved\"`: Title\n- **description** (string) — default: `\"Your settings were updated successfully.\"`: Description\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add toast\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/toast\n```",
+  "meta": {
+    "exportName": "useToast",
+    "exportNames": [
+      "useToast",
+      "ToastProvider"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<useToast variant=\"success\" title=\"Changes saved\" description=\"Your settings were updated successfully.\" />",
+    "importExample": "import { useToast, ToastProvider } from \"@/components/ui/toast\";",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "default": "success",
+        "description": "Variant"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "default": "Changes saved",
+        "description": "Title"
+      },
+      {
+        "name": "description",
+        "type": "string",
+        "default": "Your settings were updated successfully.",
+        "description": "Description"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#toast",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/toast",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/toast"
+  }
+}

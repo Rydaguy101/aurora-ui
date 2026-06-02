@@ -1,0 +1,65 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spotlight-card",
+  "type": "registry:ui",
+  "title": "Spotlight Card",
+  "description": "A card surface that blooms with a radial spotlight under the cursor.",
+  "categories": [
+    "Cards & Surfaces",
+    "card",
+    "hover"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/spotlight-card.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport React, { useRef, useState } from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface SpotlightCardProps extends React.HTMLAttributes<HTMLDivElement> {\r\n  spotlightColor?: string;\r\n  children: React.ReactNode;\r\n}\r\n\r\nexport function SpotlightCard({\r\n  children,\r\n  className,\r\n  spotlightColor = \"hsl(263 70% 60% / 0.18)\",\r\n  ...props\r\n}: SpotlightCardProps) {\r\n  const ref = useRef<HTMLDivElement>(null);\r\n  const [pos, setPos] = useState({ x: 0, y: 0 });\r\n  const [opacity, setOpacity] = useState(0);\r\n\r\n  const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {\r\n    if (!ref.current) return;\r\n    const rect = ref.current.getBoundingClientRect();\r\n    setPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });\r\n  };\r\n\r\n  return (\r\n    <div\r\n      ref={ref}\r\n      onMouseMove={handleMove}\r\n      onMouseEnter={() => setOpacity(1)}\r\n      onMouseLeave={() => setOpacity(0)}\r\n      className={cn(\r\n        \"relative overflow-hidden rounded-2xl border border-border bg-card p-8 shadow-2xl\",\r\n        className\r\n      )}\r\n      {...props}\r\n    >\r\n      <div\r\n        className=\"pointer-events-none absolute -inset-px transition-opacity duration-300\"\r\n        style={{\r\n          opacity,\r\n          background: `radial-gradient(600px circle at ${pos.x}px ${pos.y}px, ${spotlightColor}, transparent 40%)`,\r\n        }}\r\n      />\r\n      <div className=\"relative z-10\">{children}</div>\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Spotlight Card\nA card surface that blooms with a radial spotlight under the cursor.\n## Import\n```tsx\nimport { SpotlightCard } from \"@/components/ui/spotlight-card\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<SpotlightCard spotlightColor=\"#a855f7\" spotlightOpacity={0.18} title={undefined} description={undefined} showFooter={undefined} />\n```\n## Props\n- **spotlightColor** (string) — default: `\"#a855f7\"`: Spotlight color\n- **spotlightOpacity** (number) — default: `0.18`: Opacity\n- **title** (string): Title\n- **description** (string): Description\n- **showFooter** (boolean): Show footer\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add spotlight-card\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/spotlight-card\n```",
+  "meta": {
+    "exportName": "SpotlightCard",
+    "exportNames": [
+      "SpotlightCard"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<SpotlightCard spotlightColor=\"#a855f7\" spotlightOpacity={0.18} title={undefined} description={undefined} showFooter={undefined} />",
+    "importExample": "import { SpotlightCard } from \"@/components/ui/spotlight-card\";",
+    "props": [
+      {
+        "name": "spotlightColor",
+        "type": "string",
+        "default": "#a855f7",
+        "description": "Spotlight color"
+      },
+      {
+        "name": "spotlightOpacity",
+        "type": "number",
+        "default": 0.18,
+        "description": "Opacity"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "description": "Title"
+      },
+      {
+        "name": "description",
+        "type": "string",
+        "description": "Description"
+      },
+      {
+        "name": "showFooter",
+        "type": "boolean",
+        "description": "Show footer"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#spotlight-card",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/spotlight-card",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/spotlight-card"
+  }
+}

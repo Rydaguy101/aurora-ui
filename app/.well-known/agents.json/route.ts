@@ -22,21 +22,32 @@ export async function GET() {
     },
     discovery: {
       registry: `${baseUrl}/api/registry`,
+      shadcnRegistry: `${baseUrl}/shadcn-registry.json`,
+      shadcnItems: `${baseUrl}/r/{name}.json`,
       openapi: `${baseUrl}/openapi.json`,
       ai_plugin: `${baseUrl}/.well-known/ai-plugin.json`,
     },
     cli: {
-      npm: "npx aurora-ui-cli",
-      commands: ["list", "info", "add", "init", "docs", "help"],
+      init: "npx --yes github:Rydaguy101/aurora-ui init",
+      info: "npx --yes github:Rydaguy101/aurora-ui info --json",
+      docs: "npx --yes github:Rydaguy101/aurora-ui docs <slug> --json",
+      search: "npx --yes github:Rydaguy101/aurora-ui search -q <query>",
+      add: "npx --yes github:Rydaguy101/aurora-ui add <slug>",
+      shadcnAdd: "npx shadcn@latest add @aurora/<slug>",
     },
     mcp: {
-      package: "aurora-ui-mcp",
-      install: "npx aurora-ui-mcp",
+      install: "npx --yes github:Rydaguy101/aurora-ui aurora-ui-mcp",
+      shadcnCompatibleTools: [
+        "list_items_in_registries",
+        "search_items_in_registries",
+        "get_add_command_for_items",
+        "get_item_examples_from_registries",
+      ],
       config_example: {
         mcpServers: {
           "aurora-ui": {
             command: "npx",
-            args: ["-y", "aurora-ui-mcp"],
+            args: ["-y", "github:Rydaguy101/aurora-ui", "aurora-ui-mcp"],
           },
         },
       },

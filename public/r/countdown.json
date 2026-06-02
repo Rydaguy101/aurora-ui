@@ -1,0 +1,59 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "countdown",
+  "type": "registry:ui",
+  "title": "Countdown",
+  "description": "Live countdown timer with animated digit transitions.",
+  "categories": [
+    "Typography & Counters",
+    "timer",
+    "launch"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/countdown.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport React, { useEffect, useState } from \"react\";\r\nimport { motion } from \"framer-motion\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface CountdownProps {\r\n  targetDate: string;\r\n  className?: string;\r\n  showLabels?: boolean;\r\n}\r\n\r\nfunction getTimeLeft(target: number) {\r\n  const diff = Math.max(0, target - Date.now());\r\n  const days = Math.floor(diff / (1000 * 60 * 60 * 24));\r\n  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);\r\n  const minutes = Math.floor((diff / (1000 * 60)) % 60);\r\n  const seconds = Math.floor((diff / 1000) % 60);\r\n  return { days, hours, minutes, seconds };\r\n}\r\n\r\nfunction Unit({ value, label, showLabel }: { value: number; label: string; showLabel: boolean }) {\r\n  return (\r\n    <div className=\"flex flex-col items-center gap-2\">\r\n      <motion.div\r\n        key={value}\r\n        initial={{ y: -8, opacity: 0 }}\r\n        animate={{ y: 0, opacity: 1 }}\r\n        className=\"flex min-w-[4.5rem] items-center justify-center rounded-xl border border-border bg-card/60 px-4 py-3 text-3xl font-bold tabular-nums\"\r\n      >\r\n        {String(value).padStart(2, \"0\")}\r\n      </motion.div>\r\n      {showLabel && <span className=\"text-xs uppercase tracking-[0.14em] text-muted-foreground\">{label}</span>}\r\n    </div>\r\n  );\r\n}\r\n\r\nexport function Countdown({ targetDate, className, showLabels = true }: CountdownProps) {\r\n  const target = new Date(targetDate).getTime();\r\n  const [timeLeft, setTimeLeft] = useState(() => getTimeLeft(target));\r\n\r\n  useEffect(() => {\r\n    const timer = setInterval(() => setTimeLeft(getTimeLeft(target)), 1000);\r\n    return () => clearInterval(timer);\r\n  }, [target]);\r\n\r\n  return (\r\n    <div className={cn(\"flex flex-wrap items-center justify-center gap-4\", className)}>\r\n      <Unit value={timeLeft.days} label=\"Days\" showLabel={showLabels} />\r\n      <Unit value={timeLeft.hours} label=\"Hours\" showLabel={showLabels} />\r\n      <Unit value={timeLeft.minutes} label=\"Minutes\" showLabel={showLabels} />\r\n      <Unit value={timeLeft.seconds} label=\"Seconds\" showLabel={showLabels} />\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Countdown\nLive countdown timer with animated digit transitions.\n## Import\n```tsx\nimport { Countdown } from \"@/components/ui/countdown\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<Countdown showLabels direction={undefined} blur={undefined} delay={undefined} />\n```\n## Props\n- **showLabels** (boolean) — default: `true`: Show labels\n- **direction** (string): Direction\n- **blur** (boolean): Blur\n- **delay** (number): Delay (s)\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add countdown\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/countdown\n```",
+  "meta": {
+    "exportName": "Countdown",
+    "exportNames": [
+      "Countdown"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<Countdown showLabels direction={undefined} blur={undefined} delay={undefined} />",
+    "importExample": "import { Countdown } from \"@/components/ui/countdown\";",
+    "props": [
+      {
+        "name": "showLabels",
+        "type": "boolean",
+        "default": true,
+        "description": "Show labels"
+      },
+      {
+        "name": "direction",
+        "type": "string",
+        "description": "Direction"
+      },
+      {
+        "name": "blur",
+        "type": "boolean",
+        "description": "Blur"
+      },
+      {
+        "name": "delay",
+        "type": "number",
+        "description": "Delay (s)"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#countdown",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/countdown",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/countdown"
+  }
+}

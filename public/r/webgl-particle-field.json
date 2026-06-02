@@ -1,0 +1,68 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "webgl-particle-field",
+  "type": "registry:ui",
+  "title": "WebGL Particle Field",
+  "description": "Depth-filled particle cloud with cursor parallax — a lightweight WebGL hero backdrop.",
+  "categories": [
+    "3D & WebGL",
+    "3d",
+    "webgl",
+    "particles",
+    "hero"
+  ],
+  "dependencies": [
+    "@react-three/drei",
+    "@react-three/fiber"
+  ],
+  "registryDependencies": [
+    "webgl-stage",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/webgl-particle-field.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport { useMemo, useRef } from \"react\";\r\nimport { useFrame, useThree } from \"@react-three/fiber\";\r\nimport { Points, PointMaterial } from \"@react-three/drei\";\r\nimport * as THREE from \"three\";\r\nimport { cn } from \"@/lib/utils\";\r\nimport { WebGLStage } from \"@/components/ui/webgl-stage\";\r\n\r\ninterface WebGLParticleFieldProps {\r\n  className?: string;\r\n  count?: number;\r\n  color?: string;\r\n  speed?: number;\r\n  spread?: number;\r\n  size?: number;\r\n}\r\n\r\nfunction ParticleFieldScene({\r\n  count,\r\n  color,\r\n  speed,\r\n  spread,\r\n  size,\r\n}: Required<Omit<WebGLParticleFieldProps, \"className\">>) {\r\n  const pointsRef = useRef<THREE.Points>(null);\r\n  const { pointer } = useThree();\r\n\r\n  const positions = useMemo(() => {\r\n    const values = new Float32Array(count * 3);\r\n    for (let index = 0; index < count; index += 1) {\r\n      values[index * 3] = (Math.random() - 0.5) * spread;\r\n      values[index * 3 + 1] = (Math.random() - 0.5) * spread;\r\n      values[index * 3 + 2] = (Math.random() - 0.5) * spread;\r\n    }\r\n    return values;\r\n  }, [count, spread]);\r\n\r\n  useFrame((state, delta) => {\r\n    if (!pointsRef.current) return;\r\n    pointsRef.current.rotation.y += delta * speed * 0.08;\r\n    pointsRef.current.rotation.x += delta * speed * 0.03;\r\n    pointsRef.current.rotation.x = THREE.MathUtils.lerp(\r\n      pointsRef.current.rotation.x,\r\n      pointer.y * 0.25,\r\n      0.04\r\n    );\r\n    pointsRef.current.rotation.y = THREE.MathUtils.lerp(\r\n      pointsRef.current.rotation.y,\r\n      pointer.x * 0.35 + state.clock.elapsedTime * speed * 0.08,\r\n      0.04\r\n    );\r\n  });\r\n\r\n  return (\r\n    <>\r\n      <ambientLight intensity={0.4} />\r\n      <Points ref={pointsRef} positions={positions} frustumCulled={false}>\r\n        <PointMaterial\r\n          transparent\r\n          color={color}\r\n          size={size}\r\n          sizeAttenuation\r\n          depthWrite={false}\r\n          opacity={0.75}\r\n        />\r\n      </Points>\r\n    </>\r\n  );\r\n}\r\n\r\n/** Depth-filled WebGL particle field with subtle cursor parallax for hero sections. */\r\nexport function WebGLParticleField({\r\n  className,\r\n  count = 1200,\r\n  color = \"#a855f7\",\r\n  speed = 1,\r\n  spread = 6,\r\n  size = 0.03,\r\n}: WebGLParticleFieldProps) {\r\n  return (\r\n    <WebGLStage className={cn(className)} cameraPosition={[0, 0, 5]}>\r\n      <ParticleFieldScene count={count} color={color} speed={speed} spread={spread} size={size} />\r\n    </WebGLStage>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# WebGL Particle Field\nDepth-filled particle cloud with cursor parallax — a lightweight WebGL hero backdrop.\n## Import\n```tsx\nimport { WebGLParticleField } from \"@/components/ui/webgl-particle-field\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n\"use client\";\n\nexport default function Hero() {\n  return (\n    <section className=\"relative min-h-[480px] overflow-hidden\">\n      <WebGLParticleField className=\"absolute inset-0\" count={1200} color=\"#a855f7\" speed={1} spread={6} />\n      <div className=\"relative z-10 flex min-h-[480px] items-center justify-center\">\n        <h1 className=\"text-4xl font-bold\">Your headline</h1>\n      </div>\n    </section>\n  );\n}\n```\n## Props\n- **count** (number) — default: `1200`: Particle count\n- **color** (string) — default: `\"#a855f7\"`: Color\n- **speed** (number) — default: `1`: Speed\n- **spread** (number) — default: `6`: Spread\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add webgl-particle-field\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/webgl-particle-field\n```",
+  "meta": {
+    "exportName": "WebGLParticleField",
+    "exportNames": [
+      "WebGLParticleField"
+    ],
+    "isClientComponent": true,
+    "usageExample": "\"use client\";\n\nexport default function Hero() {\n  return (\n    <section className=\"relative min-h-[480px] overflow-hidden\">\n      <WebGLParticleField className=\"absolute inset-0\" count={1200} color=\"#a855f7\" speed={1} spread={6} />\n      <div className=\"relative z-10 flex min-h-[480px] items-center justify-center\">\n        <h1 className=\"text-4xl font-bold\">Your headline</h1>\n      </div>\n    </section>\n  );\n}",
+    "importExample": "import { WebGLParticleField } from \"@/components/ui/webgl-particle-field\";",
+    "props": [
+      {
+        "name": "count",
+        "type": "number",
+        "default": 1200,
+        "description": "Particle count"
+      },
+      {
+        "name": "color",
+        "type": "string",
+        "default": "#a855f7",
+        "description": "Color"
+      },
+      {
+        "name": "speed",
+        "type": "number",
+        "default": 1,
+        "description": "Speed"
+      },
+      {
+        "name": "spread",
+        "type": "number",
+        "default": 6,
+        "description": "Spread"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#webgl-particle-field",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/webgl-particle-field",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/webgl-particle-field"
+  }
+}

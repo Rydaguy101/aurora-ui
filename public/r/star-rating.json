@@ -1,0 +1,56 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "star-rating",
+  "type": "registry:ui",
+  "title": "Star Rating",
+  "description": "Interactive star rating with hover preview and read-only mode.",
+  "categories": [
+    "Forms & Feedback",
+    "form",
+    "rating"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/star-rating.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport React, { useState } from \"react\";\r\nimport { Star } from \"lucide-react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface StarRatingProps {\r\n  value?: number;\r\n  max?: number;\r\n  onChange?: (value: number) => void;\r\n  readOnly?: boolean;\r\n  size?: \"sm\" | \"md\" | \"lg\";\r\n  className?: string;\r\n}\r\n\r\nconst sizes = { sm: \"size-4\", md: \"size-5\", lg: \"size-6\" };\r\n\r\nexport function StarRating({\r\n  value = 0,\r\n  max = 5,\r\n  onChange,\r\n  readOnly = false,\r\n  size = \"md\",\r\n  className,\r\n}: StarRatingProps) {\r\n  const [hover, setHover] = useState(0);\r\n  const display = hover || value;\r\n\r\n  return (\r\n    <div\r\n      className={cn(\"inline-flex items-center gap-1\", className)}\r\n      onMouseLeave={() => !readOnly && setHover(0)}\r\n    >\r\n      {Array.from({ length: max }).map((_, index) => {\r\n        const starValue = index + 1;\r\n        const filled = starValue <= display;\r\n\r\n        return (\r\n          <button\r\n            key={starValue}\r\n            type=\"button\"\r\n            disabled={readOnly}\r\n            onMouseEnter={() => !readOnly && setHover(starValue)}\r\n            onClick={() => !readOnly && onChange?.(starValue)}\r\n            className={cn(\r\n              \"transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-default\",\r\n              !readOnly && \"hover:scale-110\"\r\n            )}\r\n          >\r\n            <Star\r\n              className={cn(\r\n                sizes[size],\r\n                filled ? \"fill-amber-400 text-amber-400\" : \"text-muted-foreground/40\"\r\n              )}\r\n            />\r\n          </button>\r\n        );\r\n      })}\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Star Rating\nInteractive star rating with hover preview and read-only mode.\n## Import\n```tsx\nimport { StarRating } from \"@/components/ui/star-rating\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<StarRating value={3} readOnly={false} size=\"md\" />\n```\n## Props\n- **value** (number) — default: `3`: Value\n- **readOnly** (boolean) — default: `false`: Read only\n- **size** (string) — default: `\"md\"`: Size\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add star-rating\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/star-rating\n```",
+  "meta": {
+    "exportName": "StarRating",
+    "exportNames": [
+      "StarRating"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<StarRating value={3} readOnly={false} size=\"md\" />",
+    "importExample": "import { StarRating } from \"@/components/ui/star-rating\";",
+    "props": [
+      {
+        "name": "value",
+        "type": "number",
+        "default": 3,
+        "description": "Value"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "default": false,
+        "description": "Read only"
+      },
+      {
+        "name": "size",
+        "type": "string",
+        "default": "md",
+        "description": "Size"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#star-rating",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/star-rating",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/star-rating"
+  }
+}

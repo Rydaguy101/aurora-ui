@@ -1,0 +1,50 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge",
+  "type": "registry:ui",
+  "title": "Badge",
+  "description": "Compact status chips for labels, release notes, or category tags.",
+  "categories": [
+    "Actions",
+    "label",
+    "status"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/badge.tsx",
+      "type": "registry:ui",
+      "content": "import React from \"react\";\r\nimport { cva, type VariantProps } from \"class-variance-authority\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nconst badgeVariants = cva(\r\n  \"inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors\",\r\n  {\r\n    variants: {\r\n      variant: {\r\n        default: \"border-transparent bg-primary/15 text-primary\",\r\n        secondary: \"border-transparent bg-secondary text-secondary-foreground\",\r\n        outline: \"border-border text-foreground\",\r\n        success: \"border-transparent bg-green-500/15 text-green-400\",\r\n        warning: \"border-transparent bg-yellow-500/15 text-yellow-400\",\r\n        gradient:\r\n          \"border-transparent bg-gradient-to-r from-primary to-pink-500 text-white\",\r\n      },\r\n    },\r\n    defaultVariants: { variant: \"default\" },\r\n  }\r\n);\r\n\r\nexport interface BadgeProps\r\n  extends React.HTMLAttributes<HTMLDivElement>,\r\n    VariantProps<typeof badgeVariants> {}\r\n\r\nexport function Badge({ className, variant, ...props }: BadgeProps) {\r\n  return (\r\n    <div className={cn(badgeVariants({ variant }), className)} {...props} />\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Badge\nCompact status chips for labels, release notes, or category tags.\n## Import\n```tsx\nimport { Badge } from \"@/components/ui/badge\";\n```\n## Usage\n```tsx\n<Badge variant=\"gradient\">New release</Badge>\n```\n## Props\n- **label** (string) — default: `\"New release\"`: Label\n- **variant** (string) — default: `\"gradient\"`: Variant\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add badge\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/badge\n```",
+  "meta": {
+    "exportName": "Badge",
+    "exportNames": [
+      "Badge"
+    ],
+    "isClientComponent": false,
+    "usageExample": "<Badge variant=\"gradient\">New release</Badge>",
+    "importExample": "import { Badge } from \"@/components/ui/badge\";",
+    "props": [
+      {
+        "name": "label",
+        "type": "string",
+        "default": "New release",
+        "description": "Label"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "default": "gradient",
+        "description": "Variant"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#badge",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/badge",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/badge"
+  }
+}

@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 
+import { generateShadcnRegistry } from "./lib/generate-shadcn-registry.mjs";
 import {
   buildAgentInstructions,
   buildPropsTable,
@@ -140,6 +141,12 @@ const catalog = {
   aiPluginUrl: `${siteUrl}/.well-known/ai-plugin.json`,
   agentsManifestUrl: `${siteUrl}/.well-known/agents.json`,
   cliCommand: "npx --yes github:Rydaguy101/aurora-ui",
+  shadcnRegistryUrl: `${siteUrl}/shadcn-registry.json`,
+  shadcnItemUrlTemplate: `${siteUrl}/r/{name}.json`,
+  shadcnAddCommandTemplate: "npx shadcn@latest add @aurora/{name}",
+  componentsJsonRegistry: {
+    "@aurora": `${siteUrl}/r/{name}.json`,
+  },
   mcpCommand: "npx --yes github:Rydaguy101/aurora-ui aurora-ui-mcp",
   cliPackage: "aurora-ui-cli",
   mcpPackage: "aurora-ui-mcp",
@@ -156,4 +163,6 @@ const catalog = {
 const outDir = path.join(root, "public");
 fs.mkdirSync(outDir, { recursive: true });
 fs.writeFileSync(path.join(outDir, "registry.json"), `${JSON.stringify(catalog, null, 2)}\n`);
+const shadcnCount = generateShadcnRegistry({ root, catalog, siteUrl });
 console.log(`Wrote public/registry.json (${components.length} components)`);
+console.log(`Wrote public/r/*.json (${shadcnCount} shadcn registry items)`);

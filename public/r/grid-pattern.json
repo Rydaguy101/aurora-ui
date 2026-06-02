@@ -1,0 +1,55 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "grid-pattern",
+  "type": "registry:ui",
+  "title": "Grid Pattern",
+  "description": "Low-contrast grids or dots for grounded surfaces and hero backdrops.",
+  "categories": [
+    "Backgrounds & Ambient Effects",
+    "background",
+    "pattern"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/grid-pattern.tsx",
+      "type": "registry:ui",
+      "content": "import React from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface PatternProps {\r\n  className?: string;\r\n  /** \"grid\" draws lines, \"dot\" draws dots */\r\n  variant?: \"grid\" | \"dot\";\r\n  /** Apply a radial fade mask */\r\n  fade?: boolean;\r\n}\r\n\r\nexport function GridPattern({\r\n  className,\r\n  variant = \"grid\",\r\n  fade = true,\r\n}: PatternProps) {\r\n  return (\r\n    <div\r\n      className={cn(\r\n        \"pointer-events-none absolute inset-0\",\r\n        variant === \"grid\" ? \"bg-grid\" : \"bg-dot\",\r\n        fade && \"mask-radial-faded\",\r\n        className\r\n      )}\r\n    />\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Grid Pattern\nLow-contrast grids or dots for grounded surfaces and hero backdrops.\n## Import\n```tsx\nimport { GridPattern } from \"@/components/ui/grid-pattern\";\n```\n## Usage\n```tsx\n<GridPattern variant=\"grid\" fade fill={undefined} />\n```\n## Props\n- **variant** (string) — default: `\"grid\"`: Variant\n- **fade** (boolean) — default: `true`: Fade mask\n- **fill** (string): Fill\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add grid-pattern\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/grid-pattern\n```",
+  "meta": {
+    "exportName": "GridPattern",
+    "exportNames": [
+      "GridPattern"
+    ],
+    "isClientComponent": false,
+    "usageExample": "<GridPattern variant=\"grid\" fade fill={undefined} />",
+    "importExample": "import { GridPattern } from \"@/components/ui/grid-pattern\";",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "default": "grid",
+        "description": "Variant"
+      },
+      {
+        "name": "fade",
+        "type": "boolean",
+        "default": true,
+        "description": "Fade mask"
+      },
+      {
+        "name": "fill",
+        "type": "string",
+        "description": "Fill"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#grid-pattern",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/grid-pattern",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/grid-pattern"
+  }
+}

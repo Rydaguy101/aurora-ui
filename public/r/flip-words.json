@@ -1,0 +1,60 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "flip-words",
+  "type": "registry:ui",
+  "title": "Flip Words",
+  "description": "Inline word swaps that preserve layout while cycling through a set.",
+  "categories": [
+    "Typography & Counters",
+    "hero",
+    "text"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/flip-words.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport React, { useEffect, useMemo, useState } from \"react\";\r\nimport { AnimatePresence, motion } from \"framer-motion\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface FlipWordsProps {\r\n  words: string[];\r\n  duration?: number;\r\n  className?: string;\r\n}\r\n\r\nexport function FlipWords({ words, duration = 2500, className }: FlipWordsProps) {\r\n  const [index, setIndex] = useState(0);\r\n  const safeWords = words.length > 0 ? words : [\"\"];\r\n\r\n  const longestWord = useMemo(\r\n    () => safeWords.reduce((longest, word) => (word.length > longest.length ? word : longest), safeWords[0]),\r\n    [safeWords]\r\n  );\r\n\r\n  useEffect(() => {\r\n    const interval = setInterval(() => {\r\n      setIndex((prev) => (prev + 1) % safeWords.length);\r\n    }, duration);\r\n    return () => clearInterval(interval);\r\n  }, [safeWords.length, duration]);\r\n\r\n  const currentWord = safeWords[index];\r\n  const scale =\r\n    currentWord.length < longestWord.length\r\n      ? 1 + ((longestWord.length - currentWord.length) / longestWord.length) * 0.12\r\n      : 1;\r\n\r\n  return (\r\n    <span\r\n      className={cn(\"relative inline-grid place-items-center align-baseline\", className)}\r\n      style={{ minWidth: `${Math.max(longestWord.length, 1)}ch` }}\r\n    >\r\n      {safeWords.map((word) => (\r\n        <span\r\n          key={word}\r\n          aria-hidden=\"true\"\r\n          className=\"invisible col-start-1 row-start-1 whitespace-nowrap pointer-events-none select-none\"\r\n        >\r\n          {word}\r\n        </span>\r\n      ))}\r\n\r\n      <AnimatePresence mode=\"wait\">\r\n        <motion.span\r\n          key={currentWord}\r\n          initial={{ opacity: 0, y: 10, filter: \"blur(8px)\" }}\r\n          animate={{ opacity: 1, y: 0, filter: \"blur(0px)\", scale }}\r\n          exit={{ opacity: 0, y: -16, filter: \"blur(8px)\" }}\r\n          transition={{ duration: 0.4, ease: \"easeInOut\" }}\r\n          className=\"col-start-1 row-start-1 whitespace-nowrap text-center\"\r\n        >\r\n          {currentWord}\r\n        </motion.span>\r\n      </AnimatePresence>\r\n    </span>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Flip Words\nInline word swaps that preserve layout while cycling through a set.\n## Import\n```tsx\nimport { FlipWords } from \"@/components/ui/flip-words\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<FlipWords words=\"fluid\" duration=\"2500s\" value={undefined} direction={undefined} />\n```\n## Props\n- **words** (string) — default: `\"fluid\"`: Words\n- **duration** (number) — default: `2500`: Duration\n- **value** (number): Value\n- **direction** (string): Direction\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add flip-words\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/flip-words\n```",
+  "meta": {
+    "exportName": "FlipWords",
+    "exportNames": [
+      "FlipWords"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<FlipWords words=\"fluid\" duration=\"2500s\" value={undefined} direction={undefined} />",
+    "importExample": "import { FlipWords } from \"@/components/ui/flip-words\";",
+    "props": [
+      {
+        "name": "words",
+        "type": "string",
+        "default": "fluid",
+        "description": "Words"
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": 2500,
+        "description": "Duration"
+      },
+      {
+        "name": "value",
+        "type": "number",
+        "description": "Value"
+      },
+      {
+        "name": "direction",
+        "type": "string",
+        "description": "Direction"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#flip-words",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/flip-words",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/flip-words"
+  }
+}

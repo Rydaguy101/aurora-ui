@@ -1,0 +1,53 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radio-group",
+  "type": "registry:ui",
+  "title": "Radio Group",
+  "description": "Single-select radio options with accessible keyboard navigation.",
+  "categories": [
+    "Forms & Feedback",
+    "form",
+    "radio"
+  ],
+  "dependencies": [
+    "@radix-ui/react-radio-group"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/radio-group.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport * as RadioGroupPrimitive from \"@radix-ui/react-radio-group\";\r\nimport { Circle } from \"lucide-react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nexport const RadioGroup = React.forwardRef<\r\n  React.ElementRef<typeof RadioGroupPrimitive.Root>,\r\n  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>\r\n>(({ className, ...props }, ref) => (\r\n  <RadioGroupPrimitive.Root ref={ref} className={cn(\"grid gap-3\", className)} {...props} />\r\n));\r\nRadioGroup.displayName = RadioGroupPrimitive.Root.displayName;\r\n\r\nexport const RadioGroupItem = React.forwardRef<\r\n  React.ElementRef<typeof RadioGroupPrimitive.Item>,\r\n  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>\r\n>(({ className, ...props }, ref) => (\r\n  <RadioGroupPrimitive.Item\r\n    ref={ref}\r\n    className={cn(\r\n      \"aspect-square size-5 rounded-full border border-border bg-card/50 text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-primary\",\r\n      className\r\n    )}\r\n    {...props}\r\n  >\r\n    <RadioGroupPrimitive.Indicator className=\"flex items-center justify-center\">\r\n      <Circle className=\"size-2.5 fill-primary text-primary\" />\r\n    </RadioGroupPrimitive.Indicator>\r\n  </RadioGroupPrimitive.Item>\r\n));\r\nRadioGroupItem.displayName = RadioGroupPrimitive.Item.displayName;\r\n"
+    }
+  ],
+  "docs": "# Radio Group\nSingle-select radio options with accessible keyboard navigation.\n## Import\n```tsx\nimport { RadioGroup, RadioGroupItem } from \"@/components/ui/radio-group\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<RadioGroup value=\"starter\" value=\"starter\" />\n```\n## Props\n- **value** (string) — default: `\"starter\"`: Selected\n- **value** (string) — default: `\"starter\"`: Selected\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add radio-group\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/radio-group\n```",
+  "meta": {
+    "exportName": "RadioGroup",
+    "exportNames": [
+      "RadioGroup",
+      "RadioGroupItem"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<RadioGroup value=\"starter\" value=\"starter\" />",
+    "importExample": "import { RadioGroup, RadioGroupItem } from \"@/components/ui/radio-group\";",
+    "props": [
+      {
+        "name": "value",
+        "type": "string",
+        "default": "starter",
+        "description": "Selected"
+      },
+      {
+        "name": "value",
+        "type": "string",
+        "default": "starter",
+        "description": "Selected"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#radio-group",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/radio-group",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/radio-group"
+  }
+}

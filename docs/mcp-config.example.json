@@ -2,7 +2,7 @@
   "mcpServers": {
     "aurora-ui": {
       "command": "npx",
-      "args": ["-y", "aurora-ui-mcp"],
+      "args": ["-y", "github:Rydaguy101/aurora-ui", "aurora-ui-mcp"],
       "env": {
         "AURORA_UI_SITE": "https://aurora-ui-tau.vercel.app",
         "AURORA_UI_REGISTRY": "https://aurora-ui-tau.vercel.app/api/registry"

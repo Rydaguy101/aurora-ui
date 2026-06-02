@@ -1,0 +1,59 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "otp-input",
+  "type": "registry:ui",
+  "title": "OTP Input",
+  "description": "Segmented one-time-password input with paste support and arrow navigation.",
+  "categories": [
+    "Forms & Feedback",
+    "form",
+    "auth"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/otp-input.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport React, { useRef } from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface OtpInputProps {\r\n  length?: number;\r\n  value: string;\r\n  onChange: (value: string) => void;\r\n  className?: string;\r\n  disabled?: boolean;\r\n}\r\n\r\nexport function OtpInput({ length = 6, value, onChange, className, disabled }: OtpInputProps) {\r\n  const inputsRef = useRef<Array<HTMLInputElement | null>>([]);\r\n  const digits = value.padEnd(length, \" \").slice(0, length).split(\"\");\r\n\r\n  const updateDigit = (index: number, digit: string) => {\r\n    const next = digits.map((char, i) => (i === index ? digit : char)).join(\"\").trimEnd();\r\n    onChange(next.replace(/\\s/g, \"\"));\r\n  };\r\n\r\n  const handleChange = (index: number, raw: string) => {\r\n    const digit = raw.replace(/\\D/g, \"\").slice(-1);\r\n    updateDigit(index, digit);\r\n    if (digit && index < length - 1) inputsRef.current[index + 1]?.focus();\r\n  };\r\n\r\n  const handleKeyDown = (index: number, key: string) => {\r\n    if (key === \"Backspace\" && !digits[index]?.trim() && index > 0) {\r\n      inputsRef.current[index - 1]?.focus();\r\n    }\r\n    if (key === \"ArrowLeft\" && index > 0) inputsRef.current[index - 1]?.focus();\r\n    if (key === \"ArrowRight\" && index < length - 1) inputsRef.current[index + 1]?.focus();\r\n  };\r\n\r\n  const handlePaste = (event: React.ClipboardEvent) => {\r\n    event.preventDefault();\r\n    const pasted = event.clipboardData.getData(\"text\").replace(/\\D/g, \"\").slice(0, length);\r\n    onChange(pasted);\r\n    inputsRef.current[Math.min(pasted.length, length - 1)]?.focus();\r\n  };\r\n\r\n  return (\r\n    <div className={cn(\"flex items-center justify-center gap-2\", className)}>\r\n      {digits.map((digit, index) => (\r\n        <input\r\n          key={index}\r\n          ref={(el) => {\r\n            inputsRef.current[index] = el;\r\n          }}\r\n          type=\"text\"\r\n          inputMode=\"numeric\"\r\n          maxLength={1}\r\n          value={digit.trim()}\r\n          disabled={disabled}\r\n          onChange={(event) => handleChange(index, event.target.value)}\r\n          onKeyDown={(event) => handleKeyDown(index, event.key)}\r\n          onPaste={handlePaste}\r\n          className=\"size-12 rounded-xl border border-border bg-card/50 text-center text-lg font-semibold tabular-nums text-foreground outline-none transition-colors focus:border-primary disabled:opacity-50\"\r\n        />\r\n      ))}\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# OTP Input\nSegmented one-time-password input with paste support and arrow navigation.\n## Import\n```tsx\nimport { OtpInput } from \"@/components/ui/otp-input\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<OtpInput length={6} value={undefined} readOnly={undefined} size={undefined} />\n```\n## Props\n- **length** (number) — default: `6`: Length\n- **value** (number): Value\n- **readOnly** (boolean): Read only\n- **size** (string): Size\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add otp-input\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/otp-input\n```",
+  "meta": {
+    "exportName": "OtpInput",
+    "exportNames": [
+      "OtpInput"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<OtpInput length={6} value={undefined} readOnly={undefined} size={undefined} />",
+    "importExample": "import { OtpInput } from \"@/components/ui/otp-input\";",
+    "props": [
+      {
+        "name": "length",
+        "type": "number",
+        "default": 6,
+        "description": "Length"
+      },
+      {
+        "name": "value",
+        "type": "number",
+        "description": "Value"
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "description": "Read only"
+      },
+      {
+        "name": "size",
+        "type": "string",
+        "description": "Size"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#otp-input",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/otp-input",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/otp-input"
+  }
+}

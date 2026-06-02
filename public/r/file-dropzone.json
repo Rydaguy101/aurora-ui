@@ -1,0 +1,49 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "file-dropzone",
+  "type": "registry:ui",
+  "title": "File Dropzone",
+  "description": "Drag-and-drop upload zone with file size limits.",
+  "categories": [
+    "Forms & Feedback",
+    "form",
+    "upload"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/file-dropzone.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport React, { useCallback, useState } from \"react\";\r\nimport { Upload } from \"lucide-react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface FileDropzoneProps {\r\n  onFiles?: (files: File[]) => void;\r\n  accept?: string;\r\n  maxSizeMb?: number;\r\n  className?: string;\r\n}\r\n\r\nexport function FileDropzone({ onFiles, accept, maxSizeMb = 10, className }: FileDropzoneProps) {\r\n  const [dragging, setDragging] = useState(false);\r\n  const [fileName, setFileName] = useState<string | null>(null);\r\n\r\n  const handleFiles = useCallback(\r\n    (files: FileList | null) => {\r\n      if (!files?.length) return;\r\n      const list = Array.from(files).filter((file) => file.size <= maxSizeMb * 1024 * 1024);\r\n      if (list.length > 0) {\r\n        setFileName(list[0].name);\r\n        onFiles?.(list);\r\n      }\r\n    },\r\n    [maxSizeMb, onFiles]\r\n  );\r\n\r\n  return (\r\n    <label\r\n      onDragOver={(e) => {\r\n        e.preventDefault();\r\n        setDragging(true);\r\n      }}\r\n      onDragLeave={() => setDragging(false)}\r\n      onDrop={(e) => {\r\n        e.preventDefault();\r\n        setDragging(false);\r\n        handleFiles(e.dataTransfer.files);\r\n      }}\r\n      className={cn(\r\n        \"flex cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed px-6 py-10 text-center transition-colors\",\r\n        dragging ? \"border-primary bg-primary/5\" : \"border-border bg-card/30 hover:border-primary/40\",\r\n        className\r\n      )}\r\n    >\r\n      <input type=\"file\" className=\"hidden\" accept={accept} onChange={(e) => handleFiles(e.target.files)} />\r\n      <div className=\"mb-3 flex size-12 items-center justify-center rounded-xl border border-border bg-card/60\">\r\n        <Upload className=\"size-5 text-primary\" />\r\n      </div>\r\n      <p className=\"font-medium\">{fileName ? fileName : \"Drop files here or click to upload\"}</p>\r\n      <p className=\"mt-1 text-sm text-muted-foreground\">Up to {maxSizeMb}MB per file</p>\r\n    </label>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# File Dropzone\nDrag-and-drop upload zone with file size limits.\n## Import\n```tsx\nimport { FileDropzone } from \"@/components/ui/file-dropzone\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<FileDropzone maxSizeMb={10} size={undefined} />\n```\n## Props\n- **maxSizeMb** (number) — default: `10`: Max size (MB)\n- **size** (string): Size\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add file-dropzone\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/file-dropzone\n```",
+  "meta": {
+    "exportName": "FileDropzone",
+    "exportNames": [
+      "FileDropzone"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<FileDropzone maxSizeMb={10} size={undefined} />",
+    "importExample": "import { FileDropzone } from \"@/components/ui/file-dropzone\";",
+    "props": [
+      {
+        "name": "maxSizeMb",
+        "type": "number",
+        "default": 10,
+        "description": "Max size (MB)"
+      },
+      {
+        "name": "size",
+        "type": "string",
+        "description": "Size"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#file-dropzone",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/file-dropzone",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/file-dropzone"
+  }
+}

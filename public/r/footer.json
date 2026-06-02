@@ -1,0 +1,59 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "footer",
+  "type": "registry:ui",
+  "title": "Footer",
+  "description": "Site footer with brand, navigation links, and social link.",
+  "categories": [
+    "Layout & Navigation",
+    "layout",
+    "footer"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/footer.tsx",
+      "type": "registry:ui",
+      "content": "import { Github, Sparkles } from \"lucide-react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface FooterLink {\r\n  label: string;\r\n  href: string;\r\n}\r\n\r\ninterface FooterProps {\r\n  brand?: string;\r\n  links?: FooterLink[];\r\n  className?: string;\r\n}\r\n\r\nexport function Footer({\r\n  brand = \"Aurora UI\",\r\n  links = [\r\n    { label: \"Components\", href: \"/components\" },\r\n    { label: \"Showcase\", href: \"/\" },\r\n    { label: \"Docs\", href: \"/components\" },\r\n  ],\r\n  className,\r\n}: FooterProps) {\r\n  return (\r\n    <footer className={cn(\"rounded-2xl border border-border bg-card/60 px-6 py-8 backdrop-blur\", className)}>\r\n      <div className=\"flex flex-col gap-6 md:flex-row md:items-center md:justify-between\">\r\n        <div className=\"flex items-center gap-2 font-semibold\">\r\n          <div className=\"flex size-8 items-center justify-center rounded-lg bg-gradient-to-br from-violet-500 to-cyan-400\">\r\n            <Sparkles className=\"size-4 text-white\" />\r\n          </div>\r\n          {brand}\r\n        </div>\r\n        <nav className=\"flex flex-wrap gap-6 text-sm text-muted-foreground\">\r\n          {links.map((link) => (\r\n            <a key={link.label} href={link.href} className=\"transition-colors hover:text-foreground\">\r\n              {link.label}\r\n            </a>\r\n          ))}\r\n        </nav>\r\n        <a\r\n          href=\"https://github.com\"\r\n          className=\"inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground\"\r\n        >\r\n          <Github className=\"size-4\" />\r\n          GitHub\r\n        </a>\r\n      </div>\r\n      <p className=\"mt-6 text-xs text-muted-foreground\">© {new Date().getFullYear()} {brand}. Built with Next.js and Framer Motion.</p>\r\n    </footer>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Footer\nSite footer with brand, navigation links, and social link.\n## Import\n```tsx\nimport { Footer } from \"@/components/ui/footer\";\n```\n## Usage\n```tsx\n<Footer brand=\"Aurora UI\" text={undefined} radius={undefined} spinDuration={undefined} />\n```\n## Props\n- **brand** (string) — default: `\"Aurora UI\"`: Brand\n- **text** (string): Text\n- **radius** (number): Radius\n- **spinDuration** (number): Spin (s)\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add footer\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/footer\n```",
+  "meta": {
+    "exportName": "Footer",
+    "exportNames": [
+      "Footer"
+    ],
+    "isClientComponent": false,
+    "usageExample": "<Footer brand=\"Aurora UI\" text={undefined} radius={undefined} spinDuration={undefined} />",
+    "importExample": "import { Footer } from \"@/components/ui/footer\";",
+    "props": [
+      {
+        "name": "brand",
+        "type": "string",
+        "default": "Aurora UI",
+        "description": "Brand"
+      },
+      {
+        "name": "text",
+        "type": "string",
+        "description": "Text"
+      },
+      {
+        "name": "radius",
+        "type": "number",
+        "description": "Radius"
+      },
+      {
+        "name": "spinDuration",
+        "type": "number",
+        "description": "Spin (s)"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#footer",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/footer",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/footer"
+  }
+}

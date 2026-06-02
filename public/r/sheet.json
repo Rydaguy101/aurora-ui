@@ -1,0 +1,61 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sheet",
+  "type": "registry:ui",
+  "title": "Sheet",
+  "description": "Spring-animated slide-over panel for settings, filters, and mobile nav.",
+  "categories": [
+    "Overlays & Menus",
+    "drawer",
+    "overlay"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/sheet.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport React, { createContext, useContext, useState } from \"react\";\r\nimport { AnimatePresence, motion } from \"framer-motion\";\r\nimport { X } from \"lucide-react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface SheetContextType {\r\n  open: boolean;\r\n  setOpen: (value: boolean) => void;\r\n}\r\n\r\nconst SheetContext = createContext<SheetContextType | null>(null);\r\n\r\nfunction useSheet() {\r\n  const ctx = useContext(SheetContext);\r\n  if (!ctx) throw new Error(\"Sheet components must be used within <Sheet>\");\r\n  return ctx;\r\n}\r\n\r\nexport function Sheet({ children }: { children: React.ReactNode }) {\r\n  const [open, setOpen] = useState(false);\r\n  return <SheetContext.Provider value={{ open, setOpen }}>{children}</SheetContext.Provider>;\r\n}\r\n\r\nexport function SheetTrigger({\r\n  children,\r\n  className,\r\n}: {\r\n  children: React.ReactNode;\r\n  className?: string;\r\n}) {\r\n  const { setOpen } = useSheet();\r\n  return (\r\n    <button type=\"button\" onClick={() => setOpen(true)} className={className}>\r\n      {children}\r\n    </button>\r\n  );\r\n}\r\n\r\nexport function SheetContent({\r\n  children,\r\n  className,\r\n  side = \"right\",\r\n}: {\r\n  children: React.ReactNode;\r\n  className?: string;\r\n  side?: \"left\" | \"right\";\r\n}) {\r\n  const { open, setOpen } = useSheet();\r\n  const x = side === \"right\" ? \"100%\" : \"-100%\";\r\n\r\n  return (\r\n    <AnimatePresence>\r\n      {open && (\r\n        <div className=\"fixed inset-0 z-50\">\r\n          <motion.div\r\n            initial={{ opacity: 0 }}\r\n            animate={{ opacity: 1 }}\r\n            exit={{ opacity: 0 }}\r\n            onClick={() => setOpen(false)}\r\n            className=\"absolute inset-0 bg-black/60 backdrop-blur-sm\"\r\n          />\r\n          <motion.aside\r\n            initial={{ x }}\r\n            animate={{ x: 0 }}\r\n            exit={{ x }}\r\n            transition={{ type: \"spring\", stiffness: 320, damping: 32 }}\r\n            className={cn(\r\n              \"absolute top-0 flex h-full w-full max-w-sm flex-col border-border bg-card shadow-2xl\",\r\n              side === \"right\" ? \"right-0 border-l\" : \"left-0 border-r\",\r\n              className\r\n            )}\r\n          >\r\n            <button\r\n              type=\"button\"\r\n              onClick={() => setOpen(false)}\r\n              className=\"absolute right-4 top-4 rounded-md p-1 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground\"\r\n            >\r\n              <X className=\"size-4\" />\r\n            </button>\r\n            {children}\r\n          </motion.aside>\r\n        </div>\r\n      )}\r\n    </AnimatePresence>\r\n  );\r\n}\r\n\r\nexport function SheetHeader({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {\r\n  return <div className={cn(\"flex flex-col gap-1.5 p-6\", className)} {...props} />;\r\n}\r\n\r\nexport function SheetTitle({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) {\r\n  return <h2 className={cn(\"text-lg font-semibold\", className)} {...props} />;\r\n}\r\n\r\nexport function SheetDescription({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) {\r\n  return <p className={cn(\"text-sm text-muted-foreground\", className)} {...props} />;\r\n}\r\n\r\nexport function SheetBody({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {\r\n  return <div className={cn(\"flex-1 overflow-y-auto px-6 pb-6\", className)} {...props} />;\r\n}\r\n"
+    }
+  ],
+  "docs": "# Sheet\nSpring-animated slide-over panel for settings, filters, and mobile nav.\n## Import\n```tsx\nimport { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetBody } from \"@/components/ui/sheet\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<Sheet side=\"right\" title=\"Quick settings\" placeholder={undefined} />\n```\n## Props\n- **side** (string) — default: `\"right\"`: Side\n- **title** (string) — default: `\"Quick settings\"`: Title\n- **placeholder** (string): Placeholder\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add sheet\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/sheet\n```",
+  "meta": {
+    "exportName": "Sheet",
+    "exportNames": [
+      "Sheet",
+      "SheetTrigger",
+      "SheetContent",
+      "SheetHeader",
+      "SheetTitle",
+      "SheetDescription",
+      "SheetBody"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<Sheet side=\"right\" title=\"Quick settings\" placeholder={undefined} />",
+    "importExample": "import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetBody } from \"@/components/ui/sheet\";",
+    "props": [
+      {
+        "name": "side",
+        "type": "string",
+        "default": "right",
+        "description": "Side"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "default": "Quick settings",
+        "description": "Title"
+      },
+      {
+        "name": "placeholder",
+        "type": "string",
+        "description": "Placeholder"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#sheet",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/sheet",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/sheet"
+  }
+}

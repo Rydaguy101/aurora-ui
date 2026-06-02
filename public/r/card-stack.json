@@ -1,0 +1,60 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-stack",
+  "type": "registry:ui",
+  "title": "Card Stack",
+  "description": "An auto-cycling layered stack that keeps the top card in focus.",
+  "categories": [
+    "Cards & Surfaces",
+    "stack",
+    "testimonials"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/card-stack.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport React, { useEffect, useState } from \"react\";\r\nimport { motion } from \"framer-motion\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nexport interface StackCard {\r\n  id: number;\r\n  name: string;\r\n  designation: string;\r\n  content: React.ReactNode;\r\n}\r\n\r\ninterface CardStackProps {\r\n  items: StackCard[];\r\n  offset?: number;\r\n  scaleFactor?: number;\r\n  interval?: number;\r\n  className?: string;\r\n}\r\n\r\nexport function CardStack({\r\n  items,\r\n  offset = 12,\r\n  scaleFactor = 0.06,\r\n  interval = 4000,\r\n  className,\r\n}: CardStackProps) {\r\n  const [cards, setCards] = useState<StackCard[]>(items);\r\n\r\n  useEffect(() => {\r\n    setCards(items);\r\n  }, [items]);\r\n\r\n  useEffect(() => {\r\n    const timer = setInterval(() => {\r\n      setCards((prev) => {\r\n        const next = [...prev];\r\n        next.unshift(next.pop()!);\r\n        return next;\r\n      });\r\n    }, interval);\r\n    return () => clearInterval(timer);\r\n  }, [interval]);\r\n\r\n  return (\r\n    <div className={cn(\"relative h-60 w-72\", className)}>\r\n      {cards.map((card, index) => (\r\n        <motion.div\r\n          key={card.id}\r\n          className=\"absolute flex h-60 w-72 flex-col justify-between rounded-2xl border border-border bg-card p-6 shadow-xl\"\r\n          style={{ transformOrigin: \"top center\" }}\r\n          animate={{\r\n            top: index * -offset,\r\n            scale: 1 - index * scaleFactor,\r\n            zIndex: cards.length - index,\r\n          }}\r\n          transition={{ type: \"spring\", stiffness: 200, damping: 24 }}\r\n        >\r\n          <div className=\"text-sm text-foreground/90\">{card.content}</div>\r\n          <div>\r\n            <p className=\"font-semibold\">{card.name}</p>\r\n            <p className=\"text-sm text-muted-foreground\">{card.designation}</p>\r\n          </div>\r\n        </motion.div>\r\n      ))}\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Card Stack\nAn auto-cycling layered stack that keeps the top card in focus.\n## Import\n```tsx\nimport { CardStack } from \"@/components/ui/card-stack\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<CardStack interval={4000} offset={12} name={undefined} role={undefined} />\n```\n## Props\n- **interval** (number) — default: `4000`: Cycle interval (ms)\n- **offset** (number) — default: `12`: Stack offset\n- **name** (string): Name\n- **role** (string): Role\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add card-stack\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/card-stack\n```",
+  "meta": {
+    "exportName": "CardStack",
+    "exportNames": [
+      "CardStack"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<CardStack interval={4000} offset={12} name={undefined} role={undefined} />",
+    "importExample": "import { CardStack } from \"@/components/ui/card-stack\";",
+    "props": [
+      {
+        "name": "interval",
+        "type": "number",
+        "default": 4000,
+        "description": "Cycle interval (ms)"
+      },
+      {
+        "name": "offset",
+        "type": "number",
+        "default": 12,
+        "description": "Stack offset"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "description": "Name"
+      },
+      {
+        "name": "role",
+        "type": "string",
+        "description": "Role"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#card-stack",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/card-stack",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/card-stack"
+  }
+}

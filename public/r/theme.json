@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "theme",
+  "type": "registry:theme",
+  "title": "Aurora Theme",
+  "description": "CSS variables required by Aurora UI components.",
+  "files": [
+    {
+      "path": "app/globals.css",
+      "type": "registry:theme",
+      "content": "@tailwind base;\r\n@tailwind components;\r\n@tailwind utilities;\r\n\r\n@layer base {\r\n  :root {\r\n    --background: 240 10% 3.9%;\r\n    --foreground: 0 0% 98%;\r\n    --card: 240 10% 5.9%;\r\n    --card-foreground: 0 0% 98%;\r\n    --primary: 263 70% 60%;\r\n    --primary-foreground: 0 0% 100%;\r\n    --secondary: 240 4% 16%;\r\n    --secondary-foreground: 0 0% 98%;\r\n    --muted: 240 4% 16%;\r\n    --muted-foreground: 240 5% 65%;\r\n    --accent: 263 70% 60%;\r\n    --accent-foreground: 0 0% 98%;\r\n    --border: 240 6% 18%;\r\n    --input: 240 6% 18%;\r\n    --ring: 263 70% 60%;\r\n    --radius: 0.75rem;\r\n  }\r\n\r\n  * {\r\n    border-color: hsl(var(--border));\r\n  }\r\n\r\n  body {\r\n    background-color: hsl(var(--background));\r\n    color: hsl(var(--foreground));\r\n    -webkit-font-smoothing: antialiased;\r\n    overflow-x: clip;\r\n  }\r\n}\r\n\r\n@layer utilities {\r\n  .text-balance {\r\n    text-wrap: balance;\r\n  }\r\n\r\n  /* Custom scrollbar */\r\n  ::-webkit-scrollbar {\r\n    width: 10px;\r\n    height: 10px;\r\n  }\r\n  ::-webkit-scrollbar-track {\r\n    background: hsl(var(--background));\r\n  }\r\n  ::-webkit-scrollbar-thumb {\r\n    background: hsl(var(--border));\r\n    border-radius: 9999px;\r\n  }\r\n  ::-webkit-scrollbar-thumb:hover {\r\n    background: hsl(var(--muted-foreground));\r\n  }\r\n\r\n  .bg-grid {\r\n    background-image: linear-gradient(\r\n        to right,\r\n        hsl(var(--border) / 0.4) 1px,\r\n        transparent 1px\r\n      ),\r\n      linear-gradient(to bottom, hsl(var(--border) / 0.4) 1px, transparent 1px);\r\n    background-size: 40px 40px;\r\n  }\r\n\r\n  .bg-dot {\r\n    background-image: radial-gradient(\r\n      hsl(var(--border) / 0.7) 1px,\r\n      transparent 1px\r\n    );\r\n    background-size: 22px 22px;\r\n  }\r\n\r\n  .mask-radial-faded {\r\n    mask-image: radial-gradient(circle at center, black, transparent 80%);\r\n  }\r\n\r\n  .mask-linear-faded {\r\n    mask-image: linear-gradient(to bottom, black 60%, transparent);\r\n  }\r\n}\r\n",
+      "target": "app/globals.css"
+    }
+  ],
+  "cssVars": {
+    "dark": {
+      "--background": "240 10% 3.9%",
+      "--foreground": "0 0% 98%",
+      "--card": "240 10% 5.9%",
+      "--card-foreground": "0 0% 98%",
+      "--primary": "263 70% 60%",
+      "--primary-foreground": "0 0% 100%",
+      "--secondary": "240 4% 16%",
+      "--secondary-foreground": "0 0% 98%",
+      "--muted": "240 4% 16%",
+      "--muted-foreground": "240 5% 65%",
+      "--accent": "263 70% 60%",
+      "--accent-foreground": "0 0% 98%",
+      "--border": "240 6% 18%",
+      "--input": "240 6% 18%",
+      "--ring": "263 70% 60%",
+      "--radius": "0.75rem"
+    }
+  },
+  "docs": "# Aurora Theme\n\nCopy CSS variables into your globals.css. Required for semantic colors (bg-card, text-muted-foreground, etc.)."
+}

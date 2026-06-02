@@ -1,0 +1,69 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "starfield-background",
+  "type": "registry:ui",
+  "title": "Starfield",
+  "description": "Twinkling star field for dark hero backgrounds and launch pages.",
+  "categories": [
+    "Backgrounds & Ambient Effects",
+    "background",
+    "hero",
+    "stars"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/starfield-background.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport React, { useMemo } from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface StarfieldBackgroundProps {\r\n  className?: string;\r\n  count?: number;\r\n  color?: string;\r\n  speed?: number;\r\n}\r\n\r\nfunction seeded(index: number, salt: number) {\r\n  const value = Math.sin(index * 6.789 + salt * 3.456) * 43758.5453;\r\n  return value - Math.floor(value);\r\n}\r\n\r\nexport function StarfieldBackground({\r\n  className,\r\n  count = 80,\r\n  color = \"#ffffff\",\r\n  speed = 1,\r\n}: StarfieldBackgroundProps) {\r\n  const stars = useMemo(\r\n    () =>\r\n      Array.from({ length: count }, (_, index) => ({\r\n        id: index,\r\n        left: `${seeded(index, 1) * 100}%`,\r\n        top: `${seeded(index, 2) * 100}%`,\r\n        size: 1 + seeded(index, 3) * 2.5,\r\n        delay: seeded(index, 4) * 4,\r\n        duration: 2 + seeded(index, 5) * 3,\r\n        opacity: 0.2 + seeded(index, 6) * 0.8,\r\n      })),\r\n    [count]\r\n  );\r\n\r\n  return (\r\n    <div className={cn(\"pointer-events-none absolute inset-0 overflow-hidden\", className)}>\r\n      {stars.map((star) => (\r\n        <div\r\n          key={star.id}\r\n          className=\"absolute animate-twinkle rounded-full\"\r\n          style={{\r\n            left: star.left,\r\n            top: star.top,\r\n            width: star.size,\r\n            height: star.size,\r\n            backgroundColor: color,\r\n            opacity: star.opacity,\r\n            animationDuration: `${star.duration / speed}s`,\r\n            animationDelay: `${star.delay}s`,\r\n          }}\r\n        />\r\n      ))}\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Starfield\nTwinkling star field for dark hero backgrounds and launch pages.\n## Import\n```tsx\nimport { StarfieldBackground } from \"@/components/ui/starfield-background\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<StarfieldBackground count={80} color=\"#ffffff\" speed={1} count={80} color=\"#ffffff\" />\n```\n## Props\n- **count** (number) — default: `80`: Star count\n- **color** (string) — default: `\"#ffffff\"`: Color\n- **speed** (number) — default: `1`: Speed\n- **count** (number) — default: `80`: Dot count\n- **color** (string) — default: `\"#ffffff\"`: Color\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add starfield-background\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/starfield-background\n```",
+  "meta": {
+    "exportName": "StarfieldBackground",
+    "exportNames": [
+      "StarfieldBackground"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<StarfieldBackground count={80} color=\"#ffffff\" speed={1} count={80} color=\"#ffffff\" />",
+    "importExample": "import { StarfieldBackground } from \"@/components/ui/starfield-background\";",
+    "props": [
+      {
+        "name": "count",
+        "type": "number",
+        "default": 80,
+        "description": "Star count"
+      },
+      {
+        "name": "color",
+        "type": "string",
+        "default": "#ffffff",
+        "description": "Color"
+      },
+      {
+        "name": "speed",
+        "type": "number",
+        "default": 1,
+        "description": "Speed"
+      },
+      {
+        "name": "count",
+        "type": "number",
+        "default": 80,
+        "description": "Dot count"
+      },
+      {
+        "name": "color",
+        "type": "string",
+        "default": "#ffffff",
+        "description": "Color"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#starfield-background",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/starfield-background",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/starfield-background"
+  }
+}

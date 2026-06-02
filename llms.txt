@@ -1,52 +1,53 @@
 # Aurora UI
 
-> Copy-paste animated React components for Next.js (Tailwind, Radix, Framer Motion, WebGL).
-
-Aurora UI is a source-first component library. Components are copied into your project — there is no opaque npm UI package.
+> Copy-paste animated React components for Next.js — **shadcn-compatible** registry + CLI.
 
 ## Live site
 
-**https://aurora-ui-tau.vercel.app/components** — previews, customization, source tabs
+**https://aurora-ui-tau.vercel.app/components**
 
-## Primary resources for AI agents
+## shadcn-style workflow
+
+```bash
+npx --yes github:Rydaguy101/aurora-ui init
+npx shadcn@latest add @aurora/theme @aurora/utils
+npx shadcn@latest add @aurora/shimmer-button
+```
+
+Or Aurora CLI only:
+
+```bash
+npx --yes github:Rydaguy101/aurora-ui docs shimmer-button --json
+npx --yes github:Rydaguy101/aurora-ui add shimmer-button
+```
+
+## AI resources
 
 | Resource | URL |
 |----------|-----|
 | Agent guide | https://aurora-ui-tau.vercel.app/docs/FOR_AI.md |
-| Agent manifest | https://aurora-ui-tau.vercel.app/.well-known/agents.json |
-| OpenAI plugin | https://aurora-ui-tau.vercel.app/.well-known/ai-plugin.json |
-| Registry (JSON) | https://aurora-ui-tau.vercel.app/api/registry |
-| OpenAPI spec | https://aurora-ui-tau.vercel.app/openapi.json |
-| LLM index | https://aurora-ui-tau.vercel.app/llms.txt |
+| Registry item | https://aurora-ui-tau.vercel.app/r/{slug}.json |
+| shadcn index | https://aurora-ui-tau.vercel.app/shadcn-registry.json |
+| Component API | https://aurora-ui-tau.vercel.app/api/components/{slug} |
 
-## CLI
-
-```bash
-npx --yes github:Rydaguy101/aurora-ui list
-npx --yes github:Rydaguy101/aurora-ui guide shimmer-button
-npx --yes github:Rydaguy101/aurora-ui add button card shimmer-button
-```
-
-See [docs/QUICKSTART.md](docs/QUICKSTART.md) for full setup.
-
-## MCP (Cursor / Claude Desktop)
+## MCP (shadcn-compatible tools)
 
 ```json
 {
   "mcpServers": {
     "aurora-ui": {
       "command": "npx",
-      "args": ["-y", "aurora-ui-mcp"]
+      "args": ["-y", "github:Rydaguy101/aurora-ui", "aurora-ui-mcp"]
     }
   }
 }
 ```
 
-Tools: `list_components`, `search_components`, `get_component`, `get_component_source`, `get_integration_guide`
+Tools: `list_items_in_registries`, `search_items_in_registries`, `get_add_command_for_items`, `get_item_examples_from_registries`
 
-## Categories
+## Skill
 
-Actions · Forms & Feedback · Cards & Surfaces · Overlays & Menus · Layout & Navigation · Typography & Counters · Backgrounds & Ambient Effects · 3D & WebGL
+See [skills/aurora-ui/SKILL.md](skills/aurora-ui/SKILL.md)
 
 ## Repository
 

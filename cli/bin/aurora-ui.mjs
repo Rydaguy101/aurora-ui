@@ -16,38 +16,35 @@ const GITHUB_RAW = "https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main"
 const NPX_CMD = "npx --yes github:Rydaguy101/aurora-ui";
 
 const HELP = `
-aurora-ui — copy-paste animated React components for Next.js
+aurora-ui — copy-paste animated React components for Next.js (shadcn-compatible workflow)
 
-INSTALL (works today — no npm publish required)
-  ${NPX_CMD} list
-  ${NPX_CMD} info shimmer-button
-  ${NPX_CMD} add button shimmer-button
-  ${NPX_CMD} guide webgl-globe
+QUICK START
+  ${NPX_CMD} init                    Create components.json with @aurora registry
+  ${NPX_CMD} search -q "button"      Find components
+  ${NPX_CMD} docs shimmer-button     Get docs + usage URLs (JSON)
+  ${NPX_CMD} view shimmer-button     Full registry item (JSON)
+  ${NPX_CMD} add shimmer-button      Copy into your project
+  ${NPX_CMD} info --json             Project context (aliases, installed components)
 
-USAGE
+SHADCN CLI (after init)
+  npx shadcn@latest add @aurora/shimmer-button
+  npx shadcn@latest add @aurora/theme @aurora/utils
+
+COMMANDS
+  aurora-ui init [--force]
+  aurora-ui info [--json] [<slug>]
   aurora-ui list [--category <name>] [--json]
-  aurora-ui info <slug>
-  aurora-ui guide <slug>          Full AI-friendly setup + usage for one component
-  aurora-ui add <slug> [slug...] [--dir <path>] [--registry <url>]
-  aurora-ui init
+  aurora-ui search -q <query> [--json]
+  aurora-ui docs <slug> [slug...] [--json]
+  aurora-ui view <slug> [--json]
+  aurora-ui guide <slug>
+  aurora-ui add <slug> [slug...] [--dir <path>]
   aurora-ui docs
 
-AI / AGENT QUICK START
-  1. Read: ${DEFAULT_SITE}/docs/FOR_AI.md
-  2. List components: ${NPX_CMD} list
-  3. Get exact usage: ${NPX_CMD} guide <slug>
-  4. Copy files: ${NPX_CMD} add <slug>
-  5. Install peer deps printed after add
-  6. MCP (Cursor): npx --yes github:Rydaguy101/aurora-ui aurora-ui-mcp
-
-ENV
-  AURORA_UI_REGISTRY   Override registry.json URL
-  AURORA_UI_SITE         Docs site URL
-
-EXAMPLES
-  ${NPX_CMD} list --category "Actions"
-  ${NPX_CMD} guide animated-modal
-  ${NPX_CMD} add card spotlight-card --dir src/components/ui
+AI / MCP
+  Read: ${DEFAULT_SITE}/docs/FOR_AI.md
+  MCP:  npx --yes github:Rydaguy101/aurora-ui aurora-ui-mcp
+  Registry: ${DEFAULT_SITE}/r/{name}.json
 `.trim();
 
 function parseArgs(argv) {
@@ -61,6 +58,8 @@ function parseArgs(argv) {
     if (arg === "--dir") flags.dir = args[++index];
     else if (arg === "--registry") flags.registry = args[++index];
     else if (arg === "--category") flags.category = args[++index];
+    else if (arg === "-q" || arg === "--query") flags.query = args[++index];
+    else if (arg === "--force") flags.force = true;
     else if (arg === "--json") flags.json = true;
     else if (arg.startsWith("-")) throw new Error(`Unknown flag: ${arg}`);
     else positional.push(arg);
@@ -116,7 +115,201 @@ async function copyUtils(targetRoot) {
   console.log(`  + lib/utils.ts`);
 }
 
-async function fetchSource(component, registry) {
+function readComponentsJson(cwd = process.cwd()) {
+  const configPath = path.join(cwd, "components.json");
+  if (!fs.existsSync(configPath)) return null;
+  return JSON.parse(fs.readFileSync(configPath, "utf8"));
+}
+
+function resolveUiDir(config, cwd = process.cwd()) {
+  const alias = config?.aliases?.ui ?? "@/components/ui";
+  const relative = alias.replace(/^@\//, "").replace(/^\.\//, "");
+  return path.join(cwd, relative);
+}
+
+function listInstalledComponents(cwd = process.cwd()) {
+  const config = readComponentsJson(cwd);
+  const uiDir = config ? resolveUiDir(config, cwd) : path.join(cwd, "components/ui");
+  if (!fs.existsSync(uiDir)) return [];
+  return fs
+    .readdirSync(uiDir)
+    .filter((file) => file.endsWith(".tsx") || file.endsWith(".ts"))
+    .map((file) => file.replace(/\.(tsx|ts)$/, ""))
+    .sort();
+}
+
+function defaultComponentsJson() {
+  return {
+    $schema: `${DEFAULT_SITE}/schema/components.json`,
+    style: "aurora",
+    rsc: true,
+    tsx: true,
+    tailwind: {
+      config: "tailwind.config.ts",
+      css: "app/globals.css",
+      cssVariables: true,
+    },
+    aliases: {
+      components: "@/components",
+      utils: "@/lib/utils",
+      ui: "@/components/ui",
+      lib: "@/lib",
+    },
+    iconLibrary: "lucide",
+    registries: {
+      "@aurora": `${DEFAULT_SITE}/r/{name}.json`,
+    },
+  };
+}
+
+function getProjectInfo(cwd = process.cwd()) {
+  const config = readComponentsJson(cwd) ?? defaultComponentsJson();
+  const uiDir = resolveUiDir(config, cwd);
+  const installed = listInstalledComponents(cwd);
+
+  return {
+    framework: "next-app",
+    style: config.style ?? "aurora",
+    rsc: config.rsc ?? true,
+    tsx: config.tsx ?? true,
+    isRSC: config.rsc ?? true,
+    aliases: config.aliases,
+    resolvedPaths: {
+      ui: path.relative(cwd, uiDir).replace(/\\/g, "/"),
+      utils: (config.aliases?.utils ?? "@/lib/utils").replace(/^@\//, ""),
+      components: (config.aliases?.components ?? "@/components").replace(/^@\//, ""),
+    },
+    tailwind: config.tailwind,
+    iconLibrary: config.iconLibrary ?? "lucide",
+    registries: Object.keys(config.registries ?? { "@aurora": true }),
+    registryUrls: config.registries ?? { "@aurora": `${DEFAULT_SITE}/r/{name}.json` },
+    components: installed,
+    componentCount: installed.length,
+    docsSite: DEFAULT_SITE,
+    cliCommand: NPX_CMD,
+    shadcnAddTemplate: "npx shadcn@latest add @aurora/{name}",
+  };
+}
+
+function searchItems(registry, query) {
+  const q = query.trim().toLowerCase();
+  return registry.components.filter((item) => {
+    const haystack = [item.slug, item.title, item.description, item.category, ...(item.tags ?? [])]
+      .join(" ")
+      .toLowerCase();
+    return haystack.includes(q);
+  });
+}
+
+async function fetchRegistryItem(slug) {
+  const response = await fetch(`${DEFAULT_SITE}/r/${slug}.json`);
+  if (!response.ok) throw new Error(`Registry item not found: @aurora/${slug}`);
+  return response.json();
+}
+
+async function cmdSearch(registry, flags) {
+  if (!flags.query) throw new Error('Usage: aurora-ui search -q "button"');
+  const matches = searchItems(registry, flags.query).map((item) => ({
+    name: item.slug,
+    title: item.title,
+    description: item.description,
+    registry: "@aurora",
+    addCommand: `${NPX_CMD} add ${item.slug}`,
+    shadcnAddCommand: `npx shadcn@latest add @aurora/${item.slug}`,
+  }));
+
+  if (flags.json) {
+    console.log(JSON.stringify({ query: flags.query, results: matches }, null, 2));
+    return;
+  }
+
+  console.log(`Found ${matches.length} result(s) for "${flags.query}":\n`);
+  for (const item of matches) {
+    console.log(`@aurora/${item.name} — ${item.title}`);
+    console.log(`  ${item.description}`);
+    console.log(`  add: ${item.addCommand}`);
+    console.log("");
+  }
+}
+
+async function cmdDocs(registry, slugs, flags) {
+  const docs = [];
+  for (const slug of slugs) {
+    const item = registry.components.find((entry) => entry.slug === slug);
+    if (!item) throw new Error(`Unknown component "${slug}"`);
+
+    docs.push({
+      name: item.slug,
+      title: item.title,
+      description: item.description,
+      registry: "@aurora",
+      documentation: `${DEFAULT_SITE}/docs/FOR_AI.md`,
+      itemUrl: `${DEFAULT_SITE}/r/${item.slug}.json`,
+      apiUrl: `${DEFAULT_SITE}/api/components/${item.slug}`,
+      sourceUrl: `${DEFAULT_SITE}/api/component-source/${item.slug}`,
+      previewUrl: `${DEFAULT_SITE}/components#${item.slug}`,
+      importExample: item.importExample,
+      usageExample: item.usageExample,
+      props: item.props ?? [],
+      isClientComponent: item.isClientComponent ?? false,
+      addCommand: `${NPX_CMD} add ${item.slug}`,
+      shadcnAddCommand: `npx shadcn@latest add @aurora/${item.slug}`,
+    });
+  }
+
+  if (flags.json || slugs.length > 1) {
+    console.log(JSON.stringify(slugs.length === 1 ? docs[0] : docs, null, 2));
+    return;
+  }
+
+  const doc = docs[0];
+  console.log(`${doc.title} (@aurora/${doc.name})`);
+  console.log(`Docs: ${doc.documentation}`);
+  console.log(`Item: ${doc.itemUrl}`);
+  console.log(`Add: ${doc.addCommand}`);
+  console.log(`\nImport:\n${doc.importExample}`);
+  console.log(`\nUsage:\n${doc.usageExample}`);
+}
+
+async function cmdView(slug, flags) {
+  const item = await fetchRegistryItem(slug);
+  if (flags.json) {
+    console.log(JSON.stringify(item, null, 2));
+    return;
+  }
+  console.log(JSON.stringify(item.meta ?? item, null, 2));
+}
+
+function cmdInit(flags) {
+  const configPath = path.join(process.cwd(), "components.json");
+  if (fs.existsSync(configPath) && !flags.force) {
+    console.log(`components.json already exists. Use --force to overwrite.`);
+    console.log(JSON.stringify(getProjectInfo(), null, 2));
+    return;
+  }
+
+  fs.writeFileSync(configPath, `${JSON.stringify(defaultComponentsJson(), null, 2)}\n`);
+  console.log(`Created components.json with @aurora registry.`);
+  console.log(`\nNext steps:`);
+  console.log(`  npx shadcn@latest add @aurora/theme @aurora/utils`);
+  console.log(`  npx shadcn@latest add @aurora/button`);
+  console.log(`  # or: ${NPX_CMD} add button`);
+}
+
+function cmdProjectInfo(flags) {
+  const info = getProjectInfo();
+  if (flags.json) {
+    console.log(JSON.stringify(info, null, 2));
+    return;
+  }
+
+  console.log(`Aurora UI project`);
+  console.log(`Installed: ${info.components.join(", ") || "(none)"}`);
+  console.log(`UI path: ${info.resolvedPaths.ui}`);
+  console.log(`Registries: ${info.registries.join(", ")}`);
+}
+
+async function fetchSource(component) {
   const local = path.join(repoRoot, component.sourcePath);
   if (fs.existsSync(local)) return fs.readFileSync(local, "utf8");
 
@@ -159,9 +352,7 @@ async function cmdInfo(registry, slug) {
   if (item.peerDependencies?.length) console.log(`Peer deps: ${item.peerDependencies.join(", ")}`);
   console.log(`Import: ${item.importExample}`);
   if (item.isClientComponent) console.log(`Client component: yes — add "use client" to files that render it`);
-  if (item.usageExample) {
-    console.log(`\nUsage:\n${item.usageExample}`);
-  }
+  if (item.usageExample) console.log(`\nUsage:\n${item.usageExample}`);
 }
 
 async function cmdGuide(registry, slug) {
@@ -175,6 +366,8 @@ async function cmdGuide(registry, slug) {
   if (item.internalDependencies?.length) {
     console.log(`${NPX_CMD} add ${item.internalDependencies.join(" ")}`);
   }
+  console.log(`\n## shadcn CLI\n`);
+  console.log(`npx shadcn@latest add @aurora/${item.slug}`);
   console.log(`\n## Import\n`);
   console.log(item.importExample);
   console.log(`\n## Usage (copy exactly — do not invent props)\n`);
@@ -192,23 +385,34 @@ async function cmdGuide(registry, slug) {
 }
 
 async function cmdAdd(registry, slugs, flags) {
-  const targetDir = path.resolve(process.cwd(), flags.dir ?? "components/ui");
+  const config = readComponentsJson();
+  const defaultUi = config?.aliases?.ui?.replace(/^@\//, "") ?? "components/ui";
+  const targetDir = path.resolve(process.cwd(), flags.dir ?? defaultUi);
   ensureDir(targetDir);
 
   const allPeerDeps = new Set(["clsx", "tailwind-merge", "class-variance-authority"]);
-  const copied = [];
+  const copiedSlugs = new Set();
 
-  for (const slug of slugs) {
+  async function addOne(slug) {
+    if (copiedSlugs.has(slug)) return;
     const item = registry.components.find((entry) => entry.slug === slug);
     if (!item) throw new Error(`Unknown component "${slug}". Run: aurora-ui list`);
 
-    const source = await fetchSource(item, registry);
+    for (const dep of item.internalDependencies ?? []) {
+      await addOne(dep);
+    }
+
+    const source = await fetchSource(item);
     const filename = path.basename(item.sourcePath);
     const target = path.join(targetDir, filename);
     fs.writeFileSync(target, source);
-    copied.push(target);
+    copiedSlugs.add(slug);
     item.peerDependencies?.forEach((dep) => allPeerDeps.add(dep));
     console.log(`  + ${path.relative(process.cwd(), target)}`);
+  }
+
+  for (const slug of slugs) {
+    await addOne(slug);
   }
 
   await copyUtils(process.cwd());
@@ -219,7 +423,7 @@ async function cmdAdd(registry, slugs, flags) {
   console.log(`  npm install ${[...allPeerDeps].join(" ")}`);
   console.log("\nRequired project setup:");
   console.log(`  1. tsconfig paths: "@/*" -> "./*"`);
-  console.log(`  2. Copy theme CSS from ${GITHUB_RAW}/app/globals.css`);
+  console.log(`  2. Run: ${NPX_CMD} init  (or npx shadcn@latest add @aurora/theme)`);
   console.log(`  3. Tailwind content must include ./components/**/*.{ts,tsx}`);
   if (lastItem?.usageExample) {
     console.log(`\nUsage example for ${lastItem.slug}:\n${lastItem.importExample}\n\n${lastItem.usageExample}`);
@@ -229,25 +433,10 @@ async function cmdAdd(registry, slugs, flags) {
   }
 }
 
-function cmdInit() {
-  console.log(`Aurora UI setup checklist
-
-1. Next.js App Router project with Tailwind CSS
-2. Add path alias in tsconfig.json: "@/*" -> "./*"
-3. Copy globals.css theme tokens from:
-   ${GITHUB_RAW}/app/globals.css
-4. Add components:
-   ${NPX_CMD} add button card
-5. Install peer deps printed by the add command
-6. Browse live docs: ${DEFAULT_SITE}/components
-
-AI agents: read ${DEFAULT_SITE}/docs/FOR_AI.md first, then run:
-  ${NPX_CMD} guide <slug>`);
-}
-
-function cmdDocs() {
+function cmdDocsIndex() {
   console.log(`${DEFAULT_SITE}/docs/FOR_AI.md`);
   console.log(`${DEFAULT_SITE}/.well-known/agents.json`);
+  console.log(`${DEFAULT_SITE}/shadcn-registry.json`);
   console.log(DEFAULT_REGISTRY);
   console.log(`MCP: npx --yes github:Rydaguy101/aurora-ui aurora-ui-mcp`);
 }
@@ -260,10 +449,20 @@ async function main() {
     return;
   }
 
-  if (command === "init") return cmdInit();
-  if (command === "docs") return cmdDocs();
+  if (command === "init") return cmdInit(flags);
+  if (command === "docs" && positional.length === 0) return cmdDocsIndex();
 
   const registry = await loadRegistry(flags.registry ?? DEFAULT_REGISTRY);
+
+  if (command === "info" && (flags.json || positional.length === 0)) {
+    return cmdProjectInfo(flags);
+  }
+  if (command === "search") return cmdSearch(registry, flags);
+  if (command === "view") {
+    if (!positional[0]) throw new Error("Usage: aurora-ui view <slug>");
+    return cmdView(positional[0], flags);
+  }
+  if (command === "docs") return cmdDocs(registry, positional, flags);
 
   if (command === "list") return cmdList(registry, flags);
   if (command === "info") return cmdInfo(registry, positional[0]);

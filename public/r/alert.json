@@ -1,0 +1,58 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert",
+  "type": "registry:ui",
+  "title": "Alert",
+  "description": "Contextual callout banners for info, success, warning, and error states.",
+  "categories": [
+    "Forms & Feedback",
+    "feedback",
+    "status"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/alert.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\r\nimport { cva, type VariantProps } from \"class-variance-authority\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nconst alertVariants = cva(\r\n  \"relative w-full rounded-xl border px-4 py-3 text-sm [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-3.5 [&>svg+div]:pl-7\",\r\n  {\r\n    variants: {\r\n      variant: {\r\n        default: \"border-border bg-card/60 text-foreground\",\r\n        info: \"border-primary/30 bg-primary/10 text-foreground\",\r\n        success: \"border-emerald-500/30 bg-emerald-500/10 text-foreground\",\r\n        warning: \"border-amber-500/30 bg-amber-500/10 text-foreground\",\r\n        destructive: \"border-red-500/30 bg-red-500/10 text-foreground\",\r\n      },\r\n    },\r\n    defaultVariants: { variant: \"default\" },\r\n  }\r\n);\r\n\r\nexport interface AlertProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof alertVariants> {}\r\n\r\nexport const Alert = React.forwardRef<HTMLDivElement, AlertProps>(\r\n  ({ className, variant, ...props }, ref) => (\r\n    <div ref={ref} role=\"alert\" className={cn(alertVariants({ variant }), className)} {...props} />\r\n  )\r\n);\r\nAlert.displayName = \"Alert\";\r\n\r\nexport const AlertTitle = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLHeadingElement>>(\r\n  ({ className, ...props }, ref) => (\r\n    <h5 ref={ref} className={cn(\"mb-1 font-medium leading-none tracking-tight\", className)} {...props} />\r\n  )\r\n);\r\nAlertTitle.displayName = \"AlertTitle\";\r\n\r\nexport const AlertDescription = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLParagraphElement>>(\r\n  ({ className, ...props }, ref) => (\r\n    <div ref={ref} className={cn(\"text-sm text-muted-foreground [&_p]:leading-relaxed\", className)} {...props} />\r\n  )\r\n);\r\nAlertDescription.displayName = \"AlertDescription\";\r\n"
+    }
+  ],
+  "docs": "# Alert\nContextual callout banners for info, success, warning, and error states.\n## Import\n```tsx\nimport { Alert, AlertTitle, AlertDescription } from \"@/components/ui/alert\";\n```\n## Usage\n```tsx\n<Alert variant=\"info\" title=\"Heads up\" description=\"You can customize this alert with variants and copy.\" />\n```\n## Props\n- **variant** (string) — default: `\"info\"`: Variant\n- **title** (string) — default: `\"Heads up\"`: Title\n- **description** (string) — default: `\"You can customize this alert with variants and copy.\"`: Description\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add alert\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/alert\n```",
+  "meta": {
+    "exportName": "Alert",
+    "exportNames": [
+      "Alert",
+      "AlertTitle",
+      "AlertDescription"
+    ],
+    "isClientComponent": false,
+    "usageExample": "<Alert variant=\"info\" title=\"Heads up\" description=\"You can customize this alert with variants and copy.\" />",
+    "importExample": "import { Alert, AlertTitle, AlertDescription } from \"@/components/ui/alert\";",
+    "props": [
+      {
+        "name": "variant",
+        "type": "string",
+        "default": "info",
+        "description": "Variant"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "default": "Heads up",
+        "description": "Title"
+      },
+      {
+        "name": "description",
+        "type": "string",
+        "default": "You can customize this alert with variants and copy.",
+        "description": "Description"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#alert",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/alert",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/alert"
+  }
+}

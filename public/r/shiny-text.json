@@ -1,0 +1,60 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shiny-text",
+  "type": "registry:ui",
+  "title": "Shiny Text",
+  "description": "A glossy text treatment with a subtle moving highlight.",
+  "categories": [
+    "Typography & Counters",
+    "headline",
+    "shimmer"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/shiny-text.tsx",
+      "type": "registry:ui",
+      "content": "import React, { CSSProperties } from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface ShinyTextProps {\r\n  children: React.ReactNode;\r\n  className?: string;\r\n  shimmerWidth?: number;\r\n}\r\n\r\nexport function ShinyText({\r\n  children,\r\n  className,\r\n  shimmerWidth = 100,\r\n}: ShinyTextProps) {\r\n  return (\r\n    <span\r\n      style={{ \"--shiny-width\": `${shimmerWidth}px` } as CSSProperties}\r\n      className={cn(\r\n        \"mx-auto max-w-md text-muted-foreground/70\",\r\n        \"animate-shiny-text bg-clip-text bg-no-repeat [background-position:0_0] [background-size:var(--shiny-width)_100%] [transition:background-position_1s_cubic-bezier(.6,.6,0,1)_infinite]\",\r\n        \"bg-gradient-to-r from-transparent via-foreground/90 via-50% to-transparent\",\r\n        className\r\n      )}\r\n    >\r\n      {children}\r\n    </span>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Shiny Text\nA glossy text treatment with a subtle moving highlight.\n## Import\n```tsx\nimport { ShinyText } from \"@/components/ui/shiny-text\";\n```\n## Usage\n```tsx\n<ShinyText shimmerWidth={100} words={undefined} typingSpeed={undefined}>Shiny text that catches the light</ShinyText>\n```\n## Props\n- **label** (string) — default: `\"Shiny text that catches the light\"`: Text\n- **shimmerWidth** (number) — default: `100`: Shimmer width\n- **words** (string): Words\n- **typingSpeed** (number): Typing speed\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add shiny-text\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/shiny-text\n```",
+  "meta": {
+    "exportName": "ShinyText",
+    "exportNames": [
+      "ShinyText"
+    ],
+    "isClientComponent": false,
+    "usageExample": "<ShinyText shimmerWidth={100} words={undefined} typingSpeed={undefined}>Shiny text that catches the light</ShinyText>",
+    "importExample": "import { ShinyText } from \"@/components/ui/shiny-text\";",
+    "props": [
+      {
+        "name": "label",
+        "type": "string",
+        "default": "Shiny text that catches the light",
+        "description": "Text"
+      },
+      {
+        "name": "shimmerWidth",
+        "type": "number",
+        "default": 100,
+        "description": "Shimmer width"
+      },
+      {
+        "name": "words",
+        "type": "string",
+        "description": "Words"
+      },
+      {
+        "name": "typingSpeed",
+        "type": "number",
+        "description": "Typing speed"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#shiny-text",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/shiny-text",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/shiny-text"
+  }
+}

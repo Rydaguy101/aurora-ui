@@ -1,0 +1,62 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stat-card",
+  "type": "registry:ui",
+  "title": "Stat Card",
+  "description": "Dashboard metric card with optional trend indicator.",
+  "categories": [
+    "Cards & Surfaces",
+    "dashboard",
+    "metrics"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/stat-card.tsx",
+      "type": "registry:ui",
+      "content": "import { cn } from \"@/lib/utils\";\r\n\r\ninterface StatCardProps {\r\n  label: string;\r\n  value: string;\r\n  change?: string;\r\n  trend?: \"up\" | \"down\" | \"neutral\";\r\n  className?: string;\r\n}\r\n\r\nexport function StatCard({ label, value, change, trend = \"neutral\", className }: StatCardProps) {\r\n  return (\r\n    <div className={cn(\"rounded-2xl border border-border bg-card/60 p-5 shadow-lg backdrop-blur\", className)}>\r\n      <p className=\"text-sm text-muted-foreground\">{label}</p>\r\n      <p className=\"mt-2 text-3xl font-bold tracking-tight\">{value}</p>\r\n      {change && (\r\n        <p\r\n          className={cn(\r\n            \"mt-2 text-sm font-medium\",\r\n            trend === \"up\" && \"text-emerald-400\",\r\n            trend === \"down\" && \"text-red-400\",\r\n            trend === \"neutral\" && \"text-muted-foreground\"\r\n          )}\r\n        >\r\n          {change}\r\n        </p>\r\n      )}\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Stat Card\nDashboard metric card with optional trend indicator.\n## Import\n```tsx\nimport { StatCard } from \"@/components/ui/stat-card\";\n```\n## Usage\n```tsx\n<StatCard value=\"12\" change=\"+12.4%\" trend=\"up\">Active users</StatCard>\n```\n## Props\n- **label** (string) — default: `\"Active users\"`: Label\n- **value** (string) — default: `\"12\"`: Value\n- **change** (string) — default: `\"+12.4%\"`: Change\n- **trend** (string) — default: `\"up\"`: Trend\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add stat-card\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/stat-card\n```",
+  "meta": {
+    "exportName": "StatCard",
+    "exportNames": [
+      "StatCard"
+    ],
+    "isClientComponent": false,
+    "usageExample": "<StatCard value=\"12\" change=\"+12.4%\" trend=\"up\">Active users</StatCard>",
+    "importExample": "import { StatCard } from \"@/components/ui/stat-card\";",
+    "props": [
+      {
+        "name": "label",
+        "type": "string",
+        "default": "Active users",
+        "description": "Label"
+      },
+      {
+        "name": "value",
+        "type": "string",
+        "default": "12",
+        "description": "Value"
+      },
+      {
+        "name": "change",
+        "type": "string",
+        "default": "+12.4%",
+        "description": "Change"
+      },
+      {
+        "name": "trend",
+        "type": "string",
+        "default": "up",
+        "description": "Trend"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#stat-card",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/stat-card",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/stat-card"
+  }
+}

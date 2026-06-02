@@ -1,0 +1,60 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tooltip",
+  "type": "registry:ui",
+  "title": "Tooltip",
+  "description": "Directional tooltips for adding quick context around interactions.",
+  "categories": [
+    "Forms & Feedback",
+    "hover",
+    "overlay"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/tooltip.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport React, { useState } from \"react\";\r\nimport { AnimatePresence, motion } from \"framer-motion\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface TooltipProps {\r\n  content: React.ReactNode;\r\n  children: React.ReactNode;\r\n  side?: \"top\" | \"bottom\" | \"left\" | \"right\";\r\n  className?: string;\r\n}\r\n\r\nconst positions = {\r\n  top: { className: \"bottom-full left-1/2 -translate-x-1/2 mb-2\", x: 0, y: 6 },\r\n  bottom: { className: \"top-full left-1/2 -translate-x-1/2 mt-2\", x: 0, y: -6 },\r\n  left: { className: \"right-full top-1/2 -translate-y-1/2 mr-2\", x: 6, y: 0 },\r\n  right: { className: \"left-full top-1/2 -translate-y-1/2 ml-2\", x: -6, y: 0 },\r\n};\r\n\r\nexport function Tooltip({ content, children, side = \"top\", className }: TooltipProps) {\r\n  const [show, setShow] = useState(false);\r\n  const pos = positions[side];\r\n\r\n  return (\r\n    <span\r\n      className=\"relative inline-flex\"\r\n      onMouseEnter={() => setShow(true)}\r\n      onMouseLeave={() => setShow(false)}\r\n    >\r\n      {children}\r\n      <AnimatePresence>\r\n        {show && (\r\n          <motion.span\r\n            initial={{ opacity: 0, x: pos.x, y: pos.y, scale: 0.9 }}\r\n            animate={{ opacity: 1, x: 0, y: 0, scale: 1 }}\r\n            exit={{ opacity: 0, scale: 0.9 }}\r\n            transition={{ duration: 0.15 }}\r\n            className={cn(\r\n              \"pointer-events-none absolute z-50 whitespace-nowrap rounded-lg border border-border bg-card px-3 py-1.5 text-xs font-medium text-foreground shadow-xl\",\r\n              pos.className,\r\n              className\r\n            )}\r\n          >\r\n            {content}\r\n          </motion.span>\r\n        )}\r\n      </AnimatePresence>\r\n    </span>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Tooltip\nDirectional tooltips for adding quick context around interactions.\n## Import\n```tsx\nimport { Tooltip } from \"@/components/ui/tooltip\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<Tooltip content=\"I follow your cursor\" side=\"top\" checked={undefined} disabled={undefined} />\n```\n## Props\n- **content** (string) — default: `\"I follow your cursor\"`: Content\n- **side** (string) — default: `\"top\"`: Side\n- **checked** (boolean): Checked\n- **disabled** (boolean): Disabled\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add tooltip\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/tooltip\n```",
+  "meta": {
+    "exportName": "Tooltip",
+    "exportNames": [
+      "Tooltip"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<Tooltip content=\"I follow your cursor\" side=\"top\" checked={undefined} disabled={undefined} />",
+    "importExample": "import { Tooltip } from \"@/components/ui/tooltip\";",
+    "props": [
+      {
+        "name": "content",
+        "type": "string",
+        "default": "I follow your cursor",
+        "description": "Content"
+      },
+      {
+        "name": "side",
+        "type": "string",
+        "default": "top",
+        "description": "Side"
+      },
+      {
+        "name": "checked",
+        "type": "boolean",
+        "description": "Checked"
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "description": "Disabled"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#tooltip",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/tooltip",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/tooltip"
+  }
+}

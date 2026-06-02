@@ -1,0 +1,62 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pricing-card",
+  "type": "registry:ui",
+  "title": "Pricing Card",
+  "description": "Marketing pricing tier card with feature list and CTA.",
+  "categories": [
+    "Cards & Surfaces",
+    "pricing",
+    "marketing"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/pricing-card.tsx",
+      "type": "registry:ui",
+      "content": "import { Check } from \"lucide-react\";\r\nimport { cn } from \"@/lib/utils\";\r\nimport { Button } from \"@/components/ui/button\";\r\n\r\ninterface PricingCardProps {\r\n  name: string;\r\n  price: string;\r\n  period?: string;\r\n  description?: string;\r\n  features: string[];\r\n  highlighted?: boolean;\r\n  ctaLabel?: string;\r\n  className?: string;\r\n}\r\n\r\nexport function PricingCard({\r\n  name,\r\n  price,\r\n  period = \"/mo\",\r\n  description,\r\n  features,\r\n  highlighted = false,\r\n  ctaLabel = \"Get started\",\r\n  className,\r\n}: PricingCardProps) {\r\n  return (\r\n    <div\r\n      className={cn(\r\n        \"flex flex-col rounded-2xl border bg-card/60 p-6 shadow-lg backdrop-blur\",\r\n        highlighted ? \"border-primary shadow-primary/20\" : \"border-border\",\r\n        className\r\n      )}\r\n    >\r\n      <div>\r\n        <h3 className=\"text-lg font-semibold\">{name}</h3>\r\n        {description && <p className=\"mt-1 text-sm text-muted-foreground\">{description}</p>}\r\n        <div className=\"mt-4 flex items-end gap-1\">\r\n          <span className=\"text-4xl font-bold\">{price}</span>\r\n          <span className=\"pb-1 text-sm text-muted-foreground\">{period}</span>\r\n        </div>\r\n      </div>\r\n      <ul className=\"mt-6 flex flex-1 flex-col gap-3\">\r\n        {features.map((feature) => (\r\n          <li key={feature} className=\"flex items-start gap-2 text-sm text-muted-foreground\">\r\n            <Check className=\"mt-0.5 size-4 shrink-0 text-primary\" />\r\n            {feature}\r\n          </li>\r\n        ))}\r\n      </ul>\r\n      <Button className=\"mt-8 w-full\" variant={highlighted ? \"default\" : \"outline\"}>\r\n        {ctaLabel}\r\n      </Button>\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Pricing Card\nMarketing pricing tier card with feature list and CTA.\n## Import\n```tsx\nimport { PricingCard } from \"@/components/ui/pricing-card\";\n```\n## Usage\n```tsx\n<PricingCard name=\"Pro\" price=\"$29\" highlighted variant={undefined} />\n```\n## Props\n- **name** (string) — default: `\"Pro\"`: Plan name\n- **price** (string) — default: `\"$29\"`: Price\n- **highlighted** (boolean) — default: `true`: Highlighted\n- **variant** (string): Variant\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add pricing-card\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/pricing-card\n```",
+  "meta": {
+    "exportName": "PricingCard",
+    "exportNames": [
+      "PricingCard"
+    ],
+    "isClientComponent": false,
+    "usageExample": "<PricingCard name=\"Pro\" price=\"$29\" highlighted variant={undefined} />",
+    "importExample": "import { PricingCard } from \"@/components/ui/pricing-card\";",
+    "props": [
+      {
+        "name": "name",
+        "type": "string",
+        "default": "Pro",
+        "description": "Plan name"
+      },
+      {
+        "name": "price",
+        "type": "string",
+        "default": "$29",
+        "description": "Price"
+      },
+      {
+        "name": "highlighted",
+        "type": "boolean",
+        "default": true,
+        "description": "Highlighted"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "description": "Variant"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#pricing-card",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/pricing-card",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/pricing-card"
+  }
+}

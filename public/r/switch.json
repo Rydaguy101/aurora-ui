@@ -1,0 +1,60 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch",
+  "type": "registry:ui",
+  "title": "Switch",
+  "description": "A springy toggle with clear active, inactive, and disabled states.",
+  "categories": [
+    "Forms & Feedback",
+    "toggle",
+    "form"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/switch.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport React from \"react\";\r\nimport { motion } from \"framer-motion\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface SwitchProps {\r\n  checked: boolean;\r\n  onCheckedChange: (v: boolean) => void;\r\n  className?: string;\r\n  disabled?: boolean;\r\n}\r\n\r\nexport function Switch({ checked, onCheckedChange, className, disabled }: SwitchProps) {\r\n  return (\r\n    <button\r\n      role=\"switch\"\r\n      aria-checked={checked}\r\n      disabled={disabled}\r\n      onClick={() => onCheckedChange(!checked)}\r\n      className={cn(\r\n        \"relative inline-flex h-6 w-11 shrink-0 items-center rounded-full p-0.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50\",\r\n        checked ? \"bg-primary\" : \"bg-secondary\",\r\n        className\r\n      )}\r\n    >\r\n      <motion.span\r\n        layout\r\n        transition={{ type: \"spring\", stiffness: 500, damping: 30 }}\r\n        className={cn(\r\n          \"block h-5 w-5 rounded-full bg-white shadow-md\",\r\n          checked ? \"ml-auto\" : \"ml-0\"\r\n        )}\r\n      />\r\n    </button>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Switch\nA springy toggle with clear active, inactive, and disabled states.\n## Import\n```tsx\nimport { Switch } from \"@/components/ui/switch\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<Switch checked disabled={false} type={undefined} />\n```\n## Props\n- **checked** (boolean) — default: `true`: Checked\n- **disabled** (boolean) — default: `false`: Disabled\n- **label** (string): Label\n- **type** (string): Type\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add switch\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/switch\n```",
+  "meta": {
+    "exportName": "Switch",
+    "exportNames": [
+      "Switch"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<Switch checked disabled={false} type={undefined} />",
+    "importExample": "import { Switch } from \"@/components/ui/switch\";",
+    "props": [
+      {
+        "name": "checked",
+        "type": "boolean",
+        "default": true,
+        "description": "Checked"
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": false,
+        "description": "Disabled"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "description": "Label"
+      },
+      {
+        "name": "type",
+        "type": "string",
+        "description": "Type"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#switch",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/switch",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/switch"
+  }
+}

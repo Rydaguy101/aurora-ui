@@ -1,0 +1,62 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty-state",
+  "type": "registry:ui",
+  "title": "Empty State",
+  "description": "Placeholder for empty lists, search results, or first-run experiences.",
+  "categories": [
+    "Forms & Feedback",
+    "empty",
+    "placeholder"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/empty-state.tsx",
+      "type": "registry:ui",
+      "content": "import { Inbox } from \"lucide-react\";\r\nimport type { ReactNode } from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\nimport { Button } from \"@/components/ui/button\";\r\n\r\ninterface EmptyStateProps {\r\n  title: string;\r\n  description?: string;\r\n  actionLabel?: string;\r\n  onAction?: () => void;\r\n  className?: string;\r\n  icon?: ReactNode;\r\n}\r\n\r\nexport function EmptyState({\r\n  title,\r\n  description,\r\n  actionLabel,\r\n  onAction,\r\n  className,\r\n  icon,\r\n}: EmptyStateProps) {\r\n  return (\r\n    <div className={cn(\"flex flex-col items-center justify-center rounded-2xl border border-dashed border-border bg-card/30 px-8 py-12 text-center\", className)}>\r\n      <div className=\"mb-4 flex size-14 items-center justify-center rounded-2xl border border-border bg-card/60 text-muted-foreground\">\r\n        {icon ?? <Inbox className=\"size-6\" />}\r\n      </div>\r\n      <h3 className=\"text-lg font-semibold\">{title}</h3>\r\n      {description && <p className=\"mt-2 max-w-sm text-sm text-muted-foreground\">{description}</p>}\r\n      {actionLabel && (\r\n        <Button className=\"mt-6\" size=\"sm\" onClick={onAction}>\r\n          {actionLabel}\r\n        </Button>\r\n      )}\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Empty State\nPlaceholder for empty lists, search results, or first-run experiences.\n## Import\n```tsx\nimport { EmptyState } from \"@/components/ui/empty-state\";\n```\n## Usage\n```tsx\n<EmptyState title=\"No results yet\" description=\"Try adjusting your filters or create something new.\" actionLabel=\"Create item\" compact={undefined} />\n```\n## Props\n- **title** (string) — default: `\"No results yet\"`: Title\n- **description** (string) — default: `\"Try adjusting your filters or create something new.\"`: Description\n- **actionLabel** (string) — default: `\"Create item\"`: Action label\n- **compact** (boolean): Compact rows\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add empty-state\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/empty-state\n```",
+  "meta": {
+    "exportName": "EmptyState",
+    "exportNames": [
+      "EmptyState"
+    ],
+    "isClientComponent": false,
+    "usageExample": "<EmptyState title=\"No results yet\" description=\"Try adjusting your filters or create something new.\" actionLabel=\"Create item\" compact={undefined} />",
+    "importExample": "import { EmptyState } from \"@/components/ui/empty-state\";",
+    "props": [
+      {
+        "name": "title",
+        "type": "string",
+        "default": "No results yet",
+        "description": "Title"
+      },
+      {
+        "name": "description",
+        "type": "string",
+        "default": "Try adjusting your filters or create something new.",
+        "description": "Description"
+      },
+      {
+        "name": "actionLabel",
+        "type": "string",
+        "default": "Create item",
+        "description": "Action label"
+      },
+      {
+        "name": "compact",
+        "type": "boolean",
+        "description": "Compact rows"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#empty-state",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/empty-state",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/empty-state"
+  }
+}

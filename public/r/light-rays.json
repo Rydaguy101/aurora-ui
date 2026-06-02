@@ -1,0 +1,72 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "light-rays",
+  "type": "registry:ui",
+  "title": "Light Rays",
+  "description": "Radiating light beams from a central glow point.",
+  "categories": [
+    "Backgrounds & Ambient Effects",
+    "background",
+    "light"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/light-rays.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport React from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface LightRaysProps {\r\n  className?: string;\r\n  count?: number;\r\n  color?: string;\r\n}\r\n\r\nexport function LightRays({ className, count = 8, color = \"rgba(168, 85, 247, 0.15)\" }: LightRaysProps) {\r\n  const rays = Array.from({ length: count });\r\n\r\n  return (\r\n    <div className={cn(\"pointer-events-none absolute inset-0 overflow-hidden\", className)}>\r\n      <div className=\"absolute left-1/2 top-0 h-full w-full -translate-x-1/2\">\r\n        {rays.map((_, index) => (\r\n          <div\r\n            key={index}\r\n            className=\"absolute left-1/2 top-0 h-full origin-top animate-pulse\"\r\n            style={{\r\n              width: 2,\r\n              transform: `rotate(${(360 / count) * index}deg)`,\r\n              background: `linear-gradient(to bottom, ${color}, transparent 70%)`,\r\n              animationDelay: `${index * 0.15}s`,\r\n            }}\r\n          />\r\n        ))}\r\n      </div>\r\n      <div\r\n        className=\"absolute left-1/2 top-0 size-64 -translate-x-1/2 rounded-full blur-3xl\"\r\n        style={{ background: color }}\r\n      />\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Light Rays\nRadiating light beams from a central glow point.\n## Import\n```tsx\nimport { LightRays } from \"@/components/ui/light-rays\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<LightRays count={8} color=\"#a855f7\" count={8} color=\"#a855f7\" speed={undefined} blur={undefined} />\n```\n## Props\n- **count** (number) — default: `8`: Ray count\n- **color** (string) — default: `\"#a855f7\"`: Color\n- **count** (number) — default: `8`: Orb count\n- **color** (string) — default: `\"#a855f7\"`: Color\n- **speed** (number): Speed\n- **blur** (number): Blur\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add light-rays\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/light-rays\n```",
+  "meta": {
+    "exportName": "LightRays",
+    "exportNames": [
+      "LightRays"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<LightRays count={8} color=\"#a855f7\" count={8} color=\"#a855f7\" speed={undefined} blur={undefined} />",
+    "importExample": "import { LightRays } from \"@/components/ui/light-rays\";",
+    "props": [
+      {
+        "name": "count",
+        "type": "number",
+        "default": 8,
+        "description": "Ray count"
+      },
+      {
+        "name": "color",
+        "type": "string",
+        "default": "#a855f7",
+        "description": "Color"
+      },
+      {
+        "name": "count",
+        "type": "number",
+        "default": 8,
+        "description": "Orb count"
+      },
+      {
+        "name": "color",
+        "type": "string",
+        "default": "#a855f7",
+        "description": "Color"
+      },
+      {
+        "name": "speed",
+        "type": "number",
+        "description": "Speed"
+      },
+      {
+        "name": "blur",
+        "type": "number",
+        "description": "Blur"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#light-rays",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/light-rays",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/light-rays"
+  }
+}

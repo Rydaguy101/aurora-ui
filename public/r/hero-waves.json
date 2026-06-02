@@ -1,0 +1,74 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero-waves",
+  "type": "registry:ui",
+  "title": "Hero Waves",
+  "description": "Layered SVG waves anchored to the bottom of hero sections.",
+  "categories": [
+    "Backgrounds & Ambient Effects",
+    "background",
+    "hero",
+    "waves"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/hero-waves.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport React from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface HeroWavesProps {\r\n  className?: string;\r\n  color?: string;\r\n  speed?: number;\r\n  layers?: number;\r\n}\r\n\r\nexport function HeroWaves({\r\n  className,\r\n  color = \"#a855f7\",\r\n  speed = 1,\r\n  layers = 3,\r\n}: HeroWavesProps) {\r\n  const waveLayers = Array.from({ length: layers }, (_, index) => ({\r\n    id: index,\r\n    opacity: 0.08 + index * 0.06,\r\n    delay: index * 0.8,\r\n    duration: 8 + index * 2,\r\n    offset: index * 12,\r\n  }));\r\n\r\n  return (\r\n    <div className={cn(\"pointer-events-none absolute inset-x-0 bottom-0 h-2/3 overflow-hidden\", className)}>\r\n      {waveLayers.map((layer) => (\r\n        <svg\r\n          key={layer.id}\r\n          className=\"absolute bottom-0 w-[200%] animate-wave\"\r\n          style={{\r\n            animationDuration: `${layer.duration / speed}s`,\r\n            animationDelay: `${layer.delay}s`,\r\n            opacity: layer.opacity,\r\n          }}\r\n          viewBox=\"0 0 1200 120\"\r\n          preserveAspectRatio=\"none\"\r\n        >\r\n          <path\r\n            d={`M0,${60 + layer.offset} C300,${20 + layer.offset} 600,${100 - layer.offset} 900,${50 + layer.offset} C1050,${25 + layer.offset} 1150,${70 + layer.offset} 1200,${60 + layer.offset} L1200,120 L0,120 Z`}\r\n            fill={color}\r\n          />\r\n        </svg>\r\n      ))}\r\n    </div>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Hero Waves\nLayered SVG waves anchored to the bottom of hero sections.\n## Import\n```tsx\nimport { HeroWaves } from \"@/components/ui/hero-waves\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<HeroWaves color=\"#a855f7\" speed={1} layers={3} count={undefined} color=\"#a855f7\" speed={1} />\n```\n## Props\n- **color** (string) — default: `\"#a855f7\"`: Color\n- **speed** (number) — default: `1`: Speed\n- **layers** (number) — default: `3`: Layers\n- **count** (number): Star count\n- **color** (string) — default: `\"#a855f7\"`: Color\n- **speed** (number) — default: `1`: Speed\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add hero-waves\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/hero-waves\n```",
+  "meta": {
+    "exportName": "HeroWaves",
+    "exportNames": [
+      "HeroWaves"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<HeroWaves color=\"#a855f7\" speed={1} layers={3} count={undefined} color=\"#a855f7\" speed={1} />",
+    "importExample": "import { HeroWaves } from \"@/components/ui/hero-waves\";",
+    "props": [
+      {
+        "name": "color",
+        "type": "string",
+        "default": "#a855f7",
+        "description": "Color"
+      },
+      {
+        "name": "speed",
+        "type": "number",
+        "default": 1,
+        "description": "Speed"
+      },
+      {
+        "name": "layers",
+        "type": "number",
+        "default": 3,
+        "description": "Layers"
+      },
+      {
+        "name": "count",
+        "type": "number",
+        "description": "Star count"
+      },
+      {
+        "name": "color",
+        "type": "string",
+        "default": "#a855f7",
+        "description": "Color"
+      },
+      {
+        "name": "speed",
+        "type": "number",
+        "default": 1,
+        "description": "Speed"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#hero-waves",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/hero-waves",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/hero-waves"
+  }
+}

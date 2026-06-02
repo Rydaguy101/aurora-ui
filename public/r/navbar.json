@@ -1,0 +1,55 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "navbar",
+  "type": "registry:ui",
+  "title": "Navbar",
+  "description": "Responsive top navigation with mobile drawer and CTA button.",
+  "categories": [
+    "Layout & Navigation",
+    "navigation",
+    "header"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "button",
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/navbar.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport React, { useState } from \"react\";\r\nimport { AnimatePresence, motion } from \"framer-motion\";\r\nimport { Menu, Sparkles, X } from \"lucide-react\";\r\nimport { cn } from \"@/lib/utils\";\r\nimport { Button } from \"@/components/ui/button\";\r\n\r\ninterface NavLink {\r\n  label: string;\r\n  href: string;\r\n}\r\n\r\ninterface NavbarProps {\r\n  brand?: string;\r\n  links?: NavLink[];\r\n  className?: string;\r\n}\r\n\r\nexport function Navbar({\r\n  brand = \"Aurora UI\",\r\n  links = [\r\n    { label: \"Components\", href: \"/components\" },\r\n    { label: \"Showcase\", href: \"/\" },\r\n    { label: \"Docs\", href: \"/components\" },\r\n  ],\r\n  className,\r\n}: NavbarProps) {\r\n  const [open, setOpen] = useState(false);\r\n\r\n  return (\r\n    <header className={cn(\"w-full rounded-2xl border border-border bg-card/60 backdrop-blur-xl\", className)}>\r\n      <div className=\"flex h-14 items-center justify-between px-4 md:px-6\">\r\n        <a href=\"/\" className=\"flex items-center gap-2 font-semibold\">\r\n          <div className=\"flex size-8 items-center justify-center rounded-lg bg-gradient-to-br from-violet-500 to-cyan-400\">\r\n            <Sparkles className=\"size-4 text-white\" />\r\n          </div>\r\n          {brand}\r\n        </a>\r\n\r\n        <nav className=\"hidden items-center gap-6 md:flex\">\r\n          {links.map((link) => (\r\n            <a key={link.label} href={link.href} className=\"text-sm text-muted-foreground transition-colors hover:text-foreground\">\r\n              {link.label}\r\n            </a>\r\n          ))}\r\n          <Button size=\"sm\">Get started</Button>\r\n        </nav>\r\n\r\n        <button type=\"button\" className=\"md:hidden\" onClick={() => setOpen((current) => !current)}>\r\n          {open ? <X className=\"size-5\" /> : <Menu className=\"size-5\" />}\r\n        </button>\r\n      </div>\r\n\r\n      <AnimatePresence>\r\n        {open && (\r\n          <motion.div\r\n            initial={{ height: 0, opacity: 0 }}\r\n            animate={{ height: \"auto\", opacity: 1 }}\r\n            exit={{ height: 0, opacity: 0 }}\r\n            className=\"overflow-hidden border-t border-border md:hidden\"\r\n          >\r\n            <div className=\"flex flex-col gap-3 px-4 py-4\">\r\n              {links.map((link) => (\r\n                <a key={link.label} href={link.href} className=\"text-sm text-muted-foreground\" onClick={() => setOpen(false)}>\r\n                  {link.label}\r\n                </a>\r\n              ))}\r\n              <Button size=\"sm\" className=\"w-full\">Get started</Button>\r\n            </div>\r\n          </motion.div>\r\n        )}\r\n      </AnimatePresence>\r\n    </header>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Navbar\nResponsive top navigation with mobile drawer and CTA button.\n## Import\n```tsx\nimport { Navbar } from \"@/components/ui/navbar\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<Navbar brand=\"Aurora UI\" currentPage={undefined} page={undefined} />\n```\n## Props\n- **brand** (string) — default: `\"Aurora UI\"`: Brand\n- **currentPage** (string): Current page\n- **page** (number): Page\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add navbar\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/navbar\n```",
+  "meta": {
+    "exportName": "Navbar",
+    "exportNames": [
+      "Navbar"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<Navbar brand=\"Aurora UI\" currentPage={undefined} page={undefined} />",
+    "importExample": "import { Navbar } from \"@/components/ui/navbar\";",
+    "props": [
+      {
+        "name": "brand",
+        "type": "string",
+        "default": "Aurora UI",
+        "description": "Brand"
+      },
+      {
+        "name": "currentPage",
+        "type": "string",
+        "description": "Current page"
+      },
+      {
+        "name": "page",
+        "type": "number",
+        "description": "Page"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#navbar",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/navbar",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/navbar"
+  }
+}

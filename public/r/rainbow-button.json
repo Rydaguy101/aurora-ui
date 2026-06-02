@@ -1,0 +1,55 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rainbow-button",
+  "type": "registry:ui",
+  "title": "Rainbow Button",
+  "description": "A saturated rainbow border treatment with a soft spectral glow.",
+  "categories": [
+    "Actions",
+    "button",
+    "gradient"
+  ],
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/rainbow-button.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\r\n\r\nimport React from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface RainbowButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {\r\n  children: React.ReactNode;\r\n}\r\n\r\nexport function RainbowButton({\r\n  children,\r\n  className,\r\n  ...props\r\n}: RainbowButtonProps) {\r\n  return (\r\n    <button\r\n      className={cn(\r\n        \"group relative inline-flex h-11 cursor-pointer items-center justify-center rounded-xl px-8 font-medium text-white transition-transform duration-200 active:scale-95\",\r\n        \"bg-[linear-gradient(#0a0a0f,#0a0a0f),linear-gradient(#0a0a0f_50%,rgba(10,10,15,0.6)_80%,rgba(10,10,15,0)),linear-gradient(90deg,#ff4d4d,#f9cb28,#4ade80,#3b82f6,#a855f7,#ff4d4d)]\",\r\n        \"[background-clip:padding-box,border-box,border-box] [background-origin:border-box] [border:2px_solid_transparent]\",\r\n        \"before:absolute before:bottom-[-20%] before:left-1/2 before:z-0 before:h-1/5 before:w-3/5 before:-translate-x-1/2 before:animate-gradient before:[animation-duration:10s] before:bg-[linear-gradient(90deg,#ff4d4d,#f9cb28,#4ade80,#3b82f6,#a855f7,#ff4d4d)] before:[filter:blur(calc(0.8*1rem))] before:[background-size:200%]\",\r\n        \"animate-gradient [animation-duration:10s] [background-size:200%]\",\r\n        className\r\n      )}\r\n      {...props}\r\n    >\r\n      <span className=\"relative z-10\">{children}</span>\r\n    </button>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "docs": "# Rainbow Button\nA saturated rainbow border treatment with a soft spectral glow.\n## Import\n```tsx\nimport { RainbowButton } from \"@/components/ui/rainbow-button\";\n```\n## Usage\n```tsx\n\"use client\";\n\n\n<RainbowButton variant={undefined}>Test Me</RainbowButton>\n```\n## Props\n- **label** (string) — default: `\"Test Me\"`: Label\n- **label** (string) — default: `\"Test Me\"`: Label\n- **variant** (string): Variant\n> Requires `\"use client\"` in the file that renders this component.\nSome Aurora UI components use custom Tailwind animations (animate-shimmer, animate-marquee, animate-aurora, etc.). Merge keyframes from https://raw.githubusercontent.com/Rydaguy101/aurora-ui/main/tailwind.config.ts into your tailwind.config.\n## Install\n```bash\nnpx --yes github:Rydaguy101/aurora-ui add rainbow-button\n# or with shadcn CLI (after aurora-ui init):\nnpx shadcn@latest add @aurora/rainbow-button\n```",
+  "meta": {
+    "exportName": "RainbowButton",
+    "exportNames": [
+      "RainbowButton"
+    ],
+    "isClientComponent": true,
+    "usageExample": "<RainbowButton variant={undefined}>Test Me</RainbowButton>",
+    "importExample": "import { RainbowButton } from \"@/components/ui/rainbow-button\";",
+    "props": [
+      {
+        "name": "label",
+        "type": "string",
+        "default": "Test Me",
+        "description": "Label"
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "default": "Test Me",
+        "description": "Label"
+      },
+      {
+        "name": "variant",
+        "type": "string",
+        "description": "Variant"
+      }
+    ],
+    "previewUrl": "https://aurora-ui-tau.vercel.app/components#rainbow-button",
+    "docsUrl": "https://aurora-ui-tau.vercel.app/api/components/rainbow-button",
+    "sourceUrl": "https://aurora-ui-tau.vercel.app/api/component-source/rainbow-button"
+  }
+}
